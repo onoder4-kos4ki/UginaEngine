@@ -1,5 +1,5 @@
 #include "uginaGameObject.h"
-
+#include "uginaInput.h"
 ugina::GameObject::GameObject()
 {
 }

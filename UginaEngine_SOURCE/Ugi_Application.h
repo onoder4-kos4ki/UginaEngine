@@ -10,7 +10,7 @@ namespace ugina
 		Application();
 		~Application();
 
-		void Initialize(HWND hwnd);
+		void Initialize(HWND hwnd,UINT width, UINT height);
 		void Run();
 
 		void Update();
@@ -19,8 +19,16 @@ namespace ugina
 
 
 	private:
+		//이 윈도우 핸들
 		HWND mhwnd;
+		//진짜 화면
 		HDC mHdc;
+
+		HDC mBackHdc;
+		HBITMAP mBackBitmap;
+
+		UINT mWidth;
+		UINT mHeight;
 
 		GameObject mPlayer;
 	};
