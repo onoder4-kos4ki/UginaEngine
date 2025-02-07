@@ -24,6 +24,7 @@ namespace ugina
 		//진짜 화면
 		HDC mHdc;
 
+		//화면뒤의 
 		HDC mBackHdc;
 		HBITMAP mBackBitmap;
 

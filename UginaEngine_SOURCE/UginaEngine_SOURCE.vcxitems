@@ -17,11 +17,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Ugi_Application.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Ugi_Application.cpp" />
   </ItemGroup>
 </Project>

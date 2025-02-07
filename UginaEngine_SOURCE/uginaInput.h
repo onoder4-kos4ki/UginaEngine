@@ -44,7 +44,12 @@ namespace ugina
 		static bool getKeyUp(keyCode code) { return keys[(int)code].state == keyState::Up; }
 		static bool getKey(keyCode code) { return keys[(int)code].state == keyState::Pressed; }
 	private:
-
+		static void createKeys();
+		static void updateKeys();
+		static void updateKey(Input::Key& key);
+		static bool isKeyDown(keyCode code);
+		static void updateKeyDown(Input::Key& key);
+		static void updateKeyUp(Input::Key& key);
 
 		//위의 변수를 저장하는 배열
 		static std::vector<Key> keys;
