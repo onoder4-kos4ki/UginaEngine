@@ -132,6 +132,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="uginaLoadScenes.h" />
+    <ClInclude Include="uginaPlayer.h" />
+    <ClInclude Include="uginaPlayScene.h" />
+    <ClInclude Include="uginaTitleScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="uginaPlayer.cpp" />
+    <ClCompile Include="uginaPlayScene.cpp" />
+    <ClCompile Include="uginaTitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

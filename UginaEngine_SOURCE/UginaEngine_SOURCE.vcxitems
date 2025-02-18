@@ -15,15 +15,33 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTransform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Ugi_Application.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTransform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Ugi_Application.cpp" />
   </ItemGroup>
 </Project>

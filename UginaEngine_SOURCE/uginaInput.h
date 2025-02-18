@@ -40,9 +40,9 @@ namespace ugina
 		};
 
 		//게임에서 키가 눌린 상태를 기져오기위한 함수
-		static bool getKeyDown(keyCode code) { return keys[(int)code].state == keyState::Down; }
-		static bool getKeyUp(keyCode code) { return keys[(int)code].state == keyState::Up; }
-		static bool getKey(keyCode code) { return keys[(int)code].state == keyState::Pressed; }
+		static bool GetKeyDown(keyCode code) { return keys[(int)code].state == keyState::Down; }
+		static bool GetKeyUp(keyCode code) { return keys[(int)code].state == keyState::Up; }
+		static bool GetKey(keyCode code) { return keys[(int)code].state == keyState::Pressed; }
 	private:
 		static void createKeys();
 		static void updateKeys();

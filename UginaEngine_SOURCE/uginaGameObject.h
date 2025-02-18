@@ -1,28 +1,47 @@
 #pragma once
 #include "CommonInclude.h"
+#include "uginaComponent.h"
 namespace ugina
 {
 	class GameObject
 	{
-	public :
+	public:
 		GameObject();
 		~GameObject();
 
-		void Update();
-		void LateUpdate();
-		void Render(HDC hdc);
+		virtual void Initialize();
+		virtual void Update();
+		virtual void LateUpdate();
+		virtual void Render(HDC hdc);
 
-		void SetPosition(float x, float y)
+		template <typename T>
+		T* AddComponent()
 		{
-			mX = x;
-			mY = y;
+			T* comp = new T();
+			comp->SetOwner(this);
+			mComponets.push_back(comp);
+			return comp;
 		}
-		float GetPositionX() { return mX; }
-		float GetPositionY() { return mY; }
+		template <typename T>
+		T* GetComponent()
+		{
+			
+			T* comp = nullptr;
+			for (Component* com : mComponets)
+			{
+				comp = dynamic_cast<T*>(com);
+					if (comp != nullptr)
+					{
+						return comp;
+					}
+			}
+			return comp;
+		}
+	
+	
 	private:
-		
-		float mX;
-		float mY;
+
+		std::vector<Component*> mComponets;
 
 	};
 }

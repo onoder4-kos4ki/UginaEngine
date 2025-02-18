@@ -3,15 +3,21 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
-#include "CommonInclude.h"
-#include "..\\UginaEngine_SOURCE\Ugi_Application.h"
-#include "..\\UginaEngine_SOURCE\CommonInclude.h"
 
-//#pragma comment(lib,"..\\x64\\Debug\\UginaEngine_Window.lib")
+#include "..\\UginaEngine_SOURCE\Ugi_Application.h"
+
+#include "..\\UginaEngine_Window\\uginaLoadScenes.h"
+
+
+
 #define MAX_LOADSTRING 100
 
 
 ugina::Application api;
+//8바이트 인트형(운영체제에 맞게 설정됨)포인터로, gdi+의 초기화,종료에 필요한 카드키 같은 역할
+ULONG_PTR gpToken;
+//gdi+를 초기화 하는데 필요한 설정을 담는 구조체
+Gdiplus::GdiplusStartupInput gpsi;
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -70,6 +76,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             api.Run();
         }
     }
+    Gdiplus::GdiplusShutdown(gpToken);
     // 기본 메시지 루프입니다:
    /* while (GetMessage(&msg, nullptr, 0, 0))
     {
@@ -141,6 +148,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
+   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+   ugina::LoadScenes();
    return TRUE;
 }
 

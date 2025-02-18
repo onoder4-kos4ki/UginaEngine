@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Ugi_Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaEntity.cpp">
+      <Filter>Commons</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaGameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaSceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTransform.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Ugi_Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
+      <Filter>Commons</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaEntity.h">
+      <Filter>Commons</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaGameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaSceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTransform.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Commons">
+      <UniqueIdentifier>{fcf9af2d-7c97-4fde-a526-2fe6f48d519a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{66010d0f-7324-4c8b-b989-2630b32d3450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{5da416f8-bb34-44a9-8078-de1b725ba2ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{74151802-0220-45ed-a5b2-057146dfc477}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

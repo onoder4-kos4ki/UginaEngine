@@ -17,7 +17,12 @@ namespace ugina
 		void LateUpdate();
 		void Render();
 
-
+	private:
+		void clearRenderTarget();
+		void copyRenderTarget(HDC source, HDC dest);
+		void adjustWidowRect(HWND hwnd, UINT width, UINT height);
+		void createBuffer(UINT width, UINT height);
+		void initializeEtc();
 	private:
 		//이 윈도우 핸들
 		HWND mhwnd;
@@ -31,7 +36,7 @@ namespace ugina
 		UINT mWidth;
 		UINT mHeight;
 
-		GameObject mPlayer;
+		
 	};
 
 }

@@ -1,2 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="uginaPlayer.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="uginaLoadScenes.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="uginaPlayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="uginaTitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="uginaPlayer.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="uginaPlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="uginaTitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{c10e6c64-00f0-4626-b329-498627543478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{8ccb88c6-81ff-41f3-a9da-a4e4aecb7aa6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

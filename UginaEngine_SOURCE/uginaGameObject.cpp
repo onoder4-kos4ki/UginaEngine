@@ -1,21 +1,51 @@
 #include "uginaGameObject.h"
 #include "uginaInput.h"
-ugina::GameObject::GameObject()
+namespace ugina
 {
-}
 
-ugina::GameObject::~GameObject()
-{
-}
+	GameObject::GameObject() 
+	{
+	}
 
-void ugina::GameObject::Update()
-{
-}
+	GameObject::~GameObject()
+	{
+		for (Component* com : mComponets)
+		{
+			//메모리 해제
+			delete com;
+			//메모리를 nullptr로 밀기
+			com = nullptr;
+		}
+	}
+	void GameObject::Initialize()
+	{
+		for (Component* com : mComponets)
+		{
+			com->Initialize();
+		}
+	}
+	void GameObject::Update()
+	{
+		for (Component* com : mComponets)
+		{
+			com->Update();
+		}
+	}
 
-void ugina::GameObject::LateUpdate()
-{
-}
+	void GameObject::LateUpdate()
+	{
+		for (Component* com : mComponets)
+		{
+			com->LateUpdate();
+		}
+	}
 
-void ugina::GameObject::Render(HDC hdc)
-{
+	void GameObject::Render(HDC hdc)
+	{
+		for (Component* com : mComponets)
+		{
+			com->Render(hdc);
+		}
+	}
+
 }
