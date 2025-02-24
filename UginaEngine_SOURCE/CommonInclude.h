@@ -23,3 +23,5 @@
 #include <gdiplus.h>
 //gdiplus.h을 사용하기위한 라이브러리
 #pragma comment(lib,"gdiplus.lib")
+
+#include "uginaEnums.h"

@@ -1,9 +1,7 @@
 #include "uginaTitleScene.h"
-#include "uginaGameObject.h"
+#include "uginaInput.h"
 #include "uginaPlayer.h"
-#include "uginaTransform.h"
-#include "uginaSpriteRenderer.h"
-
+#include "uginaSceneManager.h"
 namespace ugina
 {
 	TitleScene::TitleScene()
@@ -14,18 +12,7 @@ namespace ugina
 	}
 	void TitleScene::Initialize()
 	{
-		GameObject* tbg = new GameObject();
-		Transform* tr=tbg->AddComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
-		tr->SetName(L"TTR");
-		
-
-
-		SpriteRenderer* sr =tbg->AddComponent<SpriteRenderer>();
-		sr->SetName(L"TSR");
-		sr->ImageLoad(L"..\\Resources\\Title2.png");
-		AddGameObject(tbg);
-		
+		Scene::Initialize();
 	}
 	void TitleScene::Update()
 	{
@@ -34,9 +21,15 @@ namespace ugina
 	void TitleScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+		if (Input::GetKeyDown(keyCode::N))
+		{
+			SceneManager::LoadScene(L"PlayScene");
+		}
 	}
 	void TitleScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+		wchar_t str[50] = L"Title Scene";
+		TextOut(hdc, 0, 0, str, 11);
 	}
 }

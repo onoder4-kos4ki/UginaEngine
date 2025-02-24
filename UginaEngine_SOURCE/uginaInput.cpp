@@ -5,10 +5,17 @@
 namespace ugina
 {
 	//스태틱 변수는 cpp파일에서 정의 한다
-	std::vector<Input::Key> Input::keys;
+	std::vector<Input::Key> Input::keys = {};
 
 
-	int ASCII[(UINT)keyCode::Count] = { 'W','A','S','D',' ' };
+	int ASCII[(UINT)keyCode::Count] = { 
+		'A', 'B', 'C', 'D',
+		'E', 'F', 'G', 'H',
+		'I', 'J', 'K', 'L',
+		'M', 'N', 'O', 'P',
+		'Q', 'R', 'S', 'T',
+		'U', 'V', 'W', 'X',
+		'Y', 'Z',' ' };
 
 	void Input::Update()
 	{
@@ -27,7 +34,7 @@ namespace ugina
 			//명시적인 Key구조체 초기화
 			Key key = {};
 			key.bPressed = false;
-			key.code = (keyCode)ASCII[i];
+			key.code = (keyCode)i;
 			key.state = keyState::None;
 
 			keys.push_back(key);
@@ -37,7 +44,7 @@ namespace ugina
 	{
 		
 		// Keys vector 전체를 돌면서 눌렸는지 아닌지를 판정함
-		std::for_each(keys.begin(), keys.end(), [](Input::Key& key)->void { updateKey(key); });
+		std::for_each(keys.begin(), keys.end(), [](Key& key)->void { updateKey(key); });
 	}
 	void Input::updateKey(Input::Key& key)
 	{
@@ -54,7 +61,7 @@ namespace ugina
 	}
 	bool Input::isKeyDown(keyCode code)
 	{
-		return GetAsyncKeyState((int)code & 0x8000);
+		return GetAsyncKeyState(ASCII[(int)code]) & 0x8000;
 	}
 
 

@@ -57,7 +57,7 @@ namespace ugina
 
 	void Application::LateUpdate()
 	{
-		
+		SceneManager::LateUpdate();
 	}
 
 	void Application::Render()

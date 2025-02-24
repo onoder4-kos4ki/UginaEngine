@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaInput.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTime.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Ugi_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaEntity.cpp">
       <Filter>Commons</Filter>
     </ClCompile>
@@ -13,7 +10,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaResources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaScene.cpp">
@@ -28,11 +24,21 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaMath.cpp">
+      <Filter>Commons</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTime.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaInput.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Ugi_Application.cpp">
+      <Filter>High Level Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaInput.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTime.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Ugi_Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
       <Filter>Commons</Filter>
     </ClInclude>
@@ -45,7 +51,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaScene.h">
@@ -60,6 +65,20 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaMath.h">
+      <Filter>Commons</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTime.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaInput.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Ugi_Application.h">
+      <Filter>High Level Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">
@@ -73,6 +92,12 @@
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{74151802-0220-45ed-a5b2-057146dfc477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{d6b4a04b-0efe-4e1c-94d9-8457ecf19f34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="High Level Interface">
+      <UniqueIdentifier>{a911bf7c-d1f0-4e45-8985-13293ef6fa65}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -18,6 +18,7 @@ namespace ugina
 		T* AddComponent()
 		{
 			T* comp = new T();
+			comp->Initialize();
 			comp->SetOwner(this);
 			mComponets.push_back(comp);
 			return comp;
