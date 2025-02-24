@@ -39,11 +39,12 @@ namespace ugina
 			return comp;
 		}
 	
-	
+	private: 
+		void initializeTransform();
 	private:
 
 		std::vector<Component*> mComponets;
-
+		
 	};
 }
 

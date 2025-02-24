@@ -1,12 +1,15 @@
 #pragma once
 namespace ugina
 {
-	enum class eLayerType
+	namespace enums
 	{
-		None,
-		BackGround,
-		Player,
-		Max = 16,
+		enum class eLayerType
+		{
+			None,
+			BackGround,
+			Player,
+			Max = 16,
 
-	};
+		};
+	}
 }

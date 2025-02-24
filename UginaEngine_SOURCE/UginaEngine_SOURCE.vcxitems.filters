@@ -79,6 +79,7 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">

@@ -1,10 +1,13 @@
 #include "uginaGameObject.h"
 #include "uginaInput.h"
+#include "uginaTime.h"
+#include "uginaTransform.h"
 namespace ugina
 {
-
+	//유니티에서는 모든 오브젝트가 트랜스폼 컴포넌트를 갖는다.
 	GameObject::GameObject() 
 	{
+		initializeTransform();
 	}
 
 	GameObject::~GameObject()
@@ -48,4 +51,8 @@ namespace ugina
 		}
 	}
 
+	void GameObject::initializeTransform()
+	{
+		AddComponent<Transform>();
+	}
 }

@@ -22,6 +22,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaScene.h" />
