@@ -4,9 +4,11 @@
 #include "framework.h"
 #include "Editor_Window.h"
 
-#include "..\\UginaEngine_SOURCE\Ugi_Application.h"
+#include "..\\UginaEngine_SOURCE\\Ugi_Application.h"
+#include "..\\UginaEngine_SOURCE\\uginaload"
 
 #include "..\\UginaEngine_Window\\uginaLoadScenes.h"
+
 
 
 

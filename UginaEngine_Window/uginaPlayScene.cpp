@@ -6,6 +6,7 @@
 #include "uginaInput.h"
 #include "uginaTitleScene.h"
 #include "uginaSceneManager.h"
+#include "uginaObject.h"
 namespace ugina
 {
 	PlayScene::PlayScene()
@@ -16,15 +17,10 @@ namespace ugina
 	}
 	void PlayScene::Initialize()
 	{
-		bg = new Player();
-		Transform* tr = bg->AddComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
-		tr->SetName(L"TR");
+		bg = object::Instantiate<Player>(enums::eLayerType::BackGround, Vector2(100.0f,100.0f));
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->SetName(L"SR");
 		sr->ImageLoad(L"..\\Resources\\CloudOcean.png");
-
-		AddGameObject(bg,eLayerType::BackGround);
+		Scene::Initialize();
 	}
 	void PlayScene::Update()
 	{
@@ -49,7 +45,7 @@ namespace ugina
 	}
 	void PlayScene::OnExit()
 	{
-		Transform* tr = bg->GetComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
+		//Transform* tr = bg->GetComponent<Transform>();
+		//tr->SetPosition(Vector2(0, 0));
 	}
 }

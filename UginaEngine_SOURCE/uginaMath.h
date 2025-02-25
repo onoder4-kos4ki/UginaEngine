@@ -5,8 +5,11 @@ namespace ugina
 
 	namespace math
 	{
+
 		struct Vector2
 		{
+			static Vector2 One;
+			static Vector2 Zero;
 			float x;
 			float y;
 
@@ -14,7 +17,7 @@ namespace ugina
 			{
 
 			}
-			Vector2(float _x, float _y) : x(_x),y(_y)
+			Vector2(float _x, float _y) : x(_x), y(_y)
 			{
 
 			}

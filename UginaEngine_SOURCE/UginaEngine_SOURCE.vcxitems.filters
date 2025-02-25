@@ -100,5 +100,8 @@
     <Filter Include="High Level Interface">
       <UniqueIdentifier>{a911bf7c-d1f0-4e45-8985-13293ef6fa65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{ed9fa73c-64fc-4fd1-804a-90de31f74ea8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

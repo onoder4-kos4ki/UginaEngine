@@ -19,10 +19,10 @@ namespace ugina
 		virtual void OnEnter();
 		virtual void OnExit();
 
-		void AddGameObject(GameObject* gameObj, const eLayerType type);
-
+		void AddGameObject(GameObject* gameObj, const enums::eLayerType type);
+		Layer* GetLayer(const enums::eLayerType type) { return mLayers[(int)type]; }
 	private: 
-		void CreateLayers();
+		void createLayers();
 
 	private:
 		//씬에서 모든 게임오브젝트는 레이어라는 더큰 분류에 저장되어 나뉘어 진다.

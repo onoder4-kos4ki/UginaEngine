@@ -43,5 +43,6 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		UginaEngine_SOURCE\UginaEngine_SOURCE.vcxitems*{56a8987b-1ea9-47f9-92ff-6a4218716a29}*SharedItemsImports = 4
 		UginaEngine_SOURCE\UginaEngine_SOURCE.vcxitems*{c65c21d5-e4d0-4f07-b3f6-8ae94b772db7}*SharedItemsImports = 9
+		UginaEngine_SOURCE\UginaEngine_SOURCE.vcxitems*{f88f5dd8-70df-49f4-9d8b-74a1e3457678}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

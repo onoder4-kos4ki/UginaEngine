@@ -12,6 +12,7 @@ namespace ugina
 			//내부에서 씬을 만들어서 이름을 저장하고, 초기화를 실행해줌 
 			T* scene = new T();
 			scene->SetName(name);
+			mActiveScene = scene;
 			scene->Initialize();
 
 			//씬매니저에서 관리하는 mScene 자료구조에 {이름(key),scene(value)}을 한쌍으로 하는 노드를 저장시킴
@@ -20,32 +21,11 @@ namespace ugina
 			//만들어진 씬을 리턴함(참조가 아닌 포인터를 리턴하는 이유는 자료구조에 넣을려고)
 			return scene;
 		}
-		static Scene* LoadScene(const std::wstring& name)
-		{
-			if (mActiveScene)
-			{
-				//현재 씬을 나갈때 실행하는 함수
-				mActiveScene->OnExit();
-			}
-			//name의 키로 저장된 씬을 찾는다
-			std::map<std::wstring, Scene*>::iterator iter = mScene.find(name);
-			if (iter == mScene.end())
-			{
-				return nullptr;
-			}
-			//찾은 씬을 활성화된 씬으로 만든다.
-			mActiveScene = iter->second;
+		static Scene* LoadScene(const std::wstring& name);
 
-			//방금 활성화된 씬을 시작할때 호출할 함수실행
-			mActiveScene->OnEnter();
-			//활성화된 씬을 리턴
-			return iter->second;
-		}
-		
-
-
+		static Scene* Getactivescene() { return mActiveScene; }
 		static void Initialize();
-		//현재 선택된 씬(mActiveScene)에서 해야할 로직을 실행시키는 함순
+		//현재 선택된 씬(mActiveScene)에서 해야할 로직을 실행시키는 함수
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC hdc);

@@ -15,7 +15,7 @@ namespace ugina
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void SetPos(Vector2 pos) { mPosition.x = pos.x; mPosition.y = pos.y; }
+		void SetPosition(Vector2 pos) { mPosition.x = pos.x; mPosition.y = pos.y; }
 		Vector2 GetPosition() { return mPosition; }
 
 	private:

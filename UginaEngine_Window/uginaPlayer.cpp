@@ -2,6 +2,7 @@
 #include "uginaInput.h"
 #include "uginaTransform.h"
 #include "uginaTime.h"
+#include ""
 namespace ugina
 {
 	void Player::Initialize()
@@ -21,7 +22,7 @@ namespace ugina
 			Transform* tr = GetComponent<Transform>();
 			Vector2 pos = tr->GetPosition();
 			pos.x += 100.0f * Time::DeltaTime();
-			tr->SetPos(pos);
+			tr->SetPosition(pos);
 		}
 	}
 	void Player::Render(HDC hdc)
