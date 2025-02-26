@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="uginaLoadResources.h" />
     <ClInclude Include="uginaLoadScenes.h" />
     <ClInclude Include="uginaPlayer.h" />
     <ClInclude Include="uginaPlayScene.h" />

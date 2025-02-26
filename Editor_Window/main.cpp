@@ -4,8 +4,8 @@
 #include "framework.h"
 #include "Editor_Window.h"
 
-#include "..\\UginaEngine_SOURCE\\Ugi_Application.h"
-#include "..\\UginaEngine_SOURCE\\uginaload"
+#include "..\\UginaEngine_SOURCE\\uginaApplication.h"
+#include "..\\UginaEngine_Window\\uginaLoadResources.h"
 
 #include "..\\UginaEngine_Window\\uginaLoadScenes.h"
 
@@ -151,7 +151,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+   ugina::LoadResource();
    ugina::LoadScenes();
+   
    return TRUE;
 }
 

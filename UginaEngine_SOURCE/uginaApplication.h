@@ -18,6 +18,8 @@ namespace ugina
 		void Render();
 
 		HDC GetHdc() { return mHdc; }             
+		UINT GetWidth() { return mWidth; }
+		UINT Getheight() { return mHeight; }
 	private:
 		void clearRenderTarget();
 		void copyRenderTarget(HDC source, HDC dest);

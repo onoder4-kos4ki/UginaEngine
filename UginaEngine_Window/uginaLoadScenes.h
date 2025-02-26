@@ -10,7 +10,7 @@ namespace ugina
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 
 
-		//SceneManager::LoadScene(L"PlayScene");
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"PlayScene");
+		//SceneManager::LoadScene(L"TitleScene");
 	}
 }

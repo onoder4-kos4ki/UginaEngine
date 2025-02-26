@@ -3,6 +3,14 @@ namespace ugina
 {
 	namespace enums
 	{
+		enum class eCompnentType
+		{
+			Transform,
+			SpriteRenderer,
+			Script,
+			Camera,
+			End
+		};
 		enum class eLayerType
 		{
 			None,

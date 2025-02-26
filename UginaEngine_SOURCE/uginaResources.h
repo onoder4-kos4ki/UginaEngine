@@ -14,7 +14,8 @@ namespace ugina
 			{
 				return nullptr;
 			}
-			return dynamic_cast<T*>(iter->second());
+
+			return dynamic_cast<T*>(iter->second);
 
 		}
 
@@ -38,6 +39,8 @@ namespace ugina
 			return resource;
 		}
 	private:
+
+		//엔진 내부에서 사용할 이름이 키(ex BG,Player), value는 안에 들어간 리소스객체의 포인터
 		static std::map<std::wstring, Resource*> mResources;
 	};
 }

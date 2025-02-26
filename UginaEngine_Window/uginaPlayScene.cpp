@@ -7,6 +7,8 @@
 #include "uginaTitleScene.h"
 #include "uginaSceneManager.h"
 #include "uginaObject.h"
+#include "uginaTexture.h"
+#include "uginaResources.h"
 namespace ugina
 {
 	PlayScene::PlayScene()
@@ -17,9 +19,13 @@ namespace ugina
 	}
 	void PlayScene::Initialize()
 	{
-		bg = object::Instantiate<Player>(enums::eLayerType::BackGround, Vector2(100.0f,100.0f));
+		bg = object::Instantiate<Player>(enums::eLayerType::BackGround);
+
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->ImageLoad(L"..\\Resources\\CloudOcean.png");
+		graphics::Texture* bgTexture = Resources::Find<graphics::Texture>(L"BG");
+
+		sr->SetTexture(bgTexture);
+
 		Scene::Initialize();
 	}
 	void PlayScene::Update()

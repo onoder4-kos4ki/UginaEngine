@@ -2,7 +2,7 @@
 #include "uginaInput.h"
 #include "uginaTransform.h"
 #include "uginaTime.h"
-#include ""
+
 namespace ugina
 {
 	void Player::Initialize()

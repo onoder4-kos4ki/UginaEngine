@@ -13,6 +13,7 @@
     <ClInclude Include="uginaTitleScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="uginaLoadResources.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="uginaPlayer.cpp">

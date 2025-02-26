@@ -33,10 +33,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaInput.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Ugi_Application.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaScript.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -74,12 +77,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaInput.h">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Ugi_Application.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaApplication.h">
       <Filter>High Level Interface</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaScript.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">

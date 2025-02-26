@@ -2,6 +2,7 @@
 namespace ugina
 {
 	Transform::Transform()
+		:Component(enums::eCompnentType::Transform)
 	{
 	}
 	Transform::~Transform()

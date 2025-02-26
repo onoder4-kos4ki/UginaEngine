@@ -21,6 +21,8 @@ namespace ugina
 			comp->Initialize();
 			comp->SetOwner(this);
 			mComponets.push_back(comp);
+			
+			mComponets[(UINT)comp->GetType()] = comp;
 			return comp;
 		}
 		template <typename T>
