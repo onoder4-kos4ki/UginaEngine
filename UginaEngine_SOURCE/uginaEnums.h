@@ -3,7 +3,7 @@ namespace ugina
 {
 	namespace enums
 	{
-		enum class eCompnentType
+		enum class eComponentType
 		{
 			Transform,
 			SpriteRenderer,

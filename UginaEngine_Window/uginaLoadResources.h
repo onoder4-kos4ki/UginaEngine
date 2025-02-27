@@ -8,5 +8,8 @@ namespace ugina
 	{
 		//내부에서 호출할이름은 BG인 배경파일을 로드
 		Resources::Load<graphics::Texture>(L"BG",L"..\\Resources\\CloudOcean.png");
+		
+		Resources::Load<graphics::Texture>(L"Map", L"..\\Resources\\img\\map\\map_pure.png");
+		Resources::Load<graphics::Texture>(L"PackMan", L"..\\Resources\\img\\pacman\\0.png");
 	}
 }

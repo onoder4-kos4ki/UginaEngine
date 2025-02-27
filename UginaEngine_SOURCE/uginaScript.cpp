@@ -2,7 +2,7 @@
 namespace ugina
 {
 	Script::Script()
-		:Component(enums::eCompnentType::Script)
+		:Component(enums::eComponentType::Script)
 	{
 	}
 	Script::~Script()

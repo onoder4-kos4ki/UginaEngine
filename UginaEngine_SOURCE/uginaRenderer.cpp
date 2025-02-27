@@ -3,6 +3,6 @@ namespace ugina
 {
 	namespace renderer
 	{
-
+		Camera* mainCamera = nullptr;
 	}
 }

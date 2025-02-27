@@ -21,10 +21,10 @@ namespace ugina
 	void TitleScene::LateUpdate()
 	{
 		Scene::LateUpdate();
-		if (Input::GetKeyDown(keyCode::N))
+		/*if (Input::GetKeyDown(keyCode::N))
 		{
 			SceneManager::LoadScene(L"PlayScene");
-		}
+		}*/
 	}
 	void TitleScene::Render(HDC hdc)
 	{

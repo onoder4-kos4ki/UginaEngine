@@ -2,7 +2,7 @@
 
 namespace ugina
 {
-	Component::Component(enums::eCompnentType type) : mType(type)
+	Component::Component(enums::eComponentType type) : mType(type)
 	{
 	}
 	ugina::Component::~Component()

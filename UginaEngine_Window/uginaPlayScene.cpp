@@ -9,6 +9,9 @@
 #include "uginaObject.h"
 #include "uginaTexture.h"
 #include "uginaResources.h"
+#include "uginaPlayerScript.h"
+#include "uginaCamera.h"
+#include "uginarenderer.h"
 namespace ugina
 {
 	PlayScene::PlayScene()
@@ -19,13 +22,26 @@ namespace ugina
 	}
 	void PlayScene::Initialize()
 	{
-		bg = object::Instantiate<Player>(enums::eLayerType::BackGround);
 
-		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		graphics::Texture* bgTexture = Resources::Find<graphics::Texture>(L"BG");
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(344.0f, 442.0f));
+		Camera* cameracomp = camera->AddComponent<Camera>();
+		renderer::mainCamera = cameracomp;
 
-		sr->SetTexture(bgTexture);
 
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
+		sr->SetSize(Vector2(3.0f, 3.0f));
+		mPlayer->AddComponent<PlayerScript>();
+
+		graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"PackMan");
+		sr->SetTexture(packmanTexture);
+
+		GameObject* bg = object::Instantiate<GameObject>(enums::eLayerType::BackGround);
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		bgsr->SetSize(Vector2(3.0f, 3.0f));
+		graphics::Texture* bgTexture= Resources::Find<graphics::Texture>(L"Map");
+		
+		bgsr->SetTexture(bgTexture);
 		Scene::Initialize();
 	}
 	void PlayScene::Update()
@@ -35,16 +51,16 @@ namespace ugina
 	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
-		if (Input::GetKeyDown(keyCode::A))
+		/*if (Input::GetKeyDown(keyCode::A))
 		{
 			SceneManager::LoadScene(L"TitleScene");
-		}
+		}*/
 	}
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-		wchar_t str[50] = L"Play Scene";
-		TextOut(hdc, 0, 0, str, 10);
+		/*wchar_t str[50] = L"Play Scene";
+		TextOut(hdc, 0, 0, str, 10);*/
 	}
 	void PlayScene::OnEnter()
 	{

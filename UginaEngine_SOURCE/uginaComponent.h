@@ -7,7 +7,7 @@ namespace ugina
 	{
 	public:
 
-		Component(enums::eCompnentType type);
+		Component(enums::eComponentType type);
 		~Component();
 
 		virtual void Initialize();
@@ -17,11 +17,11 @@ namespace ugina
 
 		void SetOwner(GameObject* owner) { mOwner = owner; }
 		GameObject* getOwner() { return mOwner; }
-		enums::eCompnentType GetType() { return mType; }
+		enums::eComponentType GetType() { return mType; }
 	
 	private:
 		GameObject* mOwner;
-		enums::eCompnentType mType;
+		enums::eComponentType mType;
 	};
 }
 

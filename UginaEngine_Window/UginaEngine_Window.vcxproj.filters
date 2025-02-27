@@ -14,6 +14,7 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="uginaLoadResources.h" />
+    <ClInclude Include="uginaPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="uginaPlayer.cpp">
@@ -25,6 +26,7 @@
     <ClCompile Include="uginaTitleScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="uginaPlayerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -33,5 +35,9 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{8ccb88c6-81ff-41f3-a9da-a4e4aecb7aa6}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

@@ -10,19 +10,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResource.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaSceneManager.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTransform.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.cpp">
-      <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaMath.cpp">
       <Filter>Commons</Filter>
@@ -36,10 +28,33 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaLayer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTexture.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaScript.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCamera.cpp">
+      <Filter>Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaScript.cpp">
+      <Filter>Components\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTransform.cpp">
+      <Filter>Components\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.cpp">
+      <Filter>Components\Spriterenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaLayer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaResources.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTexture.cpp">
+      <Filter>Resources\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -54,19 +69,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResource.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaSceneManager.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTransform.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.h">
-      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaMath.h">
       <Filter>Commons</Filter>
@@ -80,12 +87,39 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaApplication.h">
       <Filter>High Level Interface</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaEnums.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaLayer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTexture.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaScript.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h">
+      <Filter>Commons</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaEnums.h">
+      <Filter>Commons</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCamera.h">
+      <Filter>Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaScript.h">
+      <Filter>Components\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTransform.h">
+      <Filter>Components\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.h">
+      <Filter>Components\Spriterenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaLayer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaResources.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTexture.h">
+      <Filter>Resources\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">
@@ -108,6 +142,30 @@
     </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{ed9fa73c-64fc-4fd1-804a-90de31f74ea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Camera">
+      <UniqueIdentifier>{b5552037-650c-4668-afee-ff64dedca0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Component">
+      <UniqueIdentifier>{97084863-a34f-47e3-8e66-d3fe10d1b8c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Spriterenderer">
+      <UniqueIdentifier>{24060356-2dec-4a16-b958-9dadf788c288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Transform">
+      <UniqueIdentifier>{6acb032f-b2e8-4b35-a295-6705aed7e114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Script">
+      <UniqueIdentifier>{69105973-bb4b-44fe-93c2-f49b63892bb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{e963f14f-ad86-4f57-ba5f-84127be6ec74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{71c48dcc-751a-4606-80e3-28338be058df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Texture">
+      <UniqueIdentifier>{e91714a3-d5a8-4699-bb32-9dbf8b64954e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
