@@ -7,6 +7,7 @@ namespace ugina
 		{
 			Transform,
 			SpriteRenderer,
+			Animator,
 			Script,
 			Camera,
 			End
@@ -23,6 +24,7 @@ namespace ugina
 		{
 			Texture,
 			AudioClip,
+			Animation,
 			Prefab,
 			Count
 		};
