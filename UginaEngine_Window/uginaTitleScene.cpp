@@ -2,6 +2,7 @@
 #include "uginaInput.h"
 #include "uginaPlayer.h"
 #include "uginaSceneManager.h"
+#include "uginaAnimator.h"
 namespace ugina
 {
 	TitleScene::TitleScene()

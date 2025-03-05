@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaApplication.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp" />

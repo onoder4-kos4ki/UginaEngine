@@ -56,6 +56,7 @@
       <Filter>Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -122,6 +123,7 @@
       <Filter>Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimator.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">
