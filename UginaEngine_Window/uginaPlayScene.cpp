@@ -12,6 +12,7 @@
 #include "uginaPlayerScript.h"
 #include "uginaCamera.h"
 #include "uginarenderer.h"
+#include "uginaAnimator.h"
 namespace ugina
 {
 	PlayScene::PlayScene()
@@ -29,12 +30,18 @@ namespace ugina
 
 
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
-		sr->SetSize(Vector2(3.0f, 3.0f));
+		//SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
+		//sr->SetSize(Vector2(3.0f, 3.0f));
 		mPlayer->AddComponent<PlayerScript>();
 
-		graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"PackMan");
-		sr->SetTexture(packmanTexture);
+		//graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"PackMan");
+		//sr->SetTexture(packmanTexture);
+
+		graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"Cat");
+		Animator* animator = mPlayer->AddComponent<Animator>();
+		Vector2 size = Vector2(32.f, 32.f);
+		animator->CreateAnimation(L"CatSleep", packmanTexture, Vector2(0,size.y*7), size, Vector2::Zero, 4, 0.5f);
+		animator->PlayAnimation(L"CatSleep", true);
 
 		GameObject* bg = object::Instantiate<GameObject>(enums::eLayerType::BackGround);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();

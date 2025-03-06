@@ -36,8 +36,4 @@
       <UniqueIdentifier>{8ccb88c6-81ff-41f3-a9da-a4e4aecb7aa6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
 </Project>
