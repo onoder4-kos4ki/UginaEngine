@@ -52,7 +52,7 @@ namespace ugina
 		else if (mTexture->GetTextureType() == graphics::Texture::eTextureType::Png)
 		{
 			Gdiplus::Graphics graphics(hdc);
-			graphics.DrawImage(mTexture->getImage()
+			graphics.DrawImage(mTexture->GetImage()
 				, Gdiplus::Rect(pos.x, pos.y, mTexture->GetWidth() * mSize.x, mTexture->GetHeight() * mSize.y));
 
 		}

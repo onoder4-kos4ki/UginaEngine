@@ -24,7 +24,7 @@ namespace ugina
 			UINT GetHeight() { return mHeight; }
 			HDC GetHdc() { return mHdc; }
 			eTextureType GetTextureType() { return mType; }
-			Gdiplus::Image* getImage() { return mImage; }
+			Gdiplus::Image* GetImage() { return mImage; }
 		private:
 			eTextureType mType;
 			Gdiplus::Image* mImage;
