@@ -23,6 +23,7 @@ namespace ugina
 		void SetScale(Vector2 scale) { mScale = scale; }
 
 	private:
+		//오브젝트의 정중앙이다
 		Vector2 mPosition;
 		Vector2 mScale;
 		float mRotation;

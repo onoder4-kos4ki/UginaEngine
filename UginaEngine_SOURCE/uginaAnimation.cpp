@@ -82,6 +82,10 @@ namespace ugina
 			HDC imgHdc = mTexture->GetHdc();
 			//transparentblt와 bitblt와 비슷한 이미지 출력함수 
 			//이함수는 이미지를 투명하게 할수 있다
+
+			//pos 변수는 현재 오브젝트의 중앙값을 가리키고 있다
+			//하지만 AlphaBlend함수에서 좌상단값으로 그리기때문에 맞춰준다.
+
 			AlphaBlend(hdc
 				, pos.x - (sprite.size.x / 2.0f)
 				, pos.y - (sprite.size.y / 2.0f)
