@@ -24,12 +24,12 @@ namespace ugina
 	void PlayScene::Initialize()
 	{
 
-		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(344.0f, 442.0f));
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(344.0f, 442.0f));
 		Camera* cameracomp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameracomp;
 
 
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Particle);
 		//SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
 		//sr->SetSize(Vector2(3.0f, 3.0f));
 		mPlayer->AddComponent<PlayerScript>();
@@ -39,16 +39,30 @@ namespace ugina
 
 		graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"Cat");
 		Animator* animator = mPlayer->AddComponent<Animator>();
-		Vector2 size = Vector2(32.f, 32.f);
-		animator->CreateAnimation(L"CatSleep", packmanTexture, Vector2(0,size.y*7), size, Vector2::Zero, 4, 0.5f);
-		animator->PlayAnimation(L"CatSleep", true);
 
-		GameObject* bg = object::Instantiate<GameObject>(enums::eLayerType::BackGround);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetSize(Vector2(3.0f, 3.0f));
-		graphics::Texture* bgTexture= Resources::Find<graphics::Texture>(L"Map");
-		
-		bgsr->SetTexture(bgTexture);
+		animator->CreateAnimation(L"DownWalk", packmanTexture
+			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		animator->CreateAnimation(L"RightWalk", packmanTexture
+			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		animator->CreateAnimation(L"UpWalk", packmanTexture
+			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		animator->CreateAnimation(L"LeftWalk", packmanTexture
+			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		animator->CreateAnimation(L"SitDown", packmanTexture
+			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		animator->CreateAnimation(L"Grooming", packmanTexture
+			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+
+		animator->PlayAnimation(L"SitDown",false);
+
+		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
+		mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+
+		GameObject* bg = object::Instantiate<GameObject>(enums::eLayerType::Player);
+		SpriteRenderer* bgSr = bg->AddComponent<SpriteRenderer>();
+		graphics::Texture* bgTexture = Resources::Find<graphics::Texture>(L"Bubble");
+		bgSr->SetTexture(bgTexture);
+
 		Scene::Initialize();
 	}
 	void PlayScene::Update()
