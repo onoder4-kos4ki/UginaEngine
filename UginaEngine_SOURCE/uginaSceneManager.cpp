@@ -21,6 +21,14 @@ namespace ugina
 	{
 		mActiveScene->Render(hdc);
 	}
+	void SceneManager::Release()
+	{
+		for (auto& iter: mScene)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
+	}
 	Scene* SceneManager::LoadScene(const std::wstring& name)
 	{
 		if (mActiveScene)

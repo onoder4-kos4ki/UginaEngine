@@ -38,6 +38,15 @@ namespace ugina
 
 			return resource;
 		}
+		static void Release()
+		{
+			//auto = std::pair<const std::wstring,Resource*> map의 첫번째 값은 내부적으로 const로 들어감
+			for (auto& iter : mResources)
+			{
+				delete iter.second;
+				iter.second = nullptr;
+			}
+		}
 	private:
 
 		//엔진 내부에서 사용할 이름이 키(ex BG,Player), value는 안에 들어간 리소스객체의 포인터

@@ -9,7 +9,7 @@ namespace ugina
 {
 
 	PlayerScript::PlayerScript()
-		:mstate(PlayerScript::eState::SitDown)
+		:mstate(PlayerScript::eState::Idle)
 		, mAnimator(nullptr)
 	{
 	}
@@ -30,13 +30,16 @@ namespace ugina
 		}
 		switch (mstate)
 		{
-		case ugina::PlayerScript::eState::SitDown:
-			sitDown();
+		case ugina::PlayerScript::eState::Idle:
+			Idle();
 			break;
 		case ugina::PlayerScript::eState::Walk:
 			move();
 			break;
 		case ugina::PlayerScript::eState::Sleep:
+			break;
+		case ugina::PlayerScript::eState::GiveWater:
+			GiveWater();
 			break;
 		case ugina::PlayerScript::eState::Attak:
 			break;
@@ -52,24 +55,16 @@ namespace ugina
 	void PlayerScript::Render(HDC hdc)
 	{
 	}
-	void PlayerScript::sitDown()
+	
+	void PlayerScript::Idle()
 	{
-		if (Input::GetKey(keyCode::D))
+		//마우스 왼쪽 버튼을 누를시 물을 주는 애니메이션 재생
+		if (Input::GetKey(keyCode::LButton))
 		{
-			mstate = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"RightWalk");
-		}
-		if (Input::GetKey(keyCode::A))
-		{
-			mstate = PlayerScript::eState::Walk;
-		}
-		if (Input::GetKey(keyCode::W))
-		{
-			mstate = PlayerScript::eState::Walk;
-		}
-		if (Input::GetKey(keyCode::D))
-		{
-			mstate = PlayerScript::eState::Walk;
+			mstate = PlayerScript::eState::GiveWater;
+			mAnimator->PlayAnimation(L"FRONTGIVEWATER", false);
+
+			Vector2 mousePos = Input::GetMousePosition();
 		}
 	}
 	void PlayerScript::move()
@@ -93,12 +88,17 @@ namespace ugina
 		{
 			pos.y += 100.0f * Time::DeltaTime();
 		}
+
 		tr->SetPosition(pos);
 		if(Input::GetKeyUp(keyCode::D)|| Input::GetKeyUp(keyCode::A) || Input::GetKeyUp(keyCode::W) || 
 			Input::GetKeyUp(keyCode::S))
 		{
-			mstate = PlayerScript::eState::SitDown;
-			mAnimator->PlayAnimation(L"SitDown", false);
+			mstate = PlayerScript::eState::Idle;
+			mAnimator->PlayAnimation(L"SITDOWN", false);
 		}
+	}
+	void PlayerScript::GiveWater()
+	{
+		if(mAnimator->iscom)
 	}
 }

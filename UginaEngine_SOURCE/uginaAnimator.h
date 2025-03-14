@@ -7,6 +7,33 @@ namespace ugina
 	class Animator : public Component
 	{
 	public:
+		//애니메이션 이벤트
+		struct Event
+		{
+			//객체를 옮겨주는 기능을 구현
+			void operator=(std::function<void()> func)
+			{
+				mEvent = std::move(func);
+			}
+			//Event구조체로 변수를 만들면 그 변수 이름을 가지고 내부의 function 변수(즉 함수)를 바로 호출하기위한 오퍼레이터
+			void operator()()
+			{
+				if (mEvent)
+				{
+					mEvent();
+				}
+			}
+			//반환값이 void에 매개변수가 없는 델리게이트 변수
+			std::function<void()> mEvent;
+		};
+
+		struct Events
+		{
+			Event mStartEvent;
+			Event mCompleteEvent;
+			Event mEndEvent;
+		};
+
 		Animator();
 		~Animator();
 
@@ -24,12 +51,16 @@ namespace ugina
 			, float duration);
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = true);
+
+		bool IsComplete() { return mActiveAnimation->IsComplete(); }
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
 
 		Animation* mActiveAnimation;
 		//애니메이션이 루프를 도는가
 		bool mbLoop;
+
+		std::map<std::wstring, Events*> mEvents;
 	};
 }
 

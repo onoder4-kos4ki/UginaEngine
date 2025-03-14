@@ -23,14 +23,20 @@ namespace ugina
 	}
 	void Camera::Update()
 	{
+
+		//현재 바라보는 타겟이 존재하면 타겟의 포지션으로 카메라가 바라보는 지점(mLookPosition) 설정
 		if (mTarget)
 		{
 			Transform* tr = mTarget->GetComponent<Transform>();
 			mLookPosition = tr->GetPosition();
 		}
-		Transform* cameraTr = getOwner()->GetComponent<Transform>();
-		mLookPosition = cameraTr->GetPosition();
-		//카메라가 이동한 거리(카메라의 좌상단) = 카메라가 바라보는 위치(카메라의중앙) - 카메라의 해상도 절반
+		//바라보는 타겟이 존재하지 않다면 현재 카메라의 위치를 바라보는 지점으로 
+		else
+		{
+			Transform* cameraTr = getOwner()->GetComponent<Transform>();
+			mLookPosition = cameraTr->GetPosition();
+		}		
+		//카메라가 이동한 거리(카메라의 좌상단) = 카메라가 바라보는 위치 - 카메라 해상도의 절반(중앙)
 		mDistance = mLookPosition - (mResolution / 2.0f);
 
 	}

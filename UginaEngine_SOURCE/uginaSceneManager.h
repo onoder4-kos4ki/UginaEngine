@@ -29,6 +29,8 @@ namespace ugina
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC hdc);
+		//씬들의 메모리를 해제시켜주는 함수
+		static void Release();
 
 	private:
 		//모든 씬을 담는 자료구조 map(트리구조)

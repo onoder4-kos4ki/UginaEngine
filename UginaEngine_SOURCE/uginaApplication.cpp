@@ -2,6 +2,7 @@
 #include "uginaInput.h"
 #include "uginaTime.h"
 #include "uginaSceneManager.h"
+#include "uginaResources.h"
 namespace ugina
 {
 
@@ -70,6 +71,12 @@ namespace ugina
 		
 		copyRenderTarget(mBackHdc, mHdc);
 
+	}
+
+	void Application::Release()
+	{
+		SceneManager::Release();
+		Resources::Release();
 	}
 
 	void Application::clearRenderTarget()

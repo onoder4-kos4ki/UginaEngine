@@ -5,8 +5,11 @@ namespace ugina
 {
 	enum class keyState
 	{
+		//방금 눌림
 		Down,
+		//꾹 눌림
 		Pressed,
+		//방금 떼어짐
 		Up,
 		None,
 		Count
@@ -21,6 +24,7 @@ namespace ugina
 		U,V,W,X,
 		Y,Z,
 		Space,
+		LButton,MButton,RButton,
 		Count
 	};
 
@@ -53,6 +57,8 @@ namespace ugina
 
 		//게임에서 키가 꾹눌린건지를 알기위한 함수
 		static bool GetKey(keyCode code) { return keys[(int)code].state == keyState::Pressed; }
+
+		static math::Vector2 GetMousePosition() { return mMousePosition; }
 	private:
 		static void createKeys();
 		static void updateKeys();
@@ -60,9 +66,13 @@ namespace ugina
 		static bool isKeyDown(keyCode code);
 		static void updateKeyDown(Input::Key& key);
 		static void updateKeyUp(Input::Key& key);
-
+		//현재 윈도우를 기준으로 하는 마우스 좌푯값을 구함
+		static void getMousePositionByWindow();
+		static void clearKeys();
 		//위의 변수를 저장하는 배열
 		static std::vector<Key> keys;
+		//마우스 좌표를 저장
+		static math::Vector2 mMousePosition;
 	};
 }
 

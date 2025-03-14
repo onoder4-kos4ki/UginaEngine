@@ -16,10 +16,11 @@ namespace ugina
 		void Update();
 		void LateUpdate();
 		void Render();
-
+		void Release();
 		HDC GetHdc() { return mHdc; }             
 		UINT GetWidth() { return mWidth; }
 		UINT Getheight() { return mHeight; }
+		HWND GetHwnd() { return mhwnd; }
 	private:
 		void clearRenderTarget();
 		void copyRenderTarget(HDC source, HDC dest);

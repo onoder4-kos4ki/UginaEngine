@@ -28,7 +28,7 @@ namespace ugina
 		Camera* cameracomp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameracomp;
 
-
+		
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Particle);
 		//SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
 		//sr->SetSize(Vector2(3.0f, 3.0f));
@@ -40,20 +40,20 @@ namespace ugina
 		graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"Cat");
 		Animator* animator = mPlayer->AddComponent<Animator>();
 
-		animator->CreateAnimation(L"DownWalk", packmanTexture
+		animator->CreateAnimation(L"DOWNWALK", packmanTexture
 			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"RightWalk", packmanTexture
+		animator->CreateAnimation(L"RIGHTWALK", packmanTexture
 			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"UpWalk", packmanTexture
+		animator->CreateAnimation(L"UPWALK", packmanTexture
 			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"LeftWalk", packmanTexture
+		animator->CreateAnimation(L"LEFTWALK", packmanTexture
 			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"SitDown", packmanTexture
+		animator->CreateAnimation(L"SITDOWN", packmanTexture
 			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"Grooming", packmanTexture
+		animator->CreateAnimation(L"GROOMING", packmanTexture
 			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
 
-		animator->PlayAnimation(L"SitDown",false);
+		animator->PlayAnimation(L"SITDOWN",false);
 
 		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
 		mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
@@ -85,6 +85,7 @@ namespace ugina
 	}
 	void PlayScene::OnEnter()
 	{
+		
 	}
 	void PlayScene::OnExit()
 	{

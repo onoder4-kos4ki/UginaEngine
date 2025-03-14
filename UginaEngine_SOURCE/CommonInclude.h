@@ -9,6 +9,8 @@
 #include <string>
 #include <map>
 
+#include <functional>
+
 #include "uginaMath.h"
 
 #pragma comment(lib,"Msimg32.lib")

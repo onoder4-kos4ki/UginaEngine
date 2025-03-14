@@ -7,9 +7,10 @@ namespace ugina
 	public:
 		enum class eState
 		{
-			SitDown,
+			Idle,
 			Walk,
 			Sleep,
+			GiveWater,
 			Attak
 		};
 		PlayerScript();
@@ -20,12 +21,20 @@ namespace ugina
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 	private:
-		void sitDown();
+		void Idle();
 		void move();
+		void GiveWater();
 
 	private:
 		eState mstate;
 		class Animator* mAnimator;
+
+		//애니메이션 이벤트에 대한 델리게이트들
+		
+		//void (*Startevent)();
+		//std::function<void()> start;
+		//void (*CompleteEvent)();
+		//void (*EndEvent)();
 	};
 }
 

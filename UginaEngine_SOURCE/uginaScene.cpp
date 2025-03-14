@@ -9,6 +9,11 @@ namespace ugina
 
 	Scene::~Scene()
 	{
+		for (Layer* layer : mLayers)
+		{
+			delete layer;
+			layer = nullptr;
+		}
 	}
 
 	void Scene::Initialize()

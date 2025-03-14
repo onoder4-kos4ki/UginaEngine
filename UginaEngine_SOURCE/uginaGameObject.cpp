@@ -14,8 +14,12 @@ namespace ugina
 
 	GameObject::~GameObject()
 	{
-		for (Component* com : mComponents)
+		for (Component*& com : mComponents)
 		{
+			if (com == nullptr)
+			{
+				continue;
+			}
 			//메모리 해제
 			delete com;
 			//메모리를 nullptr로 밀기
@@ -73,4 +77,6 @@ namespace ugina
 	{
 		AddComponent<Transform>();
 	}
+	
+
 }

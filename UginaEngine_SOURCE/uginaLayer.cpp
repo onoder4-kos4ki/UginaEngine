@@ -7,7 +7,15 @@ namespace ugina
 	}
 	Layer::~Layer()
 	{
-
+		for (GameObject*& gameobj : mGameObjects)
+		{
+			if (gameobj == nullptr)
+			{
+				continue;
+			}
+			delete gameobj;
+			gameobj = nullptr;
+		}
 	}
 	void Layer::Initialize()
 	{

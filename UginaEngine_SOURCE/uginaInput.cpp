@@ -1,12 +1,13 @@
 #include "uginaInput.h"
+#include "uginaApplication.h"
 
-
-
+extern ugina::Application api;
 namespace ugina
 {
 	//스태틱 변수는 cpp파일에서 정의 한다
 	std::vector<Input::Key> Input::keys = {};
-
+	//마우스좌표의 초기화 
+	math::Vector2 Input::mMousePosition = math::Vector2::Zero;
 
 	int ASCII[(UINT)keyCode::Count] = { 
 		'A', 'B', 'C', 'D',
@@ -15,7 +16,8 @@ namespace ugina
 		'M', 'N', 'O', 'P',
 		'Q', 'R', 'S', 'T',
 		'U', 'V', 'W', 'X',
-		'Y', 'Z',' ' };
+		'Y', 'Z',' '
+		,VK_LBUTTON,VK_MBUTTON,VK_RBUTTON};
 
 	void Input::Update()
 	{
@@ -48,16 +50,27 @@ namespace ugina
 	}
 	void Input::updateKey(Input::Key& key)
 	{
-		//눌렸을때는 키의상태를 눌리는 상태로 단계적으로 상승시킴
-		if (isKeyDown(key.code))
+
+		//현재 이 윈도우가 포커스 되어있다면 키가 눌렸는지 안눌렸는지 체크한다
+		if (GetFocus())
 		{
-			updateKeyDown(key);
+			//눌렸을때는 키의상태를 눌리는 상태로 단계적으로 상승시킴
+			if (isKeyDown(key.code))
+			{
+				updateKeyDown(key);
+			}
+			//때졌을때는 키의상태를 때지는 상태로 단계적으로 상승시킴
+			else
+			{
+				updateKeyUp(key);
+			}
 		}
-		//때졌을때는 키의상태를 때지는 상태로 단계적으로 상승시킴
+		//포커스 되어있지 않다면, 전체 키들을 다 눌리지 않은 상태로 만든다
 		else
 		{
-			updateKeyUp(key);
+			clearKeys();
 		}
+		
 	}
 	bool Input::isKeyDown(keyCode code)
 	{
@@ -94,6 +107,37 @@ namespace ugina
 		}
 		//다음 업데이트 입장에선 현재키는 안눌렸던 상태니까 바꿔주기
 		key.bPressed = false;
+	}
+	void Input::getMousePositionByWindow()
+	{
+		//마우스 좌표를 담을 임시 변수(구조체)
+		POINT mousePos = {};
+		//현재 모니터를 기준으로 한 마우스좌표
+		GetCursorPos(&mousePos);
+		//모니터를 기준으로 한 마우스좌표를 현재 현재윈도우를 기준으로 바꿔줌
+		ScreenToClient(api.GetHwnd(),&mousePos);
+
+		//임시 변수에 있던 값을 멤버변수에 넣어주기
+		mMousePosition.x = mousePos.x;
+		mMousePosition.y = mousePos.y;
+	}
+	void Input::clearKeys()
+	{
+		for (Key& key : keys)
+		{
+			//아무튼 전에 방금 눌렸거나, 꾹눌린 상태라면 이제 막땐 상태로 바꿔줌
+			if (key.state == keyState::Down || key.state == keyState::Pressed)
+			{
+				key.state = keyState::Up;
+			}
+			//막 땐 상태라면 이제 아무것도 아닌 상태로 바꿔줌
+			else if (key.state == keyState::Up)
+			{
+				key.state = keyState::None;
+			}
+			// 이전에 눌렸는가에 대해 안눌렸다로 바꿔줌
+			key.bPressed = false;
+		}
 	}
 }
 
