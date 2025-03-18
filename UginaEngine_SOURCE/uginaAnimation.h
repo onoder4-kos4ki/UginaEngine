@@ -23,6 +23,7 @@ namespace ugina
 				, offset(Vector2::Zero)
 				, duration(0.0f)
 			{
+				
 			}
 		};
 		Animation();

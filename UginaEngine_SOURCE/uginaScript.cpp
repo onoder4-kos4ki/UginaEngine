@@ -7,6 +7,7 @@ namespace ugina
 	}
 	Script::~Script()
 	{
+		
 	}
 	void Script::Initialize()
 	{
