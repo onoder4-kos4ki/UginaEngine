@@ -11,6 +11,6 @@ namespace ugina
 
 
 		SceneManager::LoadScene(L"PlayScene");
-		//SceneManager::LoadScene(L"TitleScene");
+		
 	}
 }

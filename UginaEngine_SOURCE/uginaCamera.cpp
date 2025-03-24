@@ -36,7 +36,7 @@ namespace ugina
 			Transform* cameraTr = getOwner()->GetComponent<Transform>();
 			mLookPosition = cameraTr->GetPosition();
 		}		
-		//카메라가 이동한 거리(카메라의 좌상단) = 카메라가 바라보는 위치 - 카메라 해상도의 절반(중앙)
+		//카메라가 이동한 거리(카메라의 좌상단) = 카메라가 바라보는 위치(타겟포지션 or 카메라의포지션) - 카메라 해상도의 절반(중앙)
 		mDistance = mLookPosition - (mResolution / 2.0f);
 
 	}

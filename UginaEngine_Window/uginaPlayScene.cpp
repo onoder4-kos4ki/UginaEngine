@@ -13,6 +13,8 @@
 #include "uginaCamera.h"
 #include "uginarenderer.h"
 #include "uginaAnimator.h"
+#include "uginaCat.h"
+#include "uginaCatScript.h"
 namespace ugina
 {
 	PlayScene::PlayScene()
@@ -24,44 +26,48 @@ namespace ugina
 	void PlayScene::Initialize()
 	{
 
+
+		//플레이씬에서 쓰이는 메인카메라 설정
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(344.0f, 442.0f));
 		Camera* cameracomp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameracomp;
 
-		
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Particle);
-		//SpriteRenderer* sr = mPlayer->AddComponent<SpriteRenderer>();
-		//sr->SetSize(Vector2(3.0f, 3.0f));
-		mPlayer->AddComponent<PlayerScript>();
+		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 
-		//graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"PackMan");
-		//sr->SetTexture(packmanTexture);
+		graphics::Texture* playerTex = Resources::Find<graphics::Texture>(L"PLAYER");
+		Animator* playerAnimator = mPlayer->AddComponent<Animator>();
 
-		graphics::Texture* packmanTexture = Resources::Find<graphics::Texture>(L"Cat");
-		Animator* animator = mPlayer->AddComponent<Animator>();
+		playerAnimator->CreateAnimation(L"IDLE", playerTex, Vector2(2000.0f, 250.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 1, 0.1f);
+		playerAnimator->CreateAnimation(L"FRONTGIVEWATER", playerTex
+			, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.1f);
 
-		animator->CreateAnimation(L"DOWNWALK", packmanTexture
-			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"RIGHTWALK", packmanTexture
-			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"UPWALK", packmanTexture
-			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"LEFTWALK", packmanTexture
-			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"SITDOWN", packmanTexture
-			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		animator->CreateAnimation(L"GROOMING", packmanTexture
-			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		playerAnimator->PlayAnimation(L"IDLE", false);
 
-		animator->PlayAnimation(L"SITDOWN",false);
+		playerAnimator->GetCompleteEvent(L"FRONTGIVEWATER") = std::bind(&PlayerScript::AttackEffect, plScript);
 
 		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
-		mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		mPlayer->GetComponent<Transform>()->SetScale(Vector2(1.0f, 1.0f));
 
-		GameObject* bg = object::Instantiate<GameObject>(enums::eLayerType::Player);
-		SpriteRenderer* bgSr = bg->AddComponent<SpriteRenderer>();
-		graphics::Texture* bgTexture = Resources::Find<graphics::Texture>(L"Bubble");
-		bgSr->SetTexture(bgTexture);
+		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
+		cat->AddComponent<CatScript>();
+
+		//cameracomp->SetTarget(cat);
+		renderer::mainCamera->SetTarget(mPlayer);
+		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"CAT");
+		Animator* catAnimator = cat->AddComponent<Animator>();
+
+		catAnimator->CreateAnimation(L"DOWNWALK", catTex, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		catAnimator->CreateAnimation(L"RIGHTWALK", catTex, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		catAnimator->CreateAnimation(L"UPWALK", catTex, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		catAnimator->CreateAnimation(L"LEFTWALK", catTex, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		catAnimator->CreateAnimation(L"SITDOWN", catTex, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		catAnimator->CreateAnimation(L"GROOMING", catTex, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		catAnimator->CreateAnimation(L"LAYDOWN", catTex, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+
+		catAnimator->PlayAnimation(L"SITDOWN", false);
+		cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
+		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 
 		Scene::Initialize();
 	}
@@ -72,24 +78,19 @@ namespace ugina
 	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
-		/*if (Input::GetKeyDown(keyCode::A))
-		{
-			SceneManager::LoadScene(L"TitleScene");
-		}*/
+
 	}
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-		/*wchar_t str[50] = L"Play Scene";
-		TextOut(hdc, 0, 0, str, 10);*/
+
 	}
 	void PlayScene::OnEnter()
 	{
-		
+
 	}
 	void PlayScene::OnExit()
 	{
-		//Transform* tr = bg->GetComponent<Transform>();
-		//tr->SetPosition(Vector2(0, 0));
+
 	}
 }

@@ -62,6 +62,18 @@ namespace ugina
 			gameObj->Render(hdc);
 		}
 	}
+	void Layer::Destroy()
+	{
+		for (GameObject* gameObj: mGameObjects)
+		{
+			if (gameObj == nullptr)
+			{
+				continue;
+			}
+			
+		}
+		
+	}
 	void Layer::AddGameObject(GameObject* gameObject)
 	{
 

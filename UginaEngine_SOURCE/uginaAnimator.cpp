@@ -1,6 +1,6 @@
 #include "uginaAnimator.h"
-
-
+#include "uginaResources.h"
+#include "uginaTexture.h"
 namespace ugina
 {
 
@@ -15,6 +15,12 @@ namespace ugina
 	ugina::Animator::~Animator()
 	{
 		for (auto& iter : mAnimations)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
+
+		for (auto& iter : mEvents)
 		{
 			delete iter.second;
 			iter.second = nullptr;
@@ -37,7 +43,10 @@ namespace ugina
 			if (mActiveAnimation->IsComplete() == true)
 			{
 				if (events)
-					events->mCompleteEvent();
+				{
+					events->completeEvent();
+				}
+					
 
 				//현재 선택한 애니메이션이 재생완료면서 루프하는 애니메이션이면
 				//애니메이션의 리셋함수 실행시켜서 다시 재생시킬 준비하기
@@ -75,6 +84,7 @@ namespace ugina
 			return;
 		}
 		animation = new Animation();
+		animation->SetName(name);
 		animation->CreateAnimation(name, spriteSheet, leftTop, size, offset, spriteLength, duration);
 		animation->SetAnimator(this);
 
@@ -82,6 +92,32 @@ namespace ugina
 		mEvents.insert(std::make_pair(name,events));
 		mAnimations.insert(std::make_pair(name, animation));
 		//TODO
+	}
+
+	void Animator::CreateAnimationByFolder(const std::wstring& name, const std::wstring& path, Vector2 offset, float duration)
+	{
+		Animation* animation = nullptr;
+		animation = FindAnimation(name);
+		if (animation!= nullptr)
+		{
+			return;
+		}
+		int fileCount = 0;
+		std::filesystem::path fs(path);
+		std::vector<graphics::Texture*> images = {};
+		for (auto& p : std::filesystem::recursive_directory_iterator(fs))
+		{
+			std::wstring fileName = p.path().filename();
+			std::wstring fullName = p.path();
+
+			graphics::Texture* texture = Resources::Load<graphics::Texture>(fileName, fullName);
+			images.push_back(texture);
+			fileCount++;
+		}
+
+		UINT sheetWidth = images[0]->GetWidth() * fileCount;
+		UINT sheetHeight = images[0]->GetHeight();
+		
 	}
 
 	ugina::Animation* ugina::Animator::FindAnimation(const std::wstring& name)

@@ -39,6 +39,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
+    //메모리누수를 감지하여 콘솔에 출력
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
     // TODO: 여기에 코드를 입력합니다.
 
     // 전역 문자열을 초기화합니다.
@@ -88,7 +91,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }*/
-
+    api.Release();
     return (int) msg.wParam;
 }
 
@@ -155,6 +158,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
    ugina::LoadResource();
    ugina::LoadScenes();
+   
+   int a = 0;
+   //변수하나를 생성하고 그 포인터값으로 시드값을 만듦
+   srand(time(nullptr));
+
    
    return TRUE;
 }

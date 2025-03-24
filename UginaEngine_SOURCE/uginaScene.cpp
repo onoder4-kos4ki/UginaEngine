@@ -9,7 +9,7 @@ namespace ugina
 
 	Scene::~Scene()
 	{
-		for (Layer* layer : mLayers)
+		for (Layer*& layer : mLayers)
 		{
 			delete layer;
 			layer = nullptr;

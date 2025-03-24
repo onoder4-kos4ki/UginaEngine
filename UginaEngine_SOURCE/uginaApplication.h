@@ -17,6 +17,7 @@ namespace ugina
 		void LateUpdate();
 		void Render();
 		void Release();
+
 		HDC GetHdc() { return mHdc; }             
 		UINT GetWidth() { return mWidth; }
 		UINT Getheight() { return mHeight; }

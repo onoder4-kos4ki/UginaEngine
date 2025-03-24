@@ -16,6 +16,7 @@ namespace ugina
 		{
 			None,
 			BackGround,
+			Animal,
 			Player,
 			Particle,
 			Max = 16,

@@ -11,7 +11,7 @@ namespace ugina
 		struct Event
 		{
 			//객체를 옮겨주는 기능을 구현
-			void operator=(std::function<void()> func)
+			void operator =(std::function<void()> func)
 			{
 				mEvent = std::move(func);
 			}
@@ -49,6 +49,9 @@ namespace ugina
 			, Vector2 offset
 			, UINT spriteLength
 			, float duration);
+
+		void CreateAnimationByFolder(const std::wstring& name,
+			const std::wstring& path,Vector2 offset, float duration);
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = true);
 
