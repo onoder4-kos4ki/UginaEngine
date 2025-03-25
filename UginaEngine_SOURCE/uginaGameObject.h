@@ -6,6 +6,17 @@ namespace ugina
 	class GameObject
 	{
 	public:
+		enum class eState
+		{
+			//활성
+			Active,
+			//감춰짐
+			Paused,
+			//죽음
+			Dead,
+			End
+		};
+
 		GameObject();
 		~GameObject();
 
@@ -17,37 +28,52 @@ namespace ugina
 		template <typename T>
 		T* AddComponent()
 		{
-			T* comp = new T();
-			comp->Initialize();
-			comp->SetOwner(this);
+			T* component = new T();
+			component->Initialize();
+			component->SetOwner(this);
 
 			//벡터의 값을 푸시 백함수를 쓰는 대신에 enums 타입을 인덱스로 사용
 			//mComponets.push_back(comp);
-			mComponents[(UINT)comp->GetType()] = comp;
-			return comp;
+			mComponents[(UINT)component->GetType()] = component;
+			return component;
 		}
 		template <typename T>
 		T* GetComponent()
 		{
-			
-			T* comp = nullptr;
-			for (Component* com : mComponents)
+
+			T* component = nullptr;
+			for (Component* comp : mComponents)
 			{
-				comp = dynamic_cast<T*>(com);
-					if (comp != nullptr)
-					{
-						return comp;
-					}
+				//mComponents안에 있는 컴포넌트들을 하나하나 캐스팅해봄
+				component = dynamic_cast<T*>(comp);
+				//캐스팅한것이 잘되서 component안에 들어가면 반복문 탈출
+				if (component)
+				{
+					break;
+				}
 			}
-			return comp;
+			return component;
 		}
-	
-	private: 
+		eState GetActive() { return mState; }
+		void SetActive(bool power)
+		{
+			if (power == true)
+			{
+				mState = eState::Active;
+			}
+			if (power == false)
+			{
+				mState = eState::Paused;
+			}
+		}
+		void Death() { mState = eState::Dead; }                    
+
+	private:
 		void initializeTransform();
 	private:
-
+		eState mState;
 		std::vector<Component*> mComponents;
-		
+
 	};
 }
 

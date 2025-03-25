@@ -14,6 +14,8 @@ namespace ugina
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
+
+		//게임 오브젝트를 없애는 함수 여기에 한번에 모아서 삭제 시킨다.
 		virtual void Destroy();
 
 		void AddGameObject(GameObject* gameObject);
@@ -21,5 +23,6 @@ namespace ugina
 	private:
 		std::vector<GameObject*> mGameObjects;
 	};
+	//너무 이름이 길어서 줄임
 	typedef std::vector<GameObject*>::iterator GameObjectIter;
 }

@@ -8,7 +8,7 @@
 
 namespace ugina
 {
-	//오브젝트에 관련한 기능 
+	//오브젝트에 관련한 기능 에디터 레벨 (즉 외부 사용자가 사용함)
 	namespace object
 	{
 		template <typename T>
@@ -34,6 +34,11 @@ namespace ugina
 			tr->SetPosition(positioon);
 
 			return gameObject;
+		}
+
+		static void Destroy(GameObject* obj)
+		{
+			obj->Death();
 		}
 	}
 }

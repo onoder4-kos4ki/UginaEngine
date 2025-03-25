@@ -16,6 +16,7 @@ namespace ugina
 		void Update();
 		void LateUpdate();
 		void Render();
+		void Destroy();
 		void Release();
 
 		HDC GetHdc() { return mHdc; }             

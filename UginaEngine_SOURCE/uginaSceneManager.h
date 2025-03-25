@@ -29,6 +29,7 @@ namespace ugina
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC hdc);
+		static void Destroy();
 		//씬들의 메모리를 해제시켜주는 함수
 		static void Release();
 
