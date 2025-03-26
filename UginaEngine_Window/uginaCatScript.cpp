@@ -2,12 +2,14 @@
 #include "uginaGameObject.h"
 #include "uginaTime.h"
 #include "uginaAnimator.h"
+#include "uginaObject.h"
 namespace ugina
 {
 	CatScript::CatScript()
 		:mState(CatScript::eState::SitDown)
 		, mAnimator(nullptr)
 		, mTime(0.0f)
+		, mDeathTime(0.0f)
 	{
 	}
 	CatScript::~CatScript()
@@ -18,6 +20,11 @@ namespace ugina
 	}
 	void CatScript::Update()
 	{
+		mDeathTime += Time::DeltaTime();
+		if (mDeathTime > 6.0f)
+		{
+
+		}
 		if (mAnimator == nullptr)
 		{
 			mAnimator = getOwner()->GetComponent<Animator>();

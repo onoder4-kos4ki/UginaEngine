@@ -49,9 +49,10 @@ namespace ugina
 			, Vector2 offset
 			, UINT spriteLength
 			, float duration);
-
+		//폴더에 있는 텍스쳐파일을 합쳐서 하나의 애니메이션 시트를 만들어 저장하는 함수
 		void CreateAnimationByFolder(const std::wstring& name,
 			const std::wstring& path,Vector2 offset, float duration);
+
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = true);
 

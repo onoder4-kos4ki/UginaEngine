@@ -38,6 +38,19 @@ namespace ugina
 
 			return resource;
 		}
+
+		static void Insert(const std::wstring& key, Resource* resource)
+		{
+			if (key == L"")
+			{
+				return;
+			}
+			if (resource == nullptr)
+			{
+				return;
+			}
+			mResources.insert(std::make_pair(key, resource));
+		}
 		static void Release()
 		{
 			//auto = std::pair<const std::wstring,Resource*> map의 첫번째 값은 내부적으로 const로 들어감

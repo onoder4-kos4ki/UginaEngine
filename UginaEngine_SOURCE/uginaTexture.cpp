@@ -1,14 +1,41 @@
 #include "uginaTexture.h"
 #include "uginaApplication.h"
+#include "uginaResources.h"
 extern ugina::Application api;
 namespace ugina
 {
 	
 	namespace graphics
 	{
+		Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
+		{
+			Texture* image = Resources::Find<Texture>(name);
 
+			if (image)
+			{
+				return image;
+			}
+			image = new Texture();
+			image->SetName(name);
+			image->SetWidth(width);
+			image->SetHeight(height);
+
+			HDC hdc = api.GetHdc();
+			HWND hwnd = api.GetHwnd();
+
+			image->mBitmap = CreateCompatibleBitmap(hdc, width, height);
+			image->mHdc = CreateCompatibleDC(hdc);
+
+			HBITMAP oldbitmap = (HBITMAP)SelectObject(image->mHdc, image->mBitmap);
+			DeleteObject(oldbitmap);
+
+			Resources::Insert(name + L"Image", image);
+
+			return image;
+		}
 		Texture::Texture()
 			:Resource(ugina::enums::eResourceType::Texture)
+			,mbAlpha(false)
 		{
 
 
