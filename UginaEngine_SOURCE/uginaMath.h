@@ -1,10 +1,12 @@
 #pragma once
+#include "CommonInclude.h"
 
 namespace ugina
 {
 
 	namespace math
 	{
+	#define PI 3.141592f
 
 		struct Vector2
 		{
@@ -33,6 +35,46 @@ namespace ugina
 			Vector2 operator/(float value)
 			{
 				return Vector2(x / value, y / value);
+			}
+			void clear()
+			{
+				x = 0.0f;
+				y = 0.0f;
+			}
+			float length()
+			{
+				return sqrtf(x * x + y * y);
+			}
+			Vector2 normalize()
+			{
+				float len = length();
+
+				x /= len;
+				y /= len;
+
+				return *this;
+			}
+			Vector2 Rotate(Vector2 vector, float degree)
+			{
+				//각도를 라디안으로 바꾸는 식
+				float radian = (degree / 180.f) * PI;
+				vector.normalize();
+				//삼각함수 덧셈공식
+				float x = cosf(radian) * vector.x - sinf(radian) * vector.y;
+				float y = sinf(radian) * vector.x + cosf(radian) * vector.y;
+
+				return Vector2(x, y);
+			}
+			//내적
+			float Dot(Vector2 v1, Vector2 v2)
+			{
+				return v1.x * v2.x + v1.y * v2.y;
+			}
+
+			//외적
+			float cross(Vector2 v1, Vector2 v2)
+			{
+				return v1.x * v2.y - v1.y * v2.x;
 			}
 		};
 	}

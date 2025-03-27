@@ -11,6 +11,7 @@
 
 #include <functional>
 #include <filesystem>
+#include <math.h>
 #include "uginaMath.h"
 
 #pragma comment(lib,"Msimg32.lib")
