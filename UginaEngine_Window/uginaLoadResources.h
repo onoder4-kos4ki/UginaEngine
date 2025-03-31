@@ -6,7 +6,7 @@ namespace ugina
 {
 	void LoadResource()
 	{
-		Resources::Load<graphics::Texture>(L"CAT", L"..\\Resources\\ChickenAlpha.bmp");
-		Resources::Load<graphics::Texture>(L"PLAYER", L"..\\Resources\\Player.bmp");
+		Resources::Load<graphics::Texture>(L"Cat", L"..\\Resources\\ChickenAlpha.bmp");
+		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player.bmp");
 	}
 }

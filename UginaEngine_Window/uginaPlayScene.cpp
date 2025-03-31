@@ -38,43 +38,43 @@ namespace ugina
 
 
 
-		graphics::Texture* playerTex = Resources::Find<graphics::Texture>(L"PLAYER");
+		graphics::Texture* playerTex = Resources::Find<graphics::Texture>(L"Player");
 		Animator* playerAnimator = mPlayer->AddComponent<Animator>();
 
-		playerAnimator->CreateAnimation(L"IDLE", playerTex, Vector2(2000.0f, 250.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 1, 0.1f);
-		playerAnimator->CreateAnimation(L"FRONTGIVEWATER", playerTex
+		playerAnimator->CreateAnimation(L"Idle", playerTex, Vector2(2000.0f, 250.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 1, 0.1f);
+		playerAnimator->CreateAnimation(L"FrontGiveWater", playerTex
 			, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.1f);
 
-		playerAnimator->PlayAnimation(L"IDLE", false);
+		playerAnimator->PlayAnimation(L"Idle", false);
 
-		playerAnimator->GetCompleteEvent(L"FRONTGIVEWATER") = std::bind(&PlayerScript::AttackEffect, plScript);
+		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
-		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
+		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(300.0f, 250.0f));
 		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(1.0f, 1.0f));
 
-		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
-		cat->AddComponent<CatScript>();
+		//Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
+		//cat->AddComponent<CatScript>();
 
-		//cameracomp->SetTarget(cat);
-		renderer::mainCamera->SetTarget(mPlayer);
-		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"CAT");
-		Animator* catAnimator = cat->AddComponent<Animator>();
+		////cameracomp->SetTarget(cat);
+		//renderer::mainCamera->SetTarget(mPlayer);
+		//graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"CAT");
+		//Animator* catAnimator = cat->AddComponent<Animator>();
 
-		//catAnimator->CreateAnimation(L"DOWNWALK", catTex, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"RIGHTWALK", catTex, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"UPWALK", catTex, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"LEFTWALK", catTex, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"SITDOWN", catTex, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"GROOMING", catTex, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"LAYDOWN", catTex, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		////catAnimator->CreateAnimation(L"DOWNWALK", catTex, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		////catAnimator->CreateAnimation(L"RIGHTWALK", catTex, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		////catAnimator->CreateAnimation(L"UPWALK", catTex, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		////catAnimator->CreateAnimation(L"LEFTWALK", catTex, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		////catAnimator->CreateAnimation(L"SITDOWN", catTex, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		////catAnimator->CreateAnimation(L"GROOMING", catTex, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+		////catAnimator->CreateAnimation(L"LAYDOWN", catTex, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
 
-		//catAnimator->PlayAnimation(L"SITDOWN", false);
-		catAnimator->CreateAnimationByFolder(L"MushroomIdle", L"..\\Resources\\Mushroom", Vector2::Zero, 0.1f);
+		////catAnimator->PlayAnimation(L"SITDOWN", false);
+		//catAnimator->CreateAnimationByFolder(L"MushroomIdle", L"..\\Resources\\Mushroom", Vector2::Zero, 0.1f);
+		 
+		//catAnimator->PlayAnimation(L"MushroomIdle", true);
 
-		catAnimator->PlayAnimation(L"MushroomIdle", true);
-
-		cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
-		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		//cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
+		//cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 
 		Scene::Initialize();
 	}

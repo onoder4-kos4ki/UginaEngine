@@ -26,7 +26,7 @@
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaApplication.cpp">
-      <Filter>High Level Interface</Filter>
+      <Filter>Helpers\High Level Interface</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaCamera.cpp">
       <Filter>Components\Camera</Filter>
@@ -87,7 +87,7 @@
       <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaApplication.h">
-      <Filter>High Level Interface</Filter>
+      <Filter>Helpers\High Level Interface</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h">
       <Filter>Commons</Filter>
@@ -141,9 +141,6 @@
     <Filter Include="Helpers">
       <UniqueIdentifier>{d6b4a04b-0efe-4e1c-94d9-8457ecf19f34}</UniqueIdentifier>
     </Filter>
-    <Filter Include="High Level Interface">
-      <UniqueIdentifier>{a911bf7c-d1f0-4e45-8985-13293ef6fa65}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{ed9fa73c-64fc-4fd1-804a-90de31f74ea8}</UniqueIdentifier>
     </Filter>
@@ -170,6 +167,9 @@
     </Filter>
     <Filter Include="Resources\Texture">
       <UniqueIdentifier>{e91714a3-d5a8-4699-bb32-9dbf8b64954e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers\High Level Interface">
+      <UniqueIdentifier>{a911bf7c-d1f0-4e45-8985-13293ef6fa65}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

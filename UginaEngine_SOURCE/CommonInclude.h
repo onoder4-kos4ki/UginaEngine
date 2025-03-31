@@ -11,8 +11,7 @@
 
 #include <functional>
 #include <filesystem>
-#include <math.h>
-#include "uginaMath.h"
+
 
 #pragma comment(lib,"Msimg32.lib")
 //Windows 멀티미디어 API(Multimedia API), 오디오, midi,타이머,조이스틱
@@ -28,3 +27,4 @@
 #pragma comment(lib,"gdiplus.lib")
 
 #include "uginaEnums.h"
+#include "uginaMath.h"

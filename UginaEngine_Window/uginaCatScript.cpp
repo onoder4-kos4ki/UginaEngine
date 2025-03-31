@@ -3,6 +3,8 @@
 #include "uginaTime.h"
 #include "uginaAnimator.h"
 #include "uginaObject.h"
+#include "uginaInput.h"
+#include "mftransform.h"
 namespace ugina
 {
 	CatScript::CatScript()
@@ -10,6 +12,8 @@ namespace ugina
 		, mAnimator(nullptr)
 		, mTime(0.0f)
 		, mDeathTime(0.0f)
+		, mDest(Vector2::Zero)
+		, mRadian(0.0f)
 	{
 	}
 	CatScript::~CatScript()
@@ -23,7 +27,7 @@ namespace ugina
 		mDeathTime += Time::DeltaTime();
 		if (mDeathTime > 6.0f)
 		{
-
+			object::Destroy(getOwner());
 		}
 		if (mAnimator == nullptr)
 		{
@@ -59,17 +63,40 @@ namespace ugina
 	{
 		mTime += Time::DeltaTime();
 		//경과한 시간이 3초가 넘으면..
-		if (mTime > 3.0f)
-		{
-			//상태를 걷기로 변환한다
-			mState = CatScript::eState::Walk;
-			//방향은 동서남북 4방향
-			int direction = (rand() % 4);
-			mDirection = (eDirection)direction;
-			PlayWalAnimationByDirection(mDirection);
-			//시간 초기화
-			mTime = 0.0f;
-		}
+		//if (mTime > 3.0f)
+		//{
+		//	//상태를 걷기로 변환한다
+		//	mState = CatScript::eState::Walk;
+		//	//방향은 동서남북 4방향
+		//	int direction = (rand() % 4);
+		//	mDirection = (eDirection)direction;
+		//	PlayWalAnimationByDirection(mDirection);
+		//	//시간 초기화
+		//	mTime = 0.0f;
+		//}
+		Transform* tr = getOwner()->GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+
+		//Transform* plTr = mPlayer->GetComponent<Transform>();
+		//Vector2 dest = mDest - plTr->GetPosition();
+		//pos += dest.normalize() * (100.0f * Time::DeltaTime());
+
+		//mRadian += 5.0f * Time::DeltaTime();
+		//pos += Vector2(1.0f, 2.0f * cosf(mRadian)) * (100.0f * Time::DeltaTime());
+
+		Transform* plTr = mPlayer->GetComponent<Transform>();
+		Vector2 dest = mDest - plTr->GetPosition();
+		dest.normalize();
+
+		float rotDegree = Vector2::Dot(dest, Vector2::Right);
+		rotDegree = acosf(rotDegree);
+		
+
+		rotDegree = ConvertDegree(rotDegree);
+
+		pos += dest * (100.0f * Time::DeltaTime());
+
+		tr->SetPosition(pos);
 	}
 	void CatScript::move()
 	{
@@ -80,12 +107,12 @@ namespace ugina
 			if (isLayDown)
 			{
 				mState = eState::LayDown;
-				mAnimator->PlayAnimation(L"LAYDOWN", false);
+				mAnimator->PlayAnimation(L"LayDown", false);
 			}
 			else
 			{
 				mState = eState::SitDown;
-				mAnimator->PlayAnimation(L"SITDOWN", false);
+				mAnimator->PlayAnimation(L"SitDown", false);
 			}
 		}
 
@@ -100,16 +127,16 @@ namespace ugina
 		switch (dir)
 		{
 		case ugina::CatScript::eDirection::Left:
-			mAnimator->PlayAnimation(L"LEFTWALK", true);
+			mAnimator->PlayAnimation(L"LeftWalk", true);
 			break;
 		case ugina::CatScript::eDirection::Right:
-			mAnimator->PlayAnimation(L"RIGHTWALK", true);
+			mAnimator->PlayAnimation(L"RightWalk", true);
 			break;
 		case ugina::CatScript::eDirection::Down:
-			mAnimator->PlayAnimation(L"DOWNWALK", true);
+			mAnimator->PlayAnimation(L"DownWalk", true);
 			break;
 		case ugina::CatScript::eDirection::Up:
-			mAnimator->PlayAnimation(L"UPWALK", true);
+			mAnimator->PlayAnimation(L"UpWalk", true);
 			break;
 		case ugina::CatScript::eDirection::End:
 			break;

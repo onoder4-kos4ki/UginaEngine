@@ -62,28 +62,38 @@ namespace ugina
 	void PlayerScript::AttackEffect()
 	{
 		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
-		cat->AddComponent<CatScript>();
+		CatScript* catSrc = cat->AddComponent<CatScript>();
 
-		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"CAT");
+		catSrc->SetPlayer(getOwner());
+
+		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();
-		catAnimator->CreateAnimation(L"DOWNWALK", catTex
+		catAnimator->CreateAnimation(L"DownWalk", catTex
 			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		catAnimator->CreateAnimation(L"RIGHTWALK", catTex
+		catAnimator->CreateAnimation(L"RightWalk", catTex
 			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		catAnimator->CreateAnimation(L"UPWALK", catTex
+		catAnimator->CreateAnimation(L"UpWalk", catTex
 			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		catAnimator->CreateAnimation(L"LEFTWALK", catTex
+		catAnimator->CreateAnimation(L"LeftWalk", catTex
 			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		catAnimator->CreateAnimation(L"SITDOWN", catTex
+		catAnimator->CreateAnimation(L"SitDown", catTex
 			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		catAnimator->CreateAnimation(L"GROOMING", catTex
+		catAnimator->CreateAnimation(L"Grooming", catTex
 			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		catAnimator->CreateAnimation(L"LAYDOWN", catTex
+		catAnimator->CreateAnimation(L"LayDown", catTex
 			, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-	
-		catAnimator->PlayAnimation(L"SITDOWN", false);
-		cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
+
+		catAnimator->PlayAnimation(L"SitDown", false);
+
+		Transform* tr = getOwner()->GetComponent<Transform>();
+
+		cat->GetComponent<Transform>()->SetPosition(tr->GetPosition());
+		//cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
 		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+
+		//마우스 커서의 위치를 도착지점으로 설정
+		Vector2 mousePos = Input::GetMousePosition();
+		catSrc->mDest = mousePos;
 	}
 
 
@@ -92,10 +102,37 @@ namespace ugina
 		//마우스 왼쪽 버튼을 누를시 물을 주는 애니메이션 재생
 		if (Input::GetKey(keyCode::LButton))
 		{
-			mstate = PlayerScript::eState::GiveWater;
-			mAnimator->PlayAnimation(L"FRONTGIVEWATER", false);
+			/*mstate = PlayerScript::eState::GiveWater;
+			mAnimator->PlayAnimation(L"FRONTGIVEWATER", false);*/
+			Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
+			CatScript* catsrc = cat->AddComponent<CatScript>();
+
+			catsrc->SetPlayer(getOwner());
+			graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
+			Animator* catanimator = cat->AddComponent<Animator>();
+			catanimator->CreateAnimation(L"DownWalk", catTex
+				, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+			catanimator->CreateAnimation(L"RightWalk", catTex
+				, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+			catanimator->CreateAnimation(L"UpWalk", catTex
+				, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+			catanimator->CreateAnimation(L"LeftWalk", catTex
+				, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+			catanimator->CreateAnimation(L"SitDown", catTex
+				, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+			catanimator->CreateAnimation(L"Grooming", catTex
+				, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+			catanimator->CreateAnimation(L"LayDown", catTex
+				, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
+
+			catanimator->PlayAnimation(L"SitDown", false);
+
+			Transform* tr = getOwner()->GetComponent<Transform>();
+			cat->GetComponent<Transform>()->SetPosition(tr->GetPosition());
+			cat->GetComponent<Transform>()->SetScale(Vector2(2.0f,2.0f));
 
 			Vector2 mousePos = Input::GetMousePosition();
+			catsrc->mDest = mousePos;
 		}
 	}
 	void PlayerScript::move()

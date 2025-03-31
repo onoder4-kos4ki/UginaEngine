@@ -7,7 +7,7 @@ namespace ugina
 	//스태틱 변수는 cpp파일에서 정의 한다
 	std::vector<Input::Key> Input::keys = {};
 	//마우스좌표의 초기화 
-	math::Vector2 Input::mMousePosition = math::Vector2::Zero;
+	math::Vector2 Input::mMousePosition = math::Vector2::One;
 
 	int ASCII[(UINT)keyCode::Count] = { 
 		'A', 'B', 'C', 'D',
@@ -64,6 +64,7 @@ namespace ugina
 			{
 				updateKeyUp(key);
 			}
+			getMousePositionByWindow();
 		}
 		//포커스 되어있지 않다면, 전체 키들을 다 눌리지 않은 상태로 만든다
 		else
