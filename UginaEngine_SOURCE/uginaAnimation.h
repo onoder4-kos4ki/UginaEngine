@@ -49,6 +49,7 @@ namespace ugina
 	private:
 		
 		class Animator* mAnimator;
+		//스프라이트 시트의 텍스쳐 이미지를 담는 변수
 		graphics::Texture* mTexture;
 		
 		//텍스쳐에서 이 애니메이션에서 가지는 부분만을 자르고

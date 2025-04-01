@@ -3,7 +3,7 @@ namespace ugina
 {
 	Transform::Transform()
 		:Component(enums::eComponentType::Transform)
-		,mScale(Vector2::Zero)
+		,mScale(Vector2::One)
 		,mRotation(0.0f)
 	{
 	}

@@ -1,6 +1,6 @@
 #pragma once
 #include "uginaComponent.h"
-#include "uginaGameObject.h"
+
 namespace ugina
 {
 	using namespace ugina::math;

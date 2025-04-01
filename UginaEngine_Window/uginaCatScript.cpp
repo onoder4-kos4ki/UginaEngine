@@ -27,7 +27,7 @@ namespace ugina
 		mDeathTime += Time::DeltaTime();
 		if (mDeathTime > 6.0f)
 		{
-			object::Destroy(getOwner());
+			//object::Destroy(getOwner());
 		}
 		if (mAnimator == nullptr)
 		{
@@ -88,9 +88,8 @@ namespace ugina
 		Vector2 dest = mDest - plTr->GetPosition();
 		dest.normalize();
 
-		float rotDegree = Vector2::Dot(dest, Vector2::Right);
+		float rotDegree = Vector2::Dot(dest, Vector2::Right); //cos¼¼Å¸
 		rotDegree = acosf(rotDegree);
-		
 
 		rotDegree = ConvertDegree(rotDegree);
 

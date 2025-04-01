@@ -1,4 +1,5 @@
 #include "uginaLayer.h"
+#include "uginaGameObject.h"
 namespace ugina
 {
 	Layer::Layer() : mGameObjects{}
@@ -36,7 +37,7 @@ namespace ugina
 			{
 				continue;
 			}
-			GameObject::eState state = gameObj->GetActive();
+			GameObject::eState state = gameObj->GetState();
 			//현재 게임오브젝트의 상태가 멈춤 혹은 죽은 상태면 스킵
 			if (state == GameObject::eState::Paused || state == GameObject::eState::Dead)
 			{
@@ -54,7 +55,7 @@ namespace ugina
 			{
 				continue;
 			}
-			GameObject::eState state = gameObj->GetActive();
+			GameObject::eState state = gameObj->GetState();
 			//현재 게임오브젝트의 상태가 멈춤 혹은 죽은 상태면 스킵
 			if (state == GameObject::eState::Paused || state == GameObject::eState::Dead)
 			{
@@ -71,7 +72,7 @@ namespace ugina
 			{
 				continue;
 			}
-			GameObject::eState state = gameObj->GetActive();
+			GameObject::eState state = gameObj->GetState();
 			//현재 게임오브젝트의 상태가 멈춤 혹은 죽은 상태면 스킵
 			if (state == GameObject::eState::Paused || state == GameObject::eState::Dead)
 			{
@@ -88,7 +89,7 @@ namespace ugina
 			;)
 		{
 			//현재 게임오브젝트의 상태
-			GameObject::eState active = (*iter)->GetActive();
+			GameObject::eState active = (*iter)->GetState();
 			if (active == GameObject::eState::Dead)
 			{
 				//이터레이터는 특정요소를 가리키는것 이터레이터에 *를 붙이면 내부데이터 확인가능
@@ -125,5 +126,30 @@ namespace ugina
 			return;
 		}
 		mGameObjects.push_back(gameObject);
+	}
+	void Layer::findDeadGameObjects(OUT std::vector<GameObject*>& gameObjs)
+	{
+		//gameObjs는 삭제할 게임오브젝트들의 포인터를 담는 임시공간
+		for (GameObject* gameObj : mGameObjects)
+		{
+			GameObject::eState active = gameObj->GetState();
+			if (active == GameObject::eState::Dead)
+			{
+				gameObjs.push_back(gameObj);
+			}
+		}
+	}
+	void Layer::deleteGameObjects(std::vector<GameObject*> deleteObjs)
+	{
+		for (GameObject*& obj : deleteObjs)
+		{
+			delete obj;
+			obj = nullptr;
+		}
+		
+	}
+	void Layer::eraseGameObject()
+	{
+		std::erase_if(mGameObjects, [](GameObject* gameObj) {return gameObj->IsDead(); });
 	}
 }

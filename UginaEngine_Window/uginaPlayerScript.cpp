@@ -108,6 +108,7 @@ namespace ugina
 			CatScript* catsrc = cat->AddComponent<CatScript>();
 
 			catsrc->SetPlayer(getOwner());
+
 			graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
 			Animator* catanimator = cat->AddComponent<Animator>();
 			catanimator->CreateAnimation(L"DownWalk", catTex
@@ -128,11 +129,13 @@ namespace ugina
 			catanimator->PlayAnimation(L"SitDown", false);
 
 			Transform* tr = getOwner()->GetComponent<Transform>();
+
 			cat->GetComponent<Transform>()->SetPosition(tr->GetPosition());
 			cat->GetComponent<Transform>()->SetScale(Vector2(2.0f,2.0f));
 
 			Vector2 mousePos = Input::GetMousePosition();
 			catsrc->mDest = mousePos;
+			int a = 0;
 		}
 	}
 	void PlayerScript::move()

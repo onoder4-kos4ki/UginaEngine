@@ -23,7 +23,7 @@ namespace ugina
 		}
 		
 		template <typename T>
-		static T* Instantiate(ugina::enums::eLayerType type, math::Vector2 positioon)
+		static T* Instantiate(ugina::enums::eLayerType type, math::Vector2 position)
 		{
 			T* gameObject = new T();
 			Scene* activeScene = SceneManager::Getactivescene();
@@ -31,14 +31,11 @@ namespace ugina
 			layer->AddGameObject(gameObject);
 
 			Transform* tr = gameObject->GetComponent<Transform>();
-			tr->SetPosition(positioon);
+			tr->SetPosition(position);
 
 			return gameObject;
 		}
 
-		static void Destroy(GameObject* obj)
-		{
-			obj->Death();
-		}
+		
 	}
 }

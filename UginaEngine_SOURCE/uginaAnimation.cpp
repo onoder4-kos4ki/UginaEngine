@@ -37,13 +37,12 @@ namespace ugina
 		if (mAnimationSheet[mIndex].duration < mTime)
 		{
 			mTime = 0.0f;
-			if (mIndex < this->mAnimationSheet.size() - 1)
+			if (mIndex < mAnimationSheet.size() - 1)
 			{
 				mIndex++;
 			}
 			else
 			{
-
 				mbComplete = true;
 			}
 		}
@@ -71,50 +70,56 @@ namespace ugina
 		graphics::Texture::eTextureType type = mTexture->GetTextureType();
 		if (type == graphics::Texture::eTextureType::Bmp)
 		{
-			BLENDFUNCTION func = {};
-			func.BlendOp = AC_SRC_OVER;
-			func.BlendFlags = 0;
-			func.AlphaFormat = AC_SRC_ALPHA;
-			func.SourceConstantAlpha = 255; // 0(transparent) ~ 255(Opaque)
-
-
-
 			HDC imgHdc = mTexture->GetHdc();
+			//알파값이 존재하는 32비트 비트맵이라면
+			if (mTexture->IsAlpha())
+			{
+				BLENDFUNCTION func = {};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = AC_SRC_ALPHA;
+				func.SourceConstantAlpha = 255; // 0(transparent) ~ 255(Opaque)
+
+				//pos 변수는 현재 오브젝트의 중앙값을 가리키고 있다
+				//하지만 AlphaBlend함수에서 좌상단값으로 그리기때문에 맞춰준다.
+				AlphaBlend(hdc
+					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
+					, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+					, imgHdc
+					, sprite.leftTop.x
+					, sprite.leftTop.y
+					, sprite.size.x
+					, sprite.size.y
+					, func);
+			}
+			//알파값이 존재하지않는 24비트 비트맵이라면
+			else
+			{
+			//pos는 기본적으로 중앙값
 			//transparentblt와 bitblt와 비슷한 이미지 출력함수 
 			//이함수는 이미지를 투명하게 할수 있다
-
-			//pos 변수는 현재 오브젝트의 중앙값을 가리키고 있다
-			//하지만 AlphaBlend함수에서 좌상단값으로 그리기때문에 맞춰준다.
-
-			//AlphaBlend(hdc
-			//	, pos.x - (sprite.size.x / 2.0f)
-			//	, pos.y - (sprite.size.y / 2.0f)
-			//	, sprite.size.x * scale.x
-			//	, sprite.size.y * scale.y
-			//	, imgHdc
-			//	, sprite.leftTop.x
-			//	, sprite.leftTop.y
-			//	, sprite.size.x
-			//	, sprite.size.y
-			//	, func);
-
-			//pos는 기본적으로 중앙값
-			TransparentBlt(hdc
-				, pos.x - (sprite.size.x / 2.0f)
-				, pos.x - (sprite.size.x / 2.0f)
-				, sprite.size.x
-				, sprite.size.y
-				, imgHdc
-				, sprite.leftTop.x
-				, sprite.leftTop.y
-				, sprite.size.x
-				, sprite.size.y
-				, RGB(255, 0, 255)
-			);
+				TransparentBlt(hdc
+					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
+					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.y
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+					, imgHdc
+					, sprite.leftTop.x
+					, sprite.leftTop.y
+					, sprite.size.x
+					, sprite.size.y
+					, RGB(255, 0, 255)
+				);
+			}
+			
 		}
 		else if (type == graphics::Texture::eTextureType::Png)
 		{
+			// 내가 원하는 픽셀을 투명화 시킬떄
 			Gdiplus::ImageAttributes imgAtt = {};
+			// 투명화 시킬 픽셀의 색 범위
 			imgAtt.SetColorKey(Gdiplus::Color(230, 230, 230), Gdiplus::Color(255, 255, 255));
 
 			Gdiplus::Graphics graphics(hdc);

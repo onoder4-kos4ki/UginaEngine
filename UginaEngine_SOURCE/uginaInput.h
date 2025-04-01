@@ -33,9 +33,6 @@ namespace ugina
 	{
 		//눌렸는지 검사하는 함수
 	public:
-		static void Update();
-		static void Initialize();
-		//눌린 키의 종합적인 상태의 변수
 		struct Key
 		{
 			//이전에 눌림상태
@@ -45,6 +42,11 @@ namespace ugina
 			//눌린 키코드
 			keyCode code;
 		};
+		static void Initialize();
+		static void Update();
+		
+		//눌린 키의 종합적인 상태의 변수
+		
 
 		//게임에서 키가 눌린 상태를 기져오기위한 함수들
 		

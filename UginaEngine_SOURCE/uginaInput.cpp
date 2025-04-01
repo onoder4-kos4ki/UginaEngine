@@ -19,14 +19,13 @@ namespace ugina
 		'Y', 'Z',' '
 		,VK_LBUTTON,VK_MBUTTON,VK_RBUTTON};
 
-	void Input::Update()
-	{
-		updateKeys();
-	}
-
 	void Input::Initialize()
 	{
 		createKeys();
+	}
+	void Input::Update()
+	{
+		updateKeys();
 	}
 	void Input::createKeys()
 	{
@@ -44,7 +43,6 @@ namespace ugina
 	}
 	void Input::updateKeys()
 	{
-		
 		// Keys vector 전체를 돌면서 눌렸는지 아닌지를 판정함
 		std::for_each(keys.begin(), keys.end(), [](Key& key)->void { updateKey(key); });
 	}

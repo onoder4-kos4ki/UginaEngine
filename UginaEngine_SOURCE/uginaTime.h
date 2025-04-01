@@ -20,6 +20,7 @@ namespace ugina
 		static LARGE_INTEGER CurrentFrequency;
 
 		
+		//하나의 로직마다 걸린 시간 (즉 찰나)
 		static float DeltaTimeValue;
 		static float displayFps;
 	};

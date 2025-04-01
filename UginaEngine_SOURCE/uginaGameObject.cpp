@@ -2,6 +2,17 @@
 #include "uginaInput.h"
 #include "uginaTime.h"
 #include "uginaTransform.h"
+
+namespace ugina::object
+{
+	void Destroy(GameObject* gameObject)
+	{
+		if (gameObject != nullptr)
+		{
+			gameObject->death();
+		}
+	}
+}
 namespace ugina
 {
 	//유니티에서는 모든 오브젝트가 트랜스폼 컴포넌트를 갖는다.
@@ -81,3 +92,5 @@ namespace ugina
 	
 
 }
+
+

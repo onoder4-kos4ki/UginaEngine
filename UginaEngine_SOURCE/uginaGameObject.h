@@ -3,9 +3,18 @@
 #include "uginaComponent.h"
 namespace ugina
 {
+	namespace object
+	{
+		void Destroy(GameObject* gameObject);
+	}
+}
+namespace ugina
+{
+
 	class GameObject
 	{
 	public:
+		friend void object::Destroy(GameObject* obj);
 		enum class eState
 		{
 			//È°¼º
@@ -54,7 +63,7 @@ namespace ugina
 			}
 			return component;
 		}
-		eState GetActive() { return mState; }
+		eState GetState() { return mState; }
 		void SetActive(bool power)
 		{
 			if (power == true)
@@ -67,9 +76,13 @@ namespace ugina
 			}
 		}
 		void Death() { mState = eState::Dead; }                    
+		bool IsActive() { return  mState == eState::Active; }
+		bool IsDead() { return mState == eState::Dead; }
+
 
 	private:
 		void initializeTransform();
+		void death() { mState = eState::Dead; }
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;

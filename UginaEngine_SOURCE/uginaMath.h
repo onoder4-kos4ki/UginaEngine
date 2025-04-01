@@ -6,7 +6,8 @@ namespace ugina
 	namespace math
 	{
 	#define PI 3.141592f
-		static float ConvertDegree(float radian) { return (radian * (180 / PI)) ; }
+		//static float ConvertDegree(float radian) { return (radian * (180 / PI)) ; }
+		static float ConvertDegree(float radian) { return (radian * (180 / PI)); }
 		struct Vector2
 		{
 			static Vector2 Rotate(Vector2 vector, float degree)
@@ -48,11 +49,11 @@ namespace ugina
 			{
 
 			}
-			Vector2 operator +(Vector2 other)
+			Vector2 operator+(Vector2 other)
 			{
 				return Vector2(x + other.x, y + other.y);
 			}
-			void operator +=(Vector2 other)
+			void operator+=(Vector2 other)
 			{
 				x += other.x;
 				y += other.y;
@@ -86,7 +87,6 @@ namespace ugina
 			Vector2 normalize()
 			{
 				float len = length();
-
 				x /= len;
 				y /= len;
 

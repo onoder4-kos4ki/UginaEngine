@@ -7,9 +7,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaGameObject.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -26,7 +23,7 @@
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaApplication.cpp">
-      <Filter>Helpers\High Level Interface</Filter>
+      <Filter>High Level Interface</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaCamera.cpp">
       <Filter>Components\Camera</Filter>
@@ -57,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
+      <Filter>Components\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -67,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaGameObject.h">
       <Filter>GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
-      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaScene.h">
       <Filter>Scene</Filter>
@@ -87,7 +84,7 @@
       <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaApplication.h">
-      <Filter>Helpers\High Level Interface</Filter>
+      <Filter>High Level Interface</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h">
       <Filter>Commons</Filter>
@@ -124,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
+      <Filter>Components\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">
@@ -168,7 +168,7 @@
     <Filter Include="Resources\Texture">
       <UniqueIdentifier>{e91714a3-d5a8-4699-bb32-9dbf8b64954e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Helpers\High Level Interface">
+    <Filter Include="High Level Interface">
       <UniqueIdentifier>{a911bf7c-d1f0-4e45-8985-13293ef6fa65}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

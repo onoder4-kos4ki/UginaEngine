@@ -27,14 +27,7 @@ namespace ugina
 		adjustWidowRect(hwnd, width, height);
 		//HBRUSH backbrush = WHITE_BRUSH;
 
-		mBackBitmap = CreateCompatibleBitmap(mHdc, width, height);
-
-		mBackHdc = CreateCompatibleDC(mHdc);
-
-		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBitmap);
-
-		DeleteObject(oldBitmap);
-
+		createBuffer(width, height);
 		initializeEtc();
 
 		SceneManager::Initialize();

@@ -76,13 +76,6 @@ namespace ugina
 			layer->Destroy();
 		}
 	}
-	void Scene::OnEnter()
-	{
-
-	}
-	void Scene::OnExit()
-	{
-	}
 	void Scene::AddGameObject(GameObject* gameObj, const enums::eLayerType type)
 	{
 		mLayers[(UINT)type]->AddGameObject(gameObj);
@@ -94,5 +87,12 @@ namespace ugina
 		{
 			mLayers[i] = new Layer();
 		}
+	}
+	void Scene::OnEnter()
+	{
+
+	}
+	void Scene::OnExit()
+	{
 	}
 }

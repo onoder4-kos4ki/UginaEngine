@@ -82,15 +82,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
     Gdiplus::GdiplusShutdown(gpToken);
-    // 기본 메시지 루프입니다:
-   /* while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }*/
+#pragma region 기본 메시지 루프입니다
+    /* while (GetMessage(&msg, nullptr, 0, 0))
+   {
+       if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+       {
+           TranslateMessage(&msg);
+           DispatchMessage(&msg);
+       }
+   }*/
+#pragma endregion
     api.Release();
     return (int) msg.wParam;
 }

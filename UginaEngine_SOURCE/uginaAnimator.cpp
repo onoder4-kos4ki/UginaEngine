@@ -46,8 +46,6 @@ namespace ugina
 				{
 					events->completeEvent();
 				}
-					
-
 				//현재 선택한 애니메이션이 재생완료면서 루프하는 애니메이션이면
 				//애니메이션의 리셋함수 실행시켜서 다시 재생시킬 준비하기
 				if (mbLoop == true)
@@ -148,6 +146,8 @@ namespace ugina
 		return iter->second;
 	}
 
+	//PlayAnimation을 한다는것은 이전 애니메이션은 끝났고 새로운 애니메이션을 실행한다는뜻
+	//(이전애니메이션과 같은 애니메이션을 실행하더라도)
 	void ugina::Animator::PlayAnimation(const std::wstring& name, bool loop)
 	{
 		Animation* animation = FindAnimation(name);

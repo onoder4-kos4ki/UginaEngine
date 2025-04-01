@@ -50,6 +50,7 @@ namespace ugina
 		int len = wcsnlen_s(str, 50);
 		if (time > 1.0)
 		{
+			//초당 프레임수
 			displayFps = Fps;
 			time = 0.0;
 		}

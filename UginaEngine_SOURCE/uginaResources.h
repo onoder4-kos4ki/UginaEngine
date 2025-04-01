@@ -22,16 +22,21 @@ namespace ugina
 		template<typename T>
 		static T* Load(const std::wstring& key, const std::wstring& path)
 		{
+			//리소스를 로드하기전에 일단 같은 이름의 리소스가 있는지 찾아봄
 			T* resource = Resources::Find<T>(key);
+			//존재한다면 로드할필요가 없으니 바로 그 리소스를 리턴
 			if (resource != nullptr)
 			{
 				return resource;
 			}
+			//없다면 새로운 리소스를 생성
 			resource = new T();
+			// 각 리소스 객체가 가지고 있는 로드함수를 실행시켜서 리소스를 로드시킴
 			if (FAILED(resource->Load(path)))
 			{
 				assert(false);
 			}
+			//로드된 리소소는 mResources 맵에 저장
 			mResources.insert(std::make_pair(key, resource));
 			resource->SetName(key);
 			resource->SetPath(path);
