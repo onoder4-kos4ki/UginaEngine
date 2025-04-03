@@ -57,6 +57,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
       <Filter>Components\Component</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollider.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollisionManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -124,6 +128,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
       <Filter>Components\Component</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollisionManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">

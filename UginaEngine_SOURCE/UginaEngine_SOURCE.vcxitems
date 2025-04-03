@@ -17,7 +17,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaEnums.h" />
@@ -41,7 +45,11 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollider.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaGameObject.cpp" />

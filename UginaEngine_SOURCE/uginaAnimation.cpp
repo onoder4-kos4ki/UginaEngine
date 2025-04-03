@@ -97,9 +97,9 @@ namespace ugina
 			//알파값이 존재하지않는 24비트 비트맵이라면
 			else
 			{
-			//pos는 기본적으로 중앙값
-			//transparentblt와 bitblt와 비슷한 이미지 출력함수 
-			//이함수는 이미지를 투명하게 할수 있다
+				//pos는 기본적으로 중앙값
+				//transparentblt와 bitblt와 비슷한 이미지 출력함수 
+				//이함수는 이미지를 투명하게 할수 있다
 				TransparentBlt(hdc
 					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
 					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.y
@@ -110,11 +110,11 @@ namespace ugina
 					, sprite.leftTop.y
 					, sprite.size.x
 					, sprite.size.y
-					, RGB(255, 0, 255)
-				);
+					, RGB(255, 0, 255));
 			}
-			
+			Rectangle(hdc, pos.x, pos.y, pos.x + 10, pos.y + 10);
 		}
+		
 		else if (type == graphics::Texture::eTextureType::Png)
 		{
 			// 내가 원하는 픽셀을 투명화 시킬떄

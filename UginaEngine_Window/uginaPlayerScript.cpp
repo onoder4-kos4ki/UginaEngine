@@ -137,6 +137,26 @@ namespace ugina
 			catsrc->mDest = mousePos;
 			int a = 0;
 		}
+
+		Transform* tr = getOwner()->GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+		if (Input::GetKey(keyCode::D))
+		{
+			pos.x += 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(keyCode::A))
+		{
+			pos.x -= 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(keyCode::W))
+		{
+			pos.y -= 100.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(keyCode::S))
+		{
+			pos.y += 100.0f * Time::DeltaTime();
+		}
+		tr->SetPosition(pos);
 	}
 	void PlayerScript::move()
 	{
