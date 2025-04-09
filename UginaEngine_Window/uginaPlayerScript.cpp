@@ -95,7 +95,17 @@ namespace ugina
 		Vector2 mousePos = Input::GetMousePosition();
 		catSrc->mDest = mousePos;
 	}
+	void PlayerScript::OnCollisionEnter(Collider* other)
+	{
+		other->getOwner()->GetComponent<Transform>()->SetPosition(Vector2(400.0f, 500.0f));
+	}
 
+	void PlayerScript::OnCollisionStay(Collider* other)
+	{
+	}
+	void PlayerScript::OnCollisionExit(Collider* other)
+	{
+	}
 
 	void PlayerScript::Idle()
 	{

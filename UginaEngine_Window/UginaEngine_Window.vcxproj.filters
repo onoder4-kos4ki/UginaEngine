@@ -15,8 +15,10 @@
     </ClInclude>
     <ClInclude Include="uginaLoadResources.h" />
     <ClInclude Include="uginaPlayerScript.h" />
-    <ClInclude Include="uginaCat.h" />
     <ClInclude Include="uginaCatScript.h" />
+    <ClInclude Include="uginaCat.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="uginaPlayer.cpp">
@@ -29,8 +31,10 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="uginaPlayerScript.cpp" />
-    <ClCompile Include="uginaCat.cpp" />
     <ClCompile Include="uginaCatScript.cpp" />
+    <ClCompile Include="uginaCat.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

@@ -3,6 +3,7 @@
 #include "uginaTime.h"
 #include "uginaSceneManager.h"
 #include "uginaResources.h"
+#include "uginaCollisionManager.h"
 namespace ugina
 {
 
@@ -30,6 +31,7 @@ namespace ugina
 		createBuffer(width, height);
 		initializeEtc();
 
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 
 	}
@@ -46,11 +48,13 @@ namespace ugina
 	{
 		Input::Update();
 		Time::Update();
+		CollisionManager::Update();
 		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
 	{
+		CollisionManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 
@@ -60,6 +64,7 @@ namespace ugina
 
 		clearRenderTarget();
 		Time::Render(mBackHdc);
+		CollisionManager::Render(mHdc);
 		SceneManager::Render(mBackHdc);
 		
 		copyRenderTarget(mBackHdc, mHdc);

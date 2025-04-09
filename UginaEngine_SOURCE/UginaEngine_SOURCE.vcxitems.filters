@@ -57,10 +57,19 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
       <Filter>Components\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollider.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollisionManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.cpp">
+      <Filter>Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.cpp">
+      <Filter>Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollider.cpp">
+      <Filter>Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaObject.cpp">
+      <Filter>Commons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -128,10 +137,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
       <Filter>Components\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollider.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollisionManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.h">
+      <Filter>Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCircleCollider2D.h">
+      <Filter>Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollider.h">
+      <Filter>Components\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">
@@ -178,6 +193,9 @@
     </Filter>
     <Filter Include="High Level Interface">
       <UniqueIdentifier>{a911bf7c-d1f0-4e45-8985-13293ef6fa65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Collider">
+      <UniqueIdentifier>{c4549c1c-190f-41b0-b2f8-71d082a75e10}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -16,6 +16,7 @@
 #include "uginaCat.h"
 #include "uginaCatScript.h"
 #include "uginaBoxCollider2D.h"
+#include "uginaCollisionManager.h"
 
 namespace ugina
 {
@@ -27,14 +28,14 @@ namespace ugina
 	}
 	void PlayScene::Initialize()
 	{
-
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
 
 		//플레이씬에서 쓰이는 메인카메라 설정
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(344.0f, 442.0f));
 		Camera* cameracomp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameracomp;
 
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Particle);
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 		
 		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();

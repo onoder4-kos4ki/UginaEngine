@@ -31,5 +31,11 @@ namespace ugina
 			Prefab,
 			Count
 		};
+		enum class eColliderType
+		{
+			Circle2D,
+			Rect2D,
+			End
+		};
 	}
 }

@@ -19,7 +19,7 @@ namespace ugina
 		virtual void Destroy();
 
 		void AddGameObject(GameObject* gameObject);
-
+		const std::vector<GameObject*> GetGameObjects() { return mGameObjects; }
 	private:
 		void findDeadGameObjects(OUT std::vector<GameObject*>& gameObjs);
 		void deleteGameObjects(std::vector<GameObject*> deleteObjs);

@@ -2,6 +2,7 @@
 #include "uginaEntity.h"
 namespace ugina
 {	
+	using namespace enums;
 	class GameObject;
 	class Component:public Entity
 	{

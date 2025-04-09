@@ -21,4 +21,13 @@ namespace ugina
 	void Script::Render(HDC hdc)
 	{
 	}
+	void Script::OnCollisionEnter(Collider* other)
+	{
+	}
+	void Script::OnCollisionStay(Collider* other)
+	{
+	}
+	void Script::OnCollisionExit(Collider* other)
+	{
+	}
 }

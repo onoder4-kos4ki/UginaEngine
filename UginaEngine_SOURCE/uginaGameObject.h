@@ -1,6 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 #include "uginaComponent.h"
+#include "uginaCollider.h"
 namespace ugina
 {
 	namespace object
