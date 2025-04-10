@@ -102,7 +102,7 @@ namespace ugina
 				//이함수는 이미지를 투명하게 할수 있다
 				TransparentBlt(hdc
 					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
-					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.y
+					, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
 					, sprite.size.x * scale.x
 					, sprite.size.y * scale.y
 					, imgHdc

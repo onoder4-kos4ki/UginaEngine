@@ -1,5 +1,5 @@
 #include "uginaObject.h"
-namespace ugina::Object
+namespace ugina::object
 {
 	static std::vector<GameObject*> DontDestroyGameObjects = {};
 }

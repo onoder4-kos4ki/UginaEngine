@@ -1,11 +1,13 @@
 #include "uginaBoxCollider2D.h"
 #include "uginaTransform.h"
 #include "uginaGameObject.h"
+#include "uginaRenderer.h"
+#include "uginaCamera.h"
 namespace ugina
 {
 	BoxCollider2D::BoxCollider2D()
-		:Collider()
-		:
+		:Collider(enums::eColliderType::Rect2D)
+		
 	{
 	}
 	BoxCollider2D::~BoxCollider2D()
@@ -24,6 +26,11 @@ namespace ugina
 	{
 		Transform* tr = getOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+
+		if (renderer::mainCamera)
+		{
+			pos = renderer::mainCamera->CalculatePosition(pos);
+		}
 		Vector2 offset = GetOffset();
 		
 		//GetStockObject로 만든 HBRUSH는 메모리해제를 안해줘도 된다
