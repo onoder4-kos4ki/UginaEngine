@@ -127,6 +127,9 @@ namespace ugina
 		}
 		mGameObjects.push_back(gameObject);
 	}
+	void Layer::EraseGameObject(GameObject* eraseGameObj)
+	{
+	}
 	void Layer::findDeadGameObjects(OUT std::vector<GameObject*>& gameObjs)
 	{
 		//gameObjs는 삭제할 게임오브젝트들의 포인터를 담는 임시공간
@@ -151,5 +154,8 @@ namespace ugina
 	void Layer::eraseGameObject()
 	{
 		std::erase_if(mGameObjects, [](GameObject* gameObj) {return gameObj->IsDead(); });
+	}
+	void Layer::eraseDeadGameObject()
+	{
 	}
 }

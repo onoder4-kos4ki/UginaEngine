@@ -70,6 +70,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaObject.cpp">
       <Filter>Commons</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -147,6 +148,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollider.h">
       <Filter>Components\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">

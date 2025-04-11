@@ -67,10 +67,10 @@ namespace ugina
 		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();
 
-		BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>();
-		//CircleCollider2D* circleCatCollider = cat->AddComponent<CircleCollider2D>();
-		//circleCatCollider->SetOffset(Vector2(-50.f, -50.f));
-		boxCatCollider->SetOffset(Vector2(-50.f, -50.f));
+		//BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>();
+		CircleCollider2D* circleCatCollider = cat->AddComponent<CircleCollider2D>();
+		circleCatCollider->SetOffset(Vector2(-50.f, -50.f));
+		//boxCatCollider->SetOffset(Vector2(-50.f, -50.f));
 		//catAnimator->CreateAnimation(L"DOWNWALK", catTex, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
 		//catAnimator->CreateAnimation(L"RIGHTWALK", catTex, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
 		//catAnimator->CreateAnimation(L"UPWALK", catTex, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);

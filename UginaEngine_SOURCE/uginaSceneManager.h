@@ -24,6 +24,7 @@ namespace ugina
 		static Scene* LoadScene(const std::wstring& name);
 
 		static Scene* Getactivescene() { return mActiveScene; }
+		static Scene* GetDontDestroyOnLoad() { return mDontDestroyOnLoad; }
 		static void Initialize();
 		//현재 선택된 씬(mActiveScene)에서 해야할 로직을 실행시키는 함수
 		static void Update();
@@ -38,6 +39,7 @@ namespace ugina
 		static std::map<std::wstring, Scene*> mScene;
 		//씬 매니저에서 현재 활성화 되어있는 씬
 		static Scene* mActiveScene;
+		static Scene* mDontDestroyOnLoad;
 	};
 	
 }

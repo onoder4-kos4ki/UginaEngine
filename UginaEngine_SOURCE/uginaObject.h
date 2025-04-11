@@ -35,7 +35,16 @@ namespace ugina
 
 			return gameObject;
 		}
+		
+		static void DontDestroyOnLoad(GameObject* gameObject)
+		{
+			Scene* activeScene = SceneManager::Getactivescene();
 
+			activeScene->EraseGameObject(gameObject);
+
+			Scene* dontDestroyOnLoad = SceneManager::GetDontDestroyOnLoad();
+			dontDestroyOnLoad->AddGameObject(gameObject, gameObject->GetLayerType());
+		}
 		
 	}
 }

@@ -181,19 +181,39 @@ namespace ugina
 		if ((leftType == enums::eColliderType::Circle2D && rightType == enums::eColliderType::Rect2D)
 			|| (leftType == enums::eColliderType::Rect2D && rightType == enums::eColliderType::Circle2D))
 		{
+			//왼쪽콜라이더가 원
 			if (leftType == enums::eColliderType::Circle2D)
 			{
 				//오브젝트의 중심좌표 +서클 콜라이더의 오프셋 
 				//사각형의 최소 좌표 , 최대 좌표
-				int clx = std::clamp(leftPos.x, rightPos.x -(right->GetSize().x/2),rightPos.x + (right->GetSize().x/2) );
-				int cly = std::clamp(leftPos.y, rightPos.y -(right->GetSize().y/2),rightPos.y + (right->GetSize().y/2) );
+				int clx = std::clamp(leftPos.x, rightPos.x -(rightSize.x/2),rightPos.x + (rightSize.x/2) );
+				int cly = std::clamp(leftPos.y, rightPos.y -(rightSize.y/2),rightPos.y + (rightSize.y/2) );
+				//원의 좌표에서 사각형에서 원의 중심까지 최대로 가까운 좌푯값의 차를 구함
+				int distX = leftPos.x - clx;
+				int distY = leftPos.y - cly;
+				int one = distX * distX + distY * distY;
+				int two = (leftSize.x / 2) * (leftSize.x / 2) + (leftSize.y / 2) * (leftSize.y / 2);
 				
-				//TODO
+				//원의 반지름이 위에서 구한 좌푯값의 차이가 더 큰경우 충돌한것으로 판정
+				if (one <= two)
+				{
+					return true;
+				}
 			}
+			//오른쪽 콜라이더가 원
 			else
 			{
-
+				int clx = std::clamp(rightPos.x, leftPos.x - (leftSize.x / 2), leftPos.x + (leftSize.x / 2));
+				int cly = std::clamp(rightPos.y, leftPos.y - (leftSize.y / 2), leftPos.y + (leftSize.y / 2));
+				int distX = rightPos.x - clx;
+				int distY = rightPos.y - cly;
+				//TODO
+				if (distX * distX + distY * distY <= (rightSize.x / 2) * (rightSize.x / 2) + (rightSize.y / 2) * (rightSize.y / 2))
+				{
+					return true;
+				}
 			}
+			
 			
 		}
 	return false;

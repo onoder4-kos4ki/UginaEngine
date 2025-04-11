@@ -80,6 +80,11 @@ namespace ugina
 	{
 		mLayers[(UINT)type]->AddGameObject(gameObj);
 	}
+	void Scene::EraseGameObject(GameObject* gameObj)
+	{
+		eLayerType layerType = gameObj->GetLayerType();
+		mLayers[(UINT)layerType]->EraseGameObject(gameObj);
+	}
 	void Scene::createLayers()
 	{
 		mLayers.resize((UINT)enums::eLayerType::Max);
