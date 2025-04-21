@@ -39,6 +39,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTilemapRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaTransform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaApplication.h" />
@@ -67,6 +68,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTilemapRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaTransform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaApplication.cpp" />

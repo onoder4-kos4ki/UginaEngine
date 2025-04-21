@@ -67,15 +67,14 @@ namespace ugina
 			}
 			else
 			{
-
+				TransparentBlt(hdc, pos.x, pos.y,
+					mTexture->GetWidth() * mSize.x * scale.x,
+					mTexture->GetHeight() * mSize.y * scale.y,
+					mTexture->GetHdc(),
+					0, 0,
+					mTexture->GetWidth(), mTexture->GetHeight(),
+					RGB(255, 0, 255));
 			}
-			TransparentBlt(hdc, pos.x, pos.y,
-				mTexture->GetWidth() * mSize.x* scale.x,
-				mTexture->GetHeight() * mSize.y* scale.y,
-				mTexture->GetHdc(),
-				0, 0,
-				mTexture->GetWidth(), mTexture->GetHeight(),
-				RGB(255, 0, 255));
 		}
 		//png파일일때
 		else if (mTexture->GetTextureType() == graphics::Texture::eTextureType::Png)
@@ -85,6 +84,7 @@ namespace ugina
 
 			Gdiplus::Graphics graphics(hdc);
 
+			//스프라이트의 중심좌표 pos로 이동한후 회전연산(그래야 제자리 회전이 됨)다시 복귀
 			graphics.TranslateTransform(pos.x, pos.y);
 			graphics.RotateTransform(rot);
 			graphics.TranslateTransform(-pos.x, -pos.y);

@@ -19,6 +19,11 @@
     <ClInclude Include="uginaCat.h">
       <Filter>Contents</Filter>
     </ClInclude>
+    <ClInclude Include="uginaTile.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="uginaToolScene.h" />
+    <ClInclude Include="uginaCameraScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="uginaPlayer.cpp">
@@ -35,6 +40,11 @@
     <ClCompile Include="uginaCat.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
+    <ClCompile Include="uginaTile.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="uginaToolScene.cpp" />
+    <ClCompile Include="uginaCameraScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

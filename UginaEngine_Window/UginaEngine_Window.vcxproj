@@ -136,6 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="uginaCameraScript.h" />
     <ClInclude Include="uginaCat.h" />
     <ClInclude Include="uginaCatScript.h" />
     <ClInclude Include="uginaLoadResources.h" />
@@ -143,15 +144,20 @@
     <ClInclude Include="uginaPlayer.h" />
     <ClInclude Include="uginaPlayerScript.h" />
     <ClInclude Include="uginaPlayScene.h" />
+    <ClInclude Include="uginaTile.h" />
     <ClInclude Include="uginaTitleScene.h" />
+    <ClInclude Include="uginaToolScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="uginaCameraScript.cpp" />
     <ClCompile Include="uginaCat.cpp" />
     <ClCompile Include="uginaCatScript.cpp" />
     <ClCompile Include="uginaPlayer.cpp" />
     <ClCompile Include="uginaPlayerScript.cpp" />
     <ClCompile Include="uginaPlayScene.cpp" />
+    <ClCompile Include="uginaTile.cpp" />
     <ClCompile Include="uginaTitleScene.cpp" />
+    <ClCompile Include="uginaToolScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

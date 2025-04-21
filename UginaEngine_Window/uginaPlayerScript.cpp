@@ -110,7 +110,7 @@ namespace ugina
 	void PlayerScript::Idle()
 	{
 		//마우스 왼쪽 버튼을 누를시 물을 주는 애니메이션 재생
-		if (Input::GetKey(keyCode::LButton))
+		if (Input::GetKey(ekeyCode::LButton))
 		{
 			/*mstate = PlayerScript::eState::GiveWater;
 			mAnimator->PlayAnimation(L"FRONTGIVEWATER", false);*/
@@ -150,19 +150,19 @@ namespace ugina
 
 		Transform* tr = getOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		if (Input::GetKey(keyCode::D))
+		if (Input::GetKey(ekeyCode::D))
 		{
 			pos.x += 100.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(keyCode::A))
+		if (Input::GetKey(ekeyCode::A))
 		{
 			pos.x -= 100.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(keyCode::W))
+		if (Input::GetKey(ekeyCode::W))
 		{
 			pos.y -= 100.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(keyCode::S))
+		if (Input::GetKey(ekeyCode::S))
 		{
 			pos.y += 100.0f * Time::DeltaTime();
 		}
@@ -173,26 +173,26 @@ namespace ugina
 		Transform* tr = getOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
-		if (Input::GetKey(keyCode::D))
+		if (Input::GetKey(ekeyCode::D))
 		{
 			pos.x += 100.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(keyCode::A))
+		if (Input::GetKey(ekeyCode::A))
 		{
 			pos.x -= 100.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(keyCode::W))
+		if (Input::GetKey(ekeyCode::W))
 		{
 			pos.y -= 100.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(keyCode::S))
+		if (Input::GetKey(ekeyCode::S))
 		{
 			pos.y += 100.0f * Time::DeltaTime();
 		}
 
 		tr->SetPosition(pos);
-		if (Input::GetKeyUp(keyCode::D) || Input::GetKeyUp(keyCode::A) || Input::GetKeyUp(keyCode::W) ||
-			Input::GetKeyUp(keyCode::S))
+		if (Input::GetKeyUp(ekeyCode::D) || Input::GetKeyUp(ekeyCode::A) || Input::GetKeyUp(ekeyCode::W) ||
+			Input::GetKeyUp(ekeyCode::S))
 		{
 			mstate = PlayerScript::eState::Idle;
 			mAnimator->PlayAnimation(L"SITDOWN", false);

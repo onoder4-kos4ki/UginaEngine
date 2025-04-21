@@ -5,13 +5,13 @@
 
 namespace ugina::object
 {
-	/*void Destroy(GameObject* gameObject)
+	void Destroy(GameObject* gameObject)
 	{
 		if (gameObject != nullptr)
 		{
 			gameObject->death();
 		}
-	}*/
+	}
 }
 namespace ugina
 {

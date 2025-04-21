@@ -17,6 +17,7 @@ namespace ugina
 		{
 			None,
 			BackGround,
+			Tile,
 			Animal,
 			Player,
 			Particle,

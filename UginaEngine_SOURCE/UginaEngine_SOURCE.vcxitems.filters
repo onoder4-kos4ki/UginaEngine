@@ -71,6 +71,9 @@
       <Filter>Commons</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaTilemapRenderer.cpp">
+      <Filter>Components\TileMapRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -149,6 +152,9 @@
       <Filter>Components\Collider</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaTilemapRenderer.h">
+      <Filter>Components\TileMapRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">
@@ -198,6 +204,9 @@
     </Filter>
     <Filter Include="Components\Collider">
       <UniqueIdentifier>{c4549c1c-190f-41b0-b2f8-71d082a75e10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\TileMapRenderer">
+      <UniqueIdentifier>{6e44d52a-112d-4dcc-80bc-cf0b57d421c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

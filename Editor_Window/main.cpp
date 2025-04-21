@@ -5,7 +5,10 @@
 #include "Editor_Window.h"
 
 #include "..\\UginaEngine_SOURCE\\uginaApplication.h"
+#include "..\\UginaEngine_SOURCE\\uginaTexture.h"
 #include "..\\UginaEngine_Window\\uginaLoadResources.h"
+
+
 
 #include "..\\UginaEngine_Window\\uginaLoadScenes.h"
 
@@ -48,6 +51,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_EDITORWINDOW, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
+
+    //yRegisterClass(hInstance,L"TILEWINDOW",wndtileproc)
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -148,6 +153,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       /*0*/CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
+   HWND ToolHWnd = CreateWindowW(L"TILEWONDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
+       0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
    api.Initialize(hWnd, width, height);
    if (!hWnd)
    {
@@ -164,8 +171,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    int a = 0;
    //변수하나를 생성하고 그 포인터값으로 시드값을 만듦
    srand(time(nullptr));
+   ugina::graphics::Texture* texture 
+       = ugina::Resources::Find<ugina::graphics::Texture>(L"SpringFloor");
+   RECT rect = { 0,0,texture->GetWidth(),texture->GetHeight() };
+   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
+   UINT toolWidth = rect.right - rect.left;
+   UINT toolHeight = rect.bottom - rect.top;
    
+   SetWindowPos(ToolHWnd, nullptr, width, 0, toolWidth, toolHeight, 0);
+   ShowWindow(ToolHWnd, true);
+   UpdateWindow(ToolHWnd);
    return TRUE;
 }
 

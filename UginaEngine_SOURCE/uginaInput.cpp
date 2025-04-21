@@ -9,7 +9,7 @@ namespace ugina
 	//마우스좌표의 초기화 
 	math::Vector2 Input::mMousePosition = math::Vector2::One;
 
-	int ASCII[(UINT)keyCode::Count] = { 
+	int ASCII[(UINT)ekeyCode::Count] = { 
 		'A', 'B', 'C', 'D',
 		'E', 'F', 'G', 'H',
 		'I', 'J', 'K', 'L',
@@ -30,12 +30,12 @@ namespace ugina
 	void Input::createKeys()
 	{
 		//내가 설정한 키코드의 갯수만큼 Keys vector를 기본값으로 초기화 해줌
-		for (int i = 0; i < (int)keyCode::Count; i++)
+		for (int i = 0; i < (int)ekeyCode::Count; i++)
 		{
 			//명시적인 Key구조체 초기화
 			Key key = {};
 			key.bPressed = false;
-			key.code = (keyCode)i;
+			key.code = (ekeyCode)i;
 			key.state = keyState::None;
 
 			keys.push_back(key);
@@ -71,7 +71,7 @@ namespace ugina
 		}
 		
 	}
-	bool Input::isKeyDown(keyCode code)
+	bool Input::isKeyDown(ekeyCode code)
 	{
 		return GetAsyncKeyState(ASCII[(int)code]) & 0x8000;
 	}
@@ -117,8 +117,25 @@ namespace ugina
 		ScreenToClient(api.GetHwnd(),&mousePos);
 
 		//임시 변수에 있던 값을 멤버변수에 넣어주기
+		/*
 		mMousePosition.x = mousePos.x;
-		mMousePosition.y = mousePos.y;
+		mMousePosition.y = mousePos.y;*/
+
+		UINT width = api.GetWidth();
+		UINT height = api.Getheight();
+
+		mMousePosition.x = -1.0f;
+		mMousePosition.y = -1.0f;
+
+		if (mousePos.x > 0 && mousePos.x < width)
+		{
+			mMousePosition.x = mousePos.x;
+		}
+		if (mousePos.y > 0 && mousePos.y < height)
+		{
+			mMousePosition.y = mousePos.y;
+		}
+
 	}
 	void Input::clearKeys()
 	{

@@ -37,9 +37,8 @@ namespace ugina
 			{
 				continue;
 			}
-			GameObject::eState state = gameObj->GetState();
 			//현재 게임오브젝트의 상태가 멈춤 혹은 죽은 상태면 스킵
-			if (state == GameObject::eState::Paused || state == GameObject::eState::Dead)
+			if (gameObj->IsActive()==false)
 			{
 				continue;
 			}
@@ -55,9 +54,8 @@ namespace ugina
 			{
 				continue;
 			}
-			GameObject::eState state = gameObj->GetState();
 			//현재 게임오브젝트의 상태가 멈춤 혹은 죽은 상태면 스킵
-			if (state == GameObject::eState::Paused || state == GameObject::eState::Dead)
+			if (gameObj->IsActive() == false)
 			{
 				continue;
 			}
@@ -72,9 +70,9 @@ namespace ugina
 			{
 				continue;
 			}
-			GameObject::eState state = gameObj->GetState();
+			
 			//현재 게임오브젝트의 상태가 멈춤 혹은 죽은 상태면 스킵
-			if (state == GameObject::eState::Paused || state == GameObject::eState::Dead)
+			if (gameObj->IsActive() == false)
 			{
 				continue;
 			}
@@ -83,9 +81,9 @@ namespace ugina
 	}
 	void Layer::Destroy()
 	{
-
+	#pragma region 레거시
 		for (std::vector<GameObject*>::iterator iter = mGameObjects.begin()
-			;iter != mGameObjects.end()
+			; iter != mGameObjects.end()
 			;)
 		{
 			//현재 게임오브젝트의 상태
@@ -106,17 +104,22 @@ namespace ugina
 			}
 
 			iter++;
-			
+
 		}
-		for (GameObject* gameObj: mGameObjects)
+		for (GameObject* gameObj : mGameObjects)
 		{
 			if (gameObj == nullptr)
 			{
 				continue;
 			}
-			
+
 		}
-		
+
+#pragma endregion
+		std::vector<GameObject*> deleteObjects = {};
+		findDeadGameObjects(deleteObjects);
+		eraseDeadGameObject();
+		deleteGameObjects(deleteObjects);
 	}
 	void Layer::AddGameObject(GameObject* gameObject)
 	{
@@ -129,6 +132,7 @@ namespace ugina
 	}
 	void Layer::EraseGameObject(GameObject* eraseGameObj)
 	{
+		std::erase_if(mGameObjects, [=](GameObject* gameobj) { return gameobj == eraseGameObj; });
 	}
 	void Layer::findDeadGameObjects(OUT std::vector<GameObject*>& gameObjs)
 	{
@@ -151,11 +155,12 @@ namespace ugina
 		}
 		
 	}
-	void Layer::eraseGameObject()
-	{
-		std::erase_if(mGameObjects, [](GameObject* gameObj) {return gameObj->IsDead(); });
-	}
+	
 	void Layer::eraseDeadGameObject()
 	{
+		std::erase_if(mGameObjects, [](GameObject* gameObj) 
+			{
+				return gameObj->IsDead(); 
+			});
 	}
 }

@@ -14,7 +14,7 @@ namespace ugina
 		None,
 		Count
 	};
-	enum class keyCode
+	enum class ekeyCode
 	{
 		A,B,C,D,
 		E,F,G,H,
@@ -40,7 +40,7 @@ namespace ugina
 			//키의 상태
 			keyState state;
 			//눌린 키코드
-			keyCode code;
+			ekeyCode code;
 		};
 		static void Initialize();
 		static void Update();
@@ -51,20 +51,20 @@ namespace ugina
 		//게임에서 키가 눌린 상태를 기져오기위한 함수들
 		
 		//게임에서 키가 방금 눌린상태인지를 알기위한 함수
-		__forceinline static bool GetKeyDown(keyCode code) { return keys[(int)code].state == keyState::Down; }
+		__forceinline static bool GetKeyDown(ekeyCode code) { return keys[(int)code].state == keyState::Down; }
 
 		//게임에서 키가 방금 떼어진건지를 알기위한 함수
-		__forceinline static bool GetKeyUp(keyCode code) { return keys[(int)code].state == keyState::Up; }
+		__forceinline static bool GetKeyUp(ekeyCode code) { return keys[(int)code].state == keyState::Up; }
 
 		//게임에서 키가 꾹눌린건지를 알기위한 함수
-		__forceinline static bool GetKey(keyCode code) { return keys[(int)code].state == keyState::Pressed; }
+		__forceinline static bool GetKey(ekeyCode code) { return keys[(int)code].state == keyState::Pressed; }
 
 		__forceinline static math::Vector2 GetMousePosition() { return mMousePosition; }
 	private:
 		static void createKeys();
 		static void updateKeys();
 		static void updateKey(Input::Key& key);
-		static bool isKeyDown(keyCode code);
+		static bool isKeyDown(ekeyCode code);
 		static void updateKeyDown(Input::Key& key);
 		static void updateKeyUp(Input::Key& key);
 		//현재 윈도우를 기준으로 하는 마우스 좌푯값을 구함

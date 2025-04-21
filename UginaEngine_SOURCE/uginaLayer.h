@@ -24,7 +24,7 @@ namespace ugina
 	private:
 		void findDeadGameObjects(OUT std::vector<GameObject*>& gameObjs);
 		void deleteGameObjects(std::vector<GameObject*> deleteObjs);
-		void eraseGameObject();
+		
 		void eraseDeadGameObject();
 	private:
 		std::vector<GameObject*> mGameObjects;
