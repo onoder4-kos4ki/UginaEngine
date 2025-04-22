@@ -113,6 +113,7 @@ namespace ugina
 		ofn.lpstrInitialDir = NULL;
 		ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 
+		//GetSaveFileName 대화상자를 여는 함수 대화상자가 열려있는 순간은 프로그램이 멈춤
 		if (false == GetSaveFileName(&ofn))
 			return;
 
@@ -126,10 +127,22 @@ namespace ugina
 
 			Vector2 sourceIndex = tmr->GetIndex();
 			Vector2 position = tr->GetPosition();
+
+			int x = sourceIndex.x;
+			fwrite(&x, sizeof(int), 1, pFile);
+			int y = sourceIndex.y;
+			fwrite(&y, sizeof(int), 1, pFile);
+
+			x = position.x;
+			fwrite(&x, sizeof(int), 1, pFile);
+			y = position.y;
+			fwrite(&y, sizeof(int), 1, pFile);
 		}
+		fclose(pFile);
 	}
 	void ToolScene::Load()
 	{
+		OPENFILENAME ofn = {};
 	}
 }
 
