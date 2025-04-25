@@ -14,16 +14,24 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="uginaLoadResources.h" />
-    <ClInclude Include="uginaPlayerScript.h" />
-    <ClInclude Include="uginaCatScript.h" />
     <ClInclude Include="uginaCat.h">
       <Filter>Contents</Filter>
     </ClInclude>
     <ClInclude Include="uginaTile.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="uginaToolScene.h" />
-    <ClInclude Include="uginaCameraScript.h" />
+    <ClInclude Include="uginaToolScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="uginaPlayerScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="uginaCatScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="uginaCameraScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="uginaPlayer.cpp">
@@ -35,16 +43,24 @@
     <ClCompile Include="uginaTitleScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="uginaPlayerScript.cpp" />
-    <ClCompile Include="uginaCatScript.cpp" />
     <ClCompile Include="uginaCat.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="uginaTile.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="uginaToolScene.cpp" />
-    <ClCompile Include="uginaCameraScript.cpp" />
+    <ClCompile Include="uginaToolScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="uginaPlayerScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="uginaCatScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="uginaCameraScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -52,6 +68,9 @@
     </Filter>
     <Filter Include="Scenes">
       <UniqueIdentifier>{8ccb88c6-81ff-41f3-a9da-a4e4aecb7aa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{a71b7508-83cd-4c67-adfc-d889b4d6f1f7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ namespace ugina
 	}
 	void TitleScene::Initialize()
 	{
+
 		Scene::Initialize();
 	}
 	void TitleScene::Update()

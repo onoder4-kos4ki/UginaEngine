@@ -37,9 +37,10 @@ namespace ugina
 				assert(false);
 			}
 			//로드된 리소소는 mResources 맵에 저장
-			mResources.insert(std::make_pair(key, resource));
 			resource->SetName(key);
 			resource->SetPath(path);
+			mResources.insert(std::make_pair(key, resource));
+			
 
 			return resource;
 		}

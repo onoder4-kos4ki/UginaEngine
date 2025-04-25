@@ -11,13 +11,15 @@
 #include "uginaResources.h"
 #include "uginaPlayerScript.h"
 #include "uginaCamera.h"
-#include "uginarenderer.h"
+#include "uginaRenderer.h"
 #include "uginaAnimator.h"
 #include "uginaCat.h"
 #include "uginaCatScript.h"
 #include "uginaBoxCollider2D.h"
 #include "uginaCircleCollider2D.h"
 #include "uginaCollisionManager.h"
+#include "uginaTile.h"
+#include "uginaTilemapRenderer.h"
 
 namespace ugina
 {
@@ -29,6 +31,8 @@ namespace ugina
 	}
 	void PlayScene::Initialize()
 	{
+		FILE* pFile = nullptr;
+		_wfopen_s(&pFile,L"..\\Resources\\Test", L"rb");
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
 
 		//플레이씬에서 쓰이는 메인카메라 설정

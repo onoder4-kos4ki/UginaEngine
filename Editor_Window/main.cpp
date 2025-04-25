@@ -1,61 +1,318 @@
-﻿// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
+﻿//// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
+////
+//
+//#include "framework.h"
+//#include "Editor_Window.h"
+//
+//#include "..\\UginaEngine_SOURCE\\uginaApplication.h"
+//#include "..\\UginaEngine_SOURCE\\uginaTexture.h"
+//#include "..\\UginaEngine_SOURCE\\uginaResources.h"
+//
+//
+//#include "..\\UginaEngine_Window\\uginaToolScene.h"
+//#include "..\\UginaEngine_Window\\uginaLoadScenes.h"
+//#include "..\\UginaEngine_Window\\uginaLoadResources.h"
+//
+//
+//
+//#define MAX_LOADSTRING 100
+//
+//
+//ugina::Application api;
+////8바이트 인트형(운영체제에 맞게 설정됨)포인터로, gdi+의 초기화,종료에 필요한 카드키 같은 역할
+//ULONG_PTR gpToken;
+////gdi+를 초기화 하는데 필요한 설정을 담는 구조체
+//Gdiplus::GdiplusStartupInput gpsi;
+//// 전역 변수:
+//HINSTANCE hInst;                                // 현재 인스턴스입니다.
+//WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
+//WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+//
+//// 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
+////ATOM                MyRegisterClass(HINSTANCE hInstance);
+//ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
+//BOOL                InitInstance(HINSTANCE, int);
+//LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+////LRESULT CALLBACK    WndTileProc(HWND, UINT, WPARAM, LPARAM);
+//INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+//
+//int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+//                     _In_opt_ HINSTANCE hPrevInstance,
+//                     _In_ LPWSTR    lpCmdLine,
+//                     _In_ int       nCmdShow)
+//{
+//    UNREFERENCED_PARAMETER(hPrevInstance);
+//    UNREFERENCED_PARAMETER(lpCmdLine);
+//
+//    //메모리누수를 감지하여 콘솔에 출력
+//    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+//
+//    // TODO: 여기에 코드를 입력합니다.
+//
+//    // 전역 문자열을 초기화합니다.
+//    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+//    LoadStringW(hInstance, IDC_EDITORWINDOW, szWindowClass, MAX_LOADSTRING);
+//    //MyRegisterClass(hInstance);
+//    
+//    MyRegisterClass(hInstance, szWindowClass, WndProc);
+//    MyRegisterClass(hInstance, L"TILEWINDOW", WndTileProc);
+//
+//    // 애플리케이션 초기화를 수행합니다:
+//    if (!InitInstance (hInstance, nCmdShow))
+//    {
+//        return FALSE;
+//    }
+//
+//    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_EDITORWINDOW));
+//
+//    MSG msg;
+//
+//    while (true)
+//    {
+//        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+//        {
+//            //나가는 버튼을 누르면 나가지기
+//            if (msg.message == WM_QUIT)
+//            {
+//                break;
+//            }
+//            //메세지가 들어오면 처리함
+//            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+//            {
+//                TranslateMessage(&msg);
+//                DispatchMessage(&msg);
+//            }
+//        }
+//        else
+//        {
+//            //여기서 게임 루프가 진행
+//            api.Run();
+//        }
+//    }
+//    Gdiplus::GdiplusShutdown(gpToken);
+//#pragma region 기본 메시지 루프입니다
+//    /* while (GetMessage(&msg, nullptr, 0, 0))
+//   {
+//       if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+//       {
+//           TranslateMessage(&msg);
+//           DispatchMessage(&msg);
+//       }
+//   }*/
+//#pragma endregion
+//    api.Release();
+//    return (int) msg.wParam;
+//}
+//
+//
+//
+////
+////  함수: MyRegisterClass()
+////
+////  용도: 창 클래스를 등록합니다.
+////
+//ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
+//{
+//    WNDCLASSEXW wcex;
+//
+//    wcex.cbSize = sizeof(WNDCLASSEX);
+//
+//    wcex.style          = CS_HREDRAW | CS_VREDRAW;
+//    wcex.lpfnWndProc    = proc;
+//    wcex.cbClsExtra     = 0;
+//    wcex.cbWndExtra     = 0;
+//    wcex.hInstance      = hInstance;
+//    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITORWINDOW));
+//    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
+//    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
+//    //wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_EDITORWINDOW);
+//    wcex.lpszMenuName   = NULL;
+//    wcex.lpszClassName  = name;
+//    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+//
+//    return RegisterClassExW(&wcex);
+//}
+//
+////
+////   함수: InitInstance(HINSTANCE, int)
+////
+////   용도: 인스턴스 핸들을 저장하고 주 창을 만듭니다.
+////
+////   주석:
+////
+////        이 함수를 통해 인스턴스 핸들을 전역 변수에 저장하고
+////        주 프로그램 창을 만든 다음 표시합니다.
+////
+//BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
+//{
+//   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+//
+//   /*const UINT width = 1600;
+//   const UINT height = 900;*/
+//   const UINT width = 672;
+//   const UINT height = 846;
+//   /*HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+//      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);*/
+//   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+//      /*0*/CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
+//
+//    HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
+//       0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
+//
+//
+//   api.Initialize(hWnd, width, height);
+//   if (!hWnd)
+//   {
+//      return FALSE;
+//   }
+//
+//   ShowWindow(hWnd, nCmdShow);
+//   UpdateWindow(hWnd);
+//
+//   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+//   ugina::LoadResource();
+//   ugina::LoadScenes();
+//   
+//   int a = 0;
+//   //변수하나를 생성하고 그 포인터값으로 시드값을 만듦
+//   srand(time(nullptr));
+//   ugina::graphics::Texture* texture 
+//       = ugina::Resources::Find<ugina::graphics::Texture>(L"SpringFloor");
+//   RECT rect = { 0,0,texture->GetWidth(),texture->GetHeight() };
+//   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+//
+//   UINT toolWidth = rect.right - rect.left;
+//   UINT toolHeight = rect.bottom - rect.top;
+//   
+//   SetWindowPos(ToolHWnd, nullptr, width, 0, toolWidth, toolHeight, 0);
+//   ShowWindow(ToolHWnd, true);
+//   UpdateWindow(ToolHWnd);
+//   return TRUE;
+//}
+//
+////
+////  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
+////
+////  용도: 주 창의 메시지를 처리합니다.
+////
+////  WM_COMMAND  - 애플리케이션 메뉴를 처리합니다.
+////  WM_PAINT    - 주 창을 그립니다.
+////  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
+////
+////
+//LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+//{
+//    switch (message)
+//    {
+//    case WM_COMMAND:
+//        {
+//            int wmId = LOWORD(wParam);
+//            // 메뉴 선택을 구문 분석합니다:
+//            switch (wmId)
+//            {
+//            case IDM_ABOUT:
+//                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+//                break;
+//            case IDM_EXIT:
+//                DestroyWindow(hWnd);
+//                break;
+//            default:
+//                return DefWindowProc(hWnd, message, wParam, lParam);
+//            }
+//        }
+//        break;
+//    case WM_PAINT:
+//        {
+//            PAINTSTRUCT ps;
+//            HDC hdc = BeginPaint(hWnd, &ps);
+//            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+//            EndPaint(hWnd, &ps);
+//        }
+//        break;
+//    case WM_DESTROY:
+//        PostQuitMessage(0);
+//        break;
+//    default:
+//        return DefWindowProc(hWnd, message, wParam, lParam);
+//    }
+//    return 0;
+//}
+//
+//// 정보 대화 상자의 메시지 처리기입니다.
+//INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+//{
+//    UNREFERENCED_PARAMETER(lParam);
+//    switch (message)
+//    {
+//    case WM_INITDIALOG:
+//        return (INT_PTR)TRUE;
+//
+//    case WM_COMMAND:
+//        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+//        {
+//            EndDialog(hDlg, LOWORD(wParam));
+//            return (INT_PTR)TRUE;
+//        }
+//        break;
+//    }
+//    return (INT_PTR)FALSE;
+//}
+// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 
 #include "framework.h"
 #include "Editor_Window.h"
 
 #include "..\\UginaEngine_SOURCE\\uginaApplication.h"
+#include "..\\UginaEngine_SOURCE\\uginaResources.h"
 #include "..\\UginaEngine_SOURCE\\uginaTexture.h"
+
 #include "..\\UginaEngine_Window\\uginaLoadResources.h"
-
-
-
 #include "..\\UginaEngine_Window\\uginaLoadScenes.h"
+#include "..\\UginaEngine_Window\\uginaToolScene.h"
 
+ugina::Application api;
 
-
+ULONG_PTR gpToken;
+Gdiplus::GdiplusStartupInput gpsi;
 
 #define MAX_LOADSTRING 100
 
-
-ugina::Application api;
-//8바이트 인트형(운영체제에 맞게 설정됨)포인터로, gdi+의 초기화,종료에 필요한 카드키 같은 역할
-ULONG_PTR gpToken;
-//gdi+를 초기화 하는데 필요한 설정을 담는 구조체
-Gdiplus::GdiplusStartupInput gpsi;
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
+ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 핸들
+    _In_opt_ HINSTANCE hPrevInstance, // 바로앞에 실행된 현재 프로그램의 인스턴스 핸들, 없을경우에는 NULL 
+    // 지금은 신경쓰지 않아도 되는 값이다.
+    _In_ LPWSTR    lpCmdLine, //명령행 으로 입력된 프로그램 인수라고 하는데
+    _In_ int       nCmdShow) //프로그램이 실행될 형태이며, 보통 모양정보등이 전달된다.
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
-    //메모리누수를 감지하여 콘솔에 출력
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
+    //_CrtSetBreakAlloc(251);
+    // 깃허브 테스트
     // TODO: 여기에 코드를 입력합니다.
+    ///
 
+    ///
+    //
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_EDITORWINDOW, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
-
-    //yRegisterClass(hInstance,L"TILEWINDOW",wndtileproc)
+    MyRegisterClass(hInstance, szWindowClass, WndProc);
+    MyRegisterClass(hInstance, L"TILEWINDOW", WndTileProc);
 
     // 애플리케이션 초기화를 수행합니다:
-    if (!InitInstance (hInstance, nCmdShow))
+    if (!InitInstance(hInstance, nCmdShow))
     {
         return FALSE;
     }
@@ -64,16 +321,22 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
+
+    //GetMessage(&msg, nullptr, 0, 0)
+    // 프로세스에서 발생한 메세지를 메세지 큐에서 가져오는 함수
+    // 메세지큐에 아무것도 없다면??? 아무 메세지도 가져오지 않게된다.
+
+    // PeekMessage : 메세지큐에 메세지 유무에 상관없이 함수가 리턴된다.
+    //                리턴 값이 true인경우 메세지가 있고 false인경우는 메세지가 없다라고 가르켜준다.
+
+
     while (true)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            //나가는 버튼을 누르면 나가지기
             if (msg.message == WM_QUIT)
-            {
                 break;
-            }
-            //메세지가 들어오면 처리함
+
             if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
             {
                 TranslateMessage(&msg);
@@ -82,25 +345,22 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            //여기서 게임 루프가 진행
             api.Run();
         }
     }
+
     Gdiplus::GdiplusShutdown(gpToken);
-#pragma region 기본 메시지 루프입니다
-    /* while (GetMessage(&msg, nullptr, 0, 0))
-   {
-       if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-       {
-           TranslateMessage(&msg);
-           DispatchMessage(&msg);
-       }
-   }*/
-#pragma endregion
     api.Release();
-    return (int) msg.wParam;
+
+    return (int)msg.wParam;
 }
 
+
+///
+/// 캐릭터 구현
+/// 
+/// 
+/// // 집 
 
 
 //
@@ -108,24 +368,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  용도: 창 클래스를 등록합니다.
 //
-ATOM MyRegisterClass(HINSTANCE hInstance)
+ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
 {
     WNDCLASSEXW wcex;
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITORWINDOW));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    //wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_EDITORWINDOW);
-    wcex.lpszMenuName   = NULL;
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    wcex.style = CS_HREDRAW | CS_VREDRAW;
+    wcex.lpfnWndProc = proc;
+    wcex.cbClsExtra = 0;
+    wcex.cbWndExtra = 0;
+    wcex.hInstance = hInstance;
+    wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITORWINDOW));
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.lpszMenuName = NULL;// MAKEINTRESOURCEW(IDC_EDITORWINDOW);
+    wcex.lpszClassName = name;
+    wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
 }
@@ -142,47 +401,56 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   /*const UINT width = 1600;
-   const UINT height = 900;*/
-   const UINT width = 672;
-   const UINT height = 846;
-   /*HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);*/
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      /*0*/CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
+    const UINT width = 672;
+    const UINT height = 846;
 
-   HWND ToolHWnd = CreateWindowW(L"TILEWONDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
-       0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
-   api.Initialize(hWnd, width, height);
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+    HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
+        0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
-   ugina::LoadResource();
-   ugina::LoadScenes();
-   
-   int a = 0;
-   //변수하나를 생성하고 그 포인터값으로 시드값을 만듦
-   srand(time(nullptr));
-   ugina::graphics::Texture* texture 
-       = ugina::Resources::Find<ugina::graphics::Texture>(L"SpringFloor");
-   RECT rect = { 0,0,texture->GetWidth(),texture->GetHeight() };
-   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+    api.Initialize(hWnd, width, height);
 
-   UINT toolWidth = rect.right - rect.left;
-   UINT toolHeight = rect.bottom - rect.top;
-   
-   SetWindowPos(ToolHWnd, nullptr, width, 0, toolWidth, toolHeight, 0);
-   ShowWindow(ToolHWnd, true);
-   UpdateWindow(ToolHWnd);
-   return TRUE;
+
+    if (!hWnd)
+    {
+        return FALSE;
+    }
+
+    ShowWindow(hWnd, nCmdShow);
+    UpdateWindow(hWnd);
+
+    //ShowWindow(ToolHWnd, nCmdShow);
+
+
+
+    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+
+    //load Scenes
+    ugina::LoadResources();
+    ugina::LoadScenes();
+
+    int a = 0;
+    srand((unsigned int)(&a));
+
+    //Tile 윈도우 크기 조정
+    ugina::graphics::Texture* texture
+        = ugina::Resources::Find<ugina::graphics::Texture>(L"SpringFloor");
+
+    RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
+    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+    UINT toolWidth = rect.right - rect.left;
+    UINT toolHeight = rect.bottom - rect.top;
+
+    SetWindowPos(ToolHWnd, nullptr, width, 0, toolWidth, toolHeight, 0);
+    ShowWindow(ToolHWnd, true);
+    UpdateWindow(ToolHWnd);
+
+    return TRUE;
 }
 
 //
@@ -200,38 +468,41 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_COMMAND:
+    {
+        int wmId = LOWORD(wParam);
+        // 메뉴 선택을 구문 분석합니다:
+        switch (wmId)
         {
-            int wmId = LOWORD(wParam);
-            // 메뉴 선택을 구문 분석합니다:
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
         }
-        break;
+    }
+    break;
     case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-            EndPaint(hWnd, &ps);
-        }
-        break;
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+
+        EndPaint(hWnd, &ps);
+    }
+    break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
+
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
 }
+
+
 
 // 정보 대화 상자의 메시지 처리기입니다.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)

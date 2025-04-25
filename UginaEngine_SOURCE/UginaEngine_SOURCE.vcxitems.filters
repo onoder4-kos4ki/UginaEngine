@@ -70,9 +70,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaObject.cpp">
       <Filter>Commons</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaTilemapRenderer.cpp">
       <Filter>Components\TileMapRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,9 +153,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollider.h">
       <Filter>Components\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaTilemapRenderer.h">
       <Filter>Components\TileMapRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaDontDestroyOnLoad.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

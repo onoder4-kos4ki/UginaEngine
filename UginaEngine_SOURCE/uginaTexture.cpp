@@ -32,7 +32,7 @@ namespace ugina
 			///박스콜라이더를 그리기위한 브러쉬 설정(콜라이더 사각형 내부를 채우는 브러쉬는 투명 브러쉬)
 			HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 			HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
-			Rectangle(image->mHdc, -1, -1, image->GetWidth()+1, image->GetHeight() + 1);
+			Rectangle(image->mHdc, -1, -1, image->GetWidth() + 1, image->GetHeight() + 1);
 			SelectObject(hdc, oldBrush);
 			///
 			HBITMAP oldbitmap = (HBITMAP)SelectObject(image->mHdc, image->mBitmap);
@@ -114,7 +114,7 @@ namespace ugina
 				mHeight=mImage->GetHeight();
 			}
 
-			return S_FALSE;
+			return S_OK;
 		}
 	}
 }

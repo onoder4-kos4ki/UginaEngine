@@ -1,6 +1,8 @@
 #include "uginaTile.h"
 #include "uginaTransform.h"
 #include "uginaTilemapRenderer.h"
+#include "uginaTime.h"
+#include "uginaInput.h"
 namespace ugina
 {
 	void Tile::Initialize()

@@ -35,6 +35,7 @@ namespace ugina
 		{
 			pos.y += 100.0f * Time::DeltaTime();
 		}
+		tr->SetPosition(pos);
 	}
 	void CameraScript::LateUpdate()
 	{
@@ -43,3 +44,4 @@ namespace ugina
 	{
 	}
 }
+

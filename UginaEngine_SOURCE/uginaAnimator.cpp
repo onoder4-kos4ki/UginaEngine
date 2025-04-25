@@ -132,7 +132,8 @@ namespace ugina
 			BitBlt(spriteSheet->GetHdc(), i * imageWidth, 0, imageWidth, imageHeight,
 				images[i]->GetHdc(), 0, 0, SRCCOPY);
 		}
-		CreateAnimation(name, spriteSheet, Vector2(0.0f, 0.0f), Vector2(imageWidth, imageHeight), offset, fileCount, duration);
+		CreateAnimation(name, spriteSheet, Vector2(0.0f, 0.0f), Vector2(imageWidth, imageHeight)
+			, offset, fileCount, duration);
 	}
 
 	ugina::Animation* ugina::Animator::FindAnimation(const std::wstring& name)
@@ -158,7 +159,8 @@ namespace ugina
 
 		if (mActiveAnimation)
 		{
-			Events* currentEvents = FindEvents(mActiveAnimation->getName());
+			Events* currentEvents = 
+				FindEvents(mActiveAnimation->getName());
 
 			if (currentEvents)
 			{

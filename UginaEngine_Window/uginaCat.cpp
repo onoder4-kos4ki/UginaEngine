@@ -1,4 +1,8 @@
 #include "uginaCat.h"
+#include "uginaInput.h"
+#include "uginaTransform.h"
+#include "uginaTime.h"
+
 namespace ugina
 {
 	void Cat::Initialize()

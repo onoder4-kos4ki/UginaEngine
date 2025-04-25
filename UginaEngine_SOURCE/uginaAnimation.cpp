@@ -155,9 +155,9 @@ namespace ugina
 			//시작은 좌상단부터 시작해서 size의 크기와 순서를 곱한만큼 애니메이션 스프라이트 이미지를 저장함
 			sprite.leftTop.x = leftTop.x + (size.x * i);
 			sprite.leftTop.y = leftTop.y;
-			sprite.duration = duration;
 			sprite.size = size;
 			sprite.offset = offset;
+			sprite.duration = duration;
 
 			mAnimationSheet.push_back(sprite);
 
