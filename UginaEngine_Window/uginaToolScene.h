@@ -21,6 +21,9 @@ namespace ugina
 		void Load(); 
 
 	private:
+		void renderGreed(HDC hdc);
+		void CreateTileObject();
+	private:
 		std::vector<Tile*> mTiles;
 	};
 }

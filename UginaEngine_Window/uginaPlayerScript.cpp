@@ -8,6 +8,7 @@
 #include "uginaCat.h"
 #include "uginaObject.h"
 #include "uginaCatScript.h"
+#include "uginaRigidbody.h"
 namespace ugina
 {
 
@@ -145,49 +146,58 @@ namespace ugina
 
 			Vector2 mousePos = Input::GetMousePosition();
 			catsrc->mDest = mousePos;
-			int a = 0;
 		}
 
 		Transform* tr = getOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+
+		Rigidbody* rb = getOwner()->GetComponent<Rigidbody>();
 		if (Input::GetKey(ekeyCode::D))
 		{
-			pos.x += 100.0f * Time::DeltaTime();
+			//pos.x += 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2(200.0f, 0.0f));
 		}
 		if (Input::GetKey(ekeyCode::A))
 		{
-			pos.x -= 100.0f * Time::DeltaTime();
+			//pos.x -= 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2(-200.0f, 0.0f));
 		}
 		if (Input::GetKey(ekeyCode::W))
 		{
-			pos.y -= 100.0f * Time::DeltaTime();
+			//pos.y -= 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2( 0.0f, 200.0f));
 		}
 		if (Input::GetKey(ekeyCode::S))
 		{
-			pos.y += 100.0f * Time::DeltaTime();
+			//pos.y += 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2(0.0f, -200.0f ));
 		}
-		tr->SetPosition(pos);
 	}
 	void PlayerScript::move()
 	{
 		Transform* tr = getOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
+		Rigidbody* rb = getOwner()->GetComponent<Rigidbody>();
 		if (Input::GetKey(ekeyCode::D))
 		{
-			pos.x += 100.0f * Time::DeltaTime();
+			//pos.x += 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2(200.0f, 0.0f));
 		}
 		if (Input::GetKey(ekeyCode::A))
 		{
-			pos.x -= 100.0f * Time::DeltaTime();
+			//pos.x -= 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2(-200.0f, 0.0f));
 		}
 		if (Input::GetKey(ekeyCode::W))
 		{
-			pos.y -= 100.0f * Time::DeltaTime();
+			//pos.y -= 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2(0.0f, 200.0f));
 		}
 		if (Input::GetKey(ekeyCode::S))
 		{
-			pos.y += 100.0f * Time::DeltaTime();
+			//pos.y += 100.0f * Time::DeltaTime();
+			rb->AddForce(Vector2(0.0f,-200.0f));
 		}
 
 		tr->SetPosition(pos);
@@ -195,7 +205,7 @@ namespace ugina
 			Input::GetKeyUp(ekeyCode::S))
 		{
 			mstate = PlayerScript::eState::Idle;
-			mAnimator->PlayAnimation(L"SITDOWN", false);
+			mAnimator->PlayAnimation(L"SitDown", false);
 		}
 	}
 	void PlayerScript::GiveWater()
@@ -203,7 +213,7 @@ namespace ugina
 		if (mAnimator->IsComplete())
 		{
 			mstate = eState::Idle;
-			mAnimator->PlayAnimation(L"IDLE", false);
+			mAnimator->PlayAnimation(L"Idle", false);
 		}
 	}
 }

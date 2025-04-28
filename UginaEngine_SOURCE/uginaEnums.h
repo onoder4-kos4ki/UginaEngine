@@ -7,6 +7,7 @@ namespace ugina
 		{
 			Transform,
 			Collider,
+			Rigidbody,
 			Script,
 			SpriteRenderer,
 			Animator,
@@ -20,6 +21,7 @@ namespace ugina
 			Tile,
 			Animal,
 			Player,
+			Floor,
 			Particle,
 			Max = 16,
 

@@ -20,7 +20,7 @@
 #include "uginaCollisionManager.h"
 #include "uginaTile.h"
 #include "uginaTilemapRenderer.h"
-
+#include "uginaRigidbody.h"
 namespace ugina
 {
 	PlayScene::PlayScene()
@@ -33,6 +33,29 @@ namespace ugina
 	{
 		FILE* pFile = nullptr;
 		_wfopen_s(&pFile,L"..\\Resources\\Test", L"rb");
+		while (true)
+		{
+			int idxX = 0;
+			int idxY = 0;
+
+			int posX = 0;
+			int posY = 0;
+			if (fread(&idxX, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&idxY, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&posX, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&posY, sizeof(int), 1, pFile) == NULL)
+				break;
+
+			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile, Vector2(posX, posY));
+			TilemapRenderer* tmr = tile->AddComponent<TilemapRenderer>();
+			tmr->SetTexture(Resources::Find<graphics::Texture>(L"SpringFloor"));
+			tmr->SetIndex(Vector2(idxX, idxY));
+
+		}
+		fclose(pFile);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
 
 		//플레이씬에서 쓰이는 메인카메라 설정
@@ -64,6 +87,7 @@ namespace ugina
 		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(300.0f, 250.0f));
 		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(1.0f, 1.0f));
 
+		mPlayer->AddComponent<Rigidbody>();
 		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
 		cat->AddComponent<CatScript>();
 
