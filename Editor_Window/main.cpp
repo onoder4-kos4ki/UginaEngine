@@ -183,7 +183,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 BOOL InitToolScene(HINSTANCE hInstance)
 {
     ugina::Scene* activeScene = ugina::SceneManager::Getactivescene();
-    std::wstring name = activeScene->getName();
+    std::wstring name = activeScene->GetName();
 
     if (name == L"ToolScene")
     {

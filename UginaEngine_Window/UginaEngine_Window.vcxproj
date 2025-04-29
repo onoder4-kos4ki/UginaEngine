@@ -139,6 +139,8 @@
     <ClInclude Include="uginaCameraScript.h" />
     <ClInclude Include="uginaCat.h" />
     <ClInclude Include="uginaCatScript.h" />
+    <ClInclude Include="uginaFloor.h" />
+    <ClInclude Include="uginaFloorScript.h" />
     <ClInclude Include="uginaLoadResources.h" />
     <ClInclude Include="uginaLoadScenes.h" />
     <ClInclude Include="uginaPlayer.h" />
@@ -152,6 +154,8 @@
     <ClCompile Include="uginaCameraScript.cpp" />
     <ClCompile Include="uginaCat.cpp" />
     <ClCompile Include="uginaCatScript.cpp" />
+    <ClCompile Include="uginaFloor.cpp" />
+    <ClCompile Include="uginaFloorScript.cpp" />
     <ClCompile Include="uginaPlayer.cpp" />
     <ClCompile Include="uginaPlayerScript.cpp" />
     <ClCompile Include="uginaPlayScene.cpp" />

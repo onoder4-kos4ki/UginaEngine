@@ -11,8 +11,8 @@ namespace ugina
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<ToolScene>(L"ToolScene");
 
-		SceneManager::LoadScene(L"ToolScene");
-		//SceneManager::LoadScene(L"PlayScene");
+		//SceneManager::LoadScene(L"ToolScene");
+		SceneManager::LoadScene(L"PlayScene");
 		
 	}
 }

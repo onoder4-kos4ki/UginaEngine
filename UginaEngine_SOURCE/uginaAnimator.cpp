@@ -37,7 +37,7 @@ namespace ugina
 		{
 			mActiveAnimation->Update();
 
-			Events* events = FindEvents(mActiveAnimation->getName());
+			Events* events = FindEvents(mActiveAnimation->GetName());
 			//현재 선택한 애니메이션이 재생완료면서 루프하는 애니메이션이면
 			//애니메이션의 리셋함수 실행시켜서 다시 재생시킬 준비하기
 			if (mActiveAnimation->IsComplete() == true)
@@ -160,14 +160,14 @@ namespace ugina
 		if (mActiveAnimation)
 		{
 			Events* currentEvents = 
-				FindEvents(mActiveAnimation->getName());
+				FindEvents(mActiveAnimation->GetName());
 
 			if (currentEvents)
 			{
 				currentEvents->endEvent();
 			}
 		}
-		Events* nextEvents = FindEvents(animation->getName());
+		Events* nextEvents = FindEvents(animation->GetName());
 		if (nextEvents)
 		{
 			nextEvents->startEvent();

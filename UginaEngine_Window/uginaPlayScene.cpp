@@ -21,6 +21,9 @@
 #include "uginaTile.h"
 #include "uginaTilemapRenderer.h"
 #include "uginaRigidbody.h"
+#include "uginaFloor.h"
+#include "uginaFloorScript.h"
+
 namespace ugina
 {
 	PlayScene::PlayScene()
@@ -31,7 +34,7 @@ namespace ugina
 	}
 	void PlayScene::Initialize()
 	{
-		FILE* pFile = nullptr;
+		/*FILE* pFile = nullptr;
 		_wfopen_s(&pFile,L"..\\Resources\\Test", L"rb");
 		while (true)
 		{
@@ -53,10 +56,9 @@ namespace ugina
 			TilemapRenderer* tmr = tile->AddComponent<TilemapRenderer>();
 			tmr->SetTexture(Resources::Find<graphics::Texture>(L"SpringFloor"));
 			tmr->SetIndex(Vector2(idxX, idxY));
-
 		}
 		fclose(pFile);
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
+		*/
 
 		//플레이씬에서 쓰이는 메인카메라 설정
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(344.0f, 442.0f));
@@ -64,9 +66,9 @@ namespace ugina
 		renderer::mainCamera = cameracomp;
 
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		
+		object::DontDestroyOnLoad(mPlayer);
+
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
-		
 		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();
 		//CircleCollider2D* collider = mPlayer->AddComponent<CircleCollider2D>();
 		collider->SetOffset(Vector2(-50.0f, -50.0));
@@ -85,35 +87,13 @@ namespace ugina
 			= std::bind(&PlayerScript::AttackEffect, plScript);
 
 		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(300.0f, 250.0f));
-		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(1.0f, 1.0f));
-
 		mPlayer->AddComponent<Rigidbody>();
-		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
-		cat->AddComponent<CatScript>();
 
-		//cameracomp->SetTarget(cat);
-		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
-		Animator* catAnimator = cat->AddComponent<Animator>();
-
-		//BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>();
-		CircleCollider2D* circleCatCollider = cat->AddComponent<CircleCollider2D>();
-		circleCatCollider->SetOffset(Vector2(-50.f, -50.f));
-		//boxCatCollider->SetOffset(Vector2(-50.f, -50.f));
-		//catAnimator->CreateAnimation(L"DOWNWALK", catTex, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"RIGHTWALK", catTex, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"UPWALK", catTex, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"LEFTWALK", catTex, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"SITDOWN", catTex, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"GROOMING", catTex, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-		//catAnimator->CreateAnimation(L"LAYDOWN", catTex, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
-
-		//catAnimator->PlayAnimation(L"SITDOWN", false);
-		catAnimator->CreateAnimationByFolder(L"MushroomIdle", L"..\\Resources\\Mushroom", Vector2::Zero, 0.1f);
-		 
-		catAnimator->PlayAnimation(L"MushroomIdle", true);
-
-		cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
-		cat->GetComponent<Transform>()->SetScale(Vector2(1.0f, 1.0f));
+		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(100.0f, 600.0f));
+		floor->SetName(L"Floor");
+		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
+		floorCol->SetSize(Vector2(3.0f, 1.0f));
+		floor->AddComponent<FloorScript>();
 
 		Scene::Initialize();
 	}
@@ -134,6 +114,8 @@ namespace ugina
 	void PlayScene::OnEnter()
 	{
 		Scene::OnEnter();
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 	}
 	void PlayScene::OnExit()
 	{

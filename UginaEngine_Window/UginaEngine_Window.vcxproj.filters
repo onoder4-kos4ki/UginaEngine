@@ -32,6 +32,8 @@
     <ClInclude Include="uginaCameraScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="uginaFloor.h" />
+    <ClInclude Include="uginaFloorScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="uginaPlayer.cpp">
@@ -61,6 +63,8 @@
     <ClCompile Include="uginaCameraScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="uginaFloor.cpp" />
+    <ClCompile Include="uginaFloorScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

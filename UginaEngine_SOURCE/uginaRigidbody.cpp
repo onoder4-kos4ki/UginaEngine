@@ -32,6 +32,39 @@ namespace ugina
 		mAccelation = mForce / mMass;
 
 		mVelocity += mAccelation * Time::DeltaTime();
+
+		if (mbGround)
+		{
+			Vector2 gravity = mGravity;
+			gravity.normalize();
+
+			float dot = Vector2::Dot(mVelocity, gravity);
+			mVelocity -= gravity * dot;
+		}
+		else
+		{
+			mVelocity += mGravity * Time::DeltaTime();
+		}
+
+		Vector2 gravity = mGravity;
+		gravity.normalize();
+		float dot = Vector2::Dot(mVelocity, gravity);
+		gravity = gravity * dot;
+
+		Vector2 sideVelocity = mVelocity - gravity;
+
+		if (mLimitedVelocity.y < gravity.length())
+		{
+			gravity.normalize();
+			gravity *= mLimitedVelocity.y;
+		}
+		if (mLimitedVelocity.x < sideVelocity.length())
+		{
+			sideVelocity.normalize();
+			sideVelocity *= mLimitedVelocity.x;
+		}
+		mVelocity = gravity + sideVelocity;
+
 		if (!(mVelocity == Vector2::Zero))
 		{
 			Vector2 friction = -mVelocity;

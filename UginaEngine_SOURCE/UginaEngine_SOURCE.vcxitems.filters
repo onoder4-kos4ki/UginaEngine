@@ -52,12 +52,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaTexture.cpp">
       <Filter>Resources\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimation.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaComponent.cpp">
       <Filter>Components\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.cpp">
       <Filter>Components\Collider</Filter>
     </ClCompile>
@@ -67,9 +64,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollider.cpp">
       <Filter>Components\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)uginaObject.cpp">
-      <Filter>Commons</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaTilemapRenderer.cpp">
       <Filter>Components\TileMapRenderer</Filter>
     </ClCompile>
@@ -77,6 +71,18 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)uginaRigidbody.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimation.cpp">
+      <Filter>Components\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaAnimator.cpp">
+      <Filter>Components\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)uginaCollisionManager.cpp">
+      <Filter>Components\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -105,9 +111,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaApplication.h">
       <Filter>High Level Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h">
-      <Filter>Commons</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaEnums.h">
       <Filter>Commons</Filter>
@@ -139,12 +142,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaTexture.h">
       <Filter>Resources\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimation.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaComponent.h">
       <Filter>Components\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaBoxCollider2D.h">
       <Filter>Components\Collider</Filter>
     </ClInclude>
@@ -161,6 +161,18 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)uginaRigidbody.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimation.h">
+      <Filter>Components\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaAnimator.h">
+      <Filter>Components\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)uginaCollisionManager.h">
+      <Filter>Components\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Commons">
@@ -213,6 +225,15 @@
     </Filter>
     <Filter Include="Components\TileMapRenderer">
       <UniqueIdentifier>{6e44d52a-112d-4dcc-80bc-cf0b57d421c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{46c1bb1d-c84e-427c-8625-1ad51129480a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Animator">
+      <UniqueIdentifier>{538e7e30-1035-4740-9531-324e6cc932d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Collision">
+      <UniqueIdentifier>{a0e4eb31-9a6b-480a-9da1-e416703c6de2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
