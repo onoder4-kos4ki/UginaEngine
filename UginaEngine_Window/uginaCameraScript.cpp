@@ -16,7 +16,7 @@ namespace ugina
 	}
 	void CameraScript::Update()
 	{
-		Transform* tr = getOwner()->GetComponent<Transform>();
+		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
 		if (Input::GetKey(ugina::ekeyCode::D))

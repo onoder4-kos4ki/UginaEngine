@@ -62,32 +62,31 @@ namespace ugina
 
 		//플레이씬에서 쓰이는 메인카메라 설정
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(344.0f, 442.0f));
-		Camera* cameracomp = camera->AddComponent<Camera>();
-		renderer::mainCamera = cameracomp;
+		Camera* cameraComp = camera->AddComponent<Camera>();
+		renderer::mainCamera = cameraComp;
 
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
 		object::DontDestroyOnLoad(mPlayer);
 
+
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
+
 		BoxCollider2D* collider = mPlayer->AddComponent<BoxCollider2D>();
-		//CircleCollider2D* collider = mPlayer->AddComponent<CircleCollider2D>();
 		collider->SetOffset(Vector2(-50.0f, -50.0));
 
 		graphics::Texture* playerTex = Resources::Find<graphics::Texture>(L"Player");
 		Animator* playerAnimator = mPlayer->AddComponent<Animator>();
-		
-		playerAnimator->CreateAnimation(L"Idle", playerTex,
-			Vector2(2000.0f, 250.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 1, 0.1f);
+		playerAnimator->CreateAnimation(L"Idle", playerTex
+			, Vector2(2000.0f, 250.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 1, 0.1f);
 		playerAnimator->CreateAnimation(L"FrontGiveWater", playerTex
 			, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.1f);
-
 		playerAnimator->PlayAnimation(L"Idle", false);
 
-		playerAnimator->GetCompleteEvent(L"FrontGiveWater") 
-			= std::bind(&PlayerScript::AttackEffect, plScript);
+		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
 		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(300.0f, 250.0f));
 		mPlayer->AddComponent<Rigidbody>();
+
 
 		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(100.0f, 600.0f));
 		floor->SetName(L"Floor");
@@ -95,6 +94,11 @@ namespace ugina
 		floorCol->SetSize(Vector2(3.0f, 1.0f));
 		floor->AddComponent<FloorScript>();
 
+
+
+
+
+		// 게임 오브젝트 생성후에 레이어와 게임오브젝트들의 init함수를 호출
 		Scene::Initialize();
 	}
 	void PlayScene::Update()

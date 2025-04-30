@@ -1,6 +1,6 @@
 ﻿//// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-////
 //
+
 #include "framework.h"
 #include "Editor_Window.h"
 
@@ -152,7 +152,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-    
+
+
     api.Initialize(hWnd, width, height);
 
 
@@ -175,11 +176,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     ugina::LoadScenes();
 
     InitToolScene(hInstance);
+
     int a = 0;
     srand((unsigned int)(&a));
 
+
+
     return TRUE;
 }
+
 BOOL InitToolScene(HINSTANCE hInstance)
 {
     ugina::Scene* activeScene = ugina::SceneManager::Getactivescene();
@@ -187,23 +192,27 @@ BOOL InitToolScene(HINSTANCE hInstance)
 
     if (name == L"ToolScene")
     {
-        HWND ToolHwnd = CreateWindowW(L"TILEWINDOW",L"TileWindow", WS_OVERLAPPEDWINDOW, 0, 0, CW_USEDEFAULT
-            ,0,nullptr,nullptr,hInstance,nullptr);
+        HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
+            0, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-        ugina::graphics::Texture* texture = 
-            ugina::Resources::Find<ugina::graphics::Texture>(L"SpringFloor");
-        RECT rect = { 0,0,texture->GetWidth(),texture->GetHeight() };
+        //Tile 윈도우 크기 조정 -- TOOL
+        ugina::graphics::Texture* texture
+            = ugina::Resources::Find<ugina::graphics::Texture>(L"SpringFloor");
+
+        RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
         AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
         UINT toolWidth = rect.right - rect.left;
         UINT toolHeight = rect.bottom - rect.top;
 
-        SetWindowPos(ToolHwnd, nullptr, 672, 0, toolWidth, toolHeight, 0);
-        ShowWindow(ToolHwnd, true);
-        UpdateWindow(ToolHwnd);
+        SetWindowPos(ToolHWnd, nullptr, 672, 0, toolWidth, toolHeight, 0);
+        ShowWindow(ToolHWnd, true);
+        UpdateWindow(ToolHWnd);
     }
+
     return TRUE;
 }
+
 //
 //  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
 //

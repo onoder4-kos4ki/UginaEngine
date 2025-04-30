@@ -24,7 +24,7 @@ namespace ugina
 	}
 	void BoxCollider2D::Render(HDC hdc)
 	{
-		Transform* tr = getOwner()->GetComponent<Transform>();
+		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
 		if (renderer::mainCamera)

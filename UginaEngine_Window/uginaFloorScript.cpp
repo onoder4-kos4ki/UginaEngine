@@ -31,13 +31,14 @@ namespace ugina
 	}
 	void FloorScript::OnCollisionEnter(Collider* other)
 	{
-		Rigidbody* playerRb = other->getOwner()->GetComponent<Rigidbody>();
-		Transform* playerTr = other->getOwner()->GetComponent<Transform>();
+		Rigidbody* playerRb = other->GetOwner()->GetComponent<Rigidbody>();
+		Transform* playerTr = other->GetOwner()->GetComponent<Transform>();
 		Collider* playerCol = other;
 
-		Rigidbody* floorRb = this->getOwner()->GetComponent<Rigidbody>();
-		Transform* floorTr = this->getOwner()->GetComponent<Transform>();
-		Collider* floorCol = this->getOwner()->GetComponent<Collider>();
+		Rigidbody* floorRb = this->GetOwner()->GetComponent<Rigidbody>();
+		Transform* floorTr = this->GetOwner()->GetComponent<Transform>();
+		Collider* floorCol = this->GetOwner()->GetComponent<Collider>();
+
 
 		float len = fabs(playerTr->GetPosition().y - floorTr->GetPosition().y);
 		float scale = fabs(playerCol->GetSize().y * 100 / 2.0f - floorCol->GetSize().y * 100 / 2.0f);
@@ -46,8 +47,10 @@ namespace ugina
 		{
 			Vector2 playerPos = playerTr->GetPosition();
 			playerPos.y -= (scale - len) - 1.0f;
+
 			playerTr->SetPosition(playerPos);
 		}
+
 
 		playerRb->SetGround(true);
 

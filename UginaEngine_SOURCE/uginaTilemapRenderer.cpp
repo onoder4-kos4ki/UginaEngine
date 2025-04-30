@@ -40,7 +40,7 @@ namespace ugina
 		{
 			assert(false);
 		}
-		Transform* tr = getOwner()->GetComponent<Transform>();
+		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		float rot = tr->GetRotation();
 		Vector2 scale = tr->GetScale();

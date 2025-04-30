@@ -1,4 +1,4 @@
-#include "uginaAnimation.h"
+ #include "uginaAnimation.h"
 #include "uginaTime.h"
 #include "uginaTransform.h"
 #include "uginaGameObject.h"
@@ -54,7 +54,7 @@ namespace ugina
 			return;
 		}
 
-		GameObject* gameObj = mAnimator->getOwner();
+		GameObject* gameObj = mAnimator->GetOwner();
 		Transform* tr = gameObj->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 

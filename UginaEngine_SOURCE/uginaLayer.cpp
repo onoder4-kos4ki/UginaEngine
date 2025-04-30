@@ -8,7 +8,7 @@ namespace ugina
 	}
 	Layer::~Layer()
 	{
-		for (GameObject*& gameobj : mGameObjects)
+		for (GameObject* gameobj : mGameObjects)
 		{
 			if (gameobj == nullptr)
 			{

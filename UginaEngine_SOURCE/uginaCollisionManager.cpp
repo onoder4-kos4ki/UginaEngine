@@ -34,6 +34,9 @@ namespace ugina
 	void CollisionManager::Render(HDC hdc)
 	{
 	}
+	void CollisionManager::Clear()
+	{
+	}
 	//레이어끼리 충돌할지 안할지 설정하는 함수
 	//left : 충돌 체크할 레이어1
 	//right : 충돌 체크할 레이어1
@@ -100,11 +103,11 @@ namespace ugina
 				{
 					continue;
 				}
-				colliderCollision(leftCol, rightCol);
+				ColliderCollision(leftCol, rightCol);
 			}
 		}
 	}
-	void CollisionManager::colliderCollision(Collider* left, Collider* right)
+	void CollisionManager::ColliderCollision(Collider* left, Collider* right)
 	{
 		CollisionID id = {};
 		id.left = left->GetID();
@@ -140,10 +143,11 @@ namespace ugina
 			}
 		}
 	}
+	
 	bool CollisionManager::Intersect(Collider* left, Collider* right)
 	{
-		Transform* leftTr = left->getOwner()->GetComponent<Transform>();
-		Transform* rightTr = right->getOwner()->GetComponent<Transform>();
+		Transform* leftTr = left->GetOwner()->GetComponent<Transform>();
+		Transform* rightTr = right->GetOwner()->GetComponent<Transform>();
 
 		Vector2 leftPos = leftTr->GetPosition() + left->GetOffset();
 		Vector2 rightPos = rightTr->GetPosition() + right->GetOffset();

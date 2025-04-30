@@ -36,7 +36,7 @@ namespace ugina
 			assert(false);
 		}
 		//유니티 방식의 컴포넌트와 좌표
-		Transform* tr = getOwner()->GetComponent<Transform>();
+		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		float rot = tr->GetRotation();
 		Vector2 scale = tr->GetScale();

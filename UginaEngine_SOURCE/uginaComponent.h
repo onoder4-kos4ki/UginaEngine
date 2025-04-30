@@ -17,7 +17,7 @@ namespace ugina
 		virtual void Render(HDC hdc);
 
 		void SetOwner(GameObject* owner) { mOwner = owner; }
-		GameObject* getOwner() { return mOwner; }
+		GameObject* GetOwner() { return mOwner; }
 		enums::eComponentType GetType() { return mType; }
 	
 	private:

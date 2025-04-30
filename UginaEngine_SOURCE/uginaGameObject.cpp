@@ -27,7 +27,7 @@ namespace ugina
 
 	GameObject::~GameObject()
 	{
-		for (Component*& com : mComponents)
+		for (Component* com : mComponents)
 		{
 			if (com == nullptr)
 			{

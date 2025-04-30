@@ -31,7 +31,7 @@ namespace ugina
 		}
 		if (mAnimator == nullptr)
 		{
-			mAnimator = getOwner()->GetComponent<Animator>();
+			mAnimator = GetOwner()->GetComponent<Animator>();
 		}
 		switch (mState)
 		{
@@ -74,7 +74,7 @@ namespace ugina
 		//	//시간 초기화
 		//	mTime = 0.0f;
 		//}
-		Transform* tr = getOwner()->GetComponent<Transform>();
+		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
 		//Transform* plTr = mPlayer->GetComponent<Transform>();
@@ -116,7 +116,7 @@ namespace ugina
 			}
 		}
 
-		Transform* tr = getOwner()->GetComponent<Transform>();
+		Transform* tr = GetOwner()->GetComponent<Transform>();
 		translate(tr);
 	}
 	void CatScript::laydDown()
