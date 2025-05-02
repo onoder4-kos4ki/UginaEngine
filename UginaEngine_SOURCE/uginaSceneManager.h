@@ -25,6 +25,7 @@ namespace ugina
 
 		static Scene* Getactivescene() { return mActiveScene; }
 		static Scene* GetDontDestroyOnLoad() { return mDontDestroyOnLoad; }
+		static std::vector<GameObject*> GetGameObjects(eLayerType layer);
 		static void Initialize();
 		//현재 선택된 씬(mActiveScene)에서 해야할 로직을 실행시키는 함수
 		static void Update();

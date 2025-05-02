@@ -36,6 +36,8 @@ namespace ugina
 	}
 	void CollisionManager::Clear()
 	{
+		mCollisionMap.clear();
+		mCollisionLayerMatrix->reset();
 	}
 	//레이어끼리 충돌할지 안할지 설정하는 함수
 	//left : 충돌 체크할 레이어1
@@ -71,8 +73,8 @@ namespace ugina
 	{
 		//특정 레이어의 내부에 있던 게임오브젝트 벡터를 복사하지 않고
 		//원본 그대로 참조하여 가져오게 하기위함으로 벡터에 참조를 붙임
-		const std::vector<GameObject*>& lefts = scene->GetLayer(left)->GetGameObjects();
-		const std::vector<GameObject*>& rights = scene->GetLayer(right)->GetGameObjects();
+		const std::vector<GameObject*>& lefts = SceneManager::GetGameObjects(left);
+		const std::vector<GameObject*>& rights = SceneManager::GetGameObjects(right);
 		
 		for (GameObject* left : lefts)
 		{

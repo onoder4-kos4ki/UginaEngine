@@ -11,7 +11,7 @@ namespace ugina
 			Walk,
 			Sleep,
 			GiveWater,
-			Attak
+			Attack
 		};
 		PlayerScript();
 		~PlayerScript();
@@ -32,7 +32,7 @@ namespace ugina
 		void GiveWater();
 
 	private:
-		eState mstate;
+		eState mState;
 		class Animator* mAnimator;
 
 		//애니메이션 이벤트에 대한 델리게이트들

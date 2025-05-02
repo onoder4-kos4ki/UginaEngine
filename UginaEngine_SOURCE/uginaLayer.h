@@ -14,9 +14,9 @@ namespace ugina
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
-
-		//게임 오브젝트를 없애는 함수 여기에 한번에 모아서 삭제 시킨다.
 		virtual void Destroy();
+		//게임 오브젝트를 없애는 함수 여기에 한번에 모아서 삭제 시킨다.
+		
 
 		void AddGameObject(GameObject* gameObject);
 		void EraseGameObject(GameObject* eraseGameObj);

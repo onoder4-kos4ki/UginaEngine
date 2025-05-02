@@ -9,10 +9,9 @@ namespace ugina
 	LARGE_INTEGER Time::PrevFrequency = {};
 	//이전 프레잉에 현재 진동수
 	LARGE_INTEGER Time::CurrentFrequency = {};
-
-
 	float Time::DeltaTimeValue = 0.0f;
 	float Time::displayFps = 0.0f;
+
 	void Time::Initailize()
 	{
 		//cpu의 고유진동수(초당 카운트수)를 매개변수에 반환해주는 함수(cpu의 클럭과는 다름)
@@ -39,25 +38,35 @@ namespace ugina
 
 	void Time::Render(HDC hdc)
 	{
+		//static float time = 0.0f;
+
+		//time += DeltaTime();
+		//wchar_t str[50] = L"";
+
+		//float Fps = 1.0f / DeltaTime();
+		//
+		//swprintf_s(str, L"Fps : %f", displayFps);
+		//int len = wcsnlen_s(str, 50);
+		//if (time > 1.0)
+		//{
+		//	//초당 프레임수
+		//	displayFps = Fps;
+		//	time = 0.0;
+		//}
+		//
+		//TextOut(hdc, 0, 0, str, len);
+
+		//
 		static float time = 0.0f;
 
-		time += DeltaTime();
+		time += DeltaTimeValue;
+		float fps = 1.0f / DeltaTimeValue;
+
 		wchar_t str[50] = L"";
-
-		float Fps = 1.0f / DeltaTime();
-		
-		swprintf_s(str, L"Fps : %f", displayFps);
+		swprintf_s(str, 50, L"Time : %d", (int)fps);
 		int len = wcsnlen_s(str, 50);
-		if (time > 1.0)
-		{
-			//초당 프레임수
-			displayFps = Fps;
-			time = 0.0;
-		}
-		
-		TextOut(hdc, 0, 0, str, len);
 
-		
+		TextOut(hdc, 0, 0, str, len);
 	}
 
 }

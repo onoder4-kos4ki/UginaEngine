@@ -8,6 +8,36 @@ namespace ugina
 	Scene* SceneManager::mActiveScene = nullptr;
 	Scene* SceneManager::mDontDestroyOnLoad = nullptr;
 
+	Scene* SceneManager::LoadScene(const std::wstring& name)
+	{
+		if (mActiveScene)
+		{
+			//현재 씬을 나갈때 실행하는 함수
+			mActiveScene->OnExit();
+		}
+		//name의 키로 저장된 씬을 찾는다
+		std::map<std::wstring, Scene*>::iterator iter = mScene.find(name);
+		if (iter == mScene.end())
+		{
+			return nullptr;
+		}
+		//찾은 씬을 활성화된 씬으로 만든다.
+		mActiveScene = iter->second;
+
+		//방금 활성화된 씬을 시작할때 호출할 함수실행
+		mActiveScene->OnEnter();
+		//활성화된 씬을 리턴
+		return iter->second;
+	}
+	std::vector<GameObject*> SceneManager::GetGameObjects(eLayerType layer)
+	{
+		std::vector<GameObject*> gameObjects = mActiveScene->GetLayer(layer)->GetGameObjects();
+
+		std::vector<GameObject*> dontDestroyOnLoad = mDontDestroyOnLoad->GetLayer(layer)->GetGameObjects();
+		gameObjects.insert(gameObjects.end(), dontDestroyOnLoad.begin(), dontDestroyOnLoad.end());
+	
+		return gameObjects;
+	}
 	void SceneManager::Initialize()
 	{
 		mDontDestroyOnLoad = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");
@@ -40,27 +70,7 @@ namespace ugina
 			iter.second = nullptr;
 		}
 	}
-	Scene* SceneManager::LoadScene(const std::wstring& name)
-	{
-		if (mActiveScene)
-		{
-			//현재 씬을 나갈때 실행하는 함수
-			mActiveScene->OnExit();
-		}
-		//name의 키로 저장된 씬을 찾는다
-		std::map<std::wstring, Scene*>::iterator iter = mScene.find(name);
-		if (iter == mScene.end())
-		{
-			return nullptr;
-		}
-		//찾은 씬을 활성화된 씬으로 만든다.
-		mActiveScene = iter->second;
-
-		//방금 활성화된 씬을 시작할때 호출할 함수실행
-		mActiveScene->OnEnter();
-		//활성화된 씬을 리턴
-		return iter->second;
-	}
+	
 
 
 }

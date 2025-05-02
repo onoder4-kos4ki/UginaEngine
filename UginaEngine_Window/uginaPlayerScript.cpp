@@ -13,7 +13,7 @@
 namespace ugina
 {
 	PlayerScript::PlayerScript()
-		: mstate(PlayerScript::eState::Idle)
+		: mState(PlayerScript::eState::Idle)
 		, mAnimator(nullptr)
 	{
 	}
@@ -32,7 +32,7 @@ namespace ugina
 			mAnimator = GetOwner()->GetComponent<Animator>();
 		}
 
-		switch (mstate)
+		switch (mState)
 		{
 		case ugina::PlayerScript::eState::Idle:
 			Idle();
@@ -47,7 +47,7 @@ namespace ugina
 			GiveWater();
 			break;
 
-		case ugina::PlayerScript::eState::Attak:
+		case ugina::PlayerScript::eState::Attack:
 			break;
 		default:
 			break;
@@ -215,7 +215,7 @@ namespace ugina
 		if (Input::GetKeyUp(ekeyCode::D) || Input::GetKeyUp(ekeyCode::A)
 			|| Input::GetKeyUp(ekeyCode::W) || Input::GetKeyUp(ekeyCode::S))
 		{
-			mstate = PlayerScript::eState::Idle;
+			mState = PlayerScript::eState::Idle;
 			mAnimator->PlayAnimation(L"SitDown", false);
 		}
 	}
@@ -223,7 +223,7 @@ namespace ugina
 	{
 		if (mAnimator->IsComplete())
 		{
-			mstate = eState::Idle;
+			mState = eState::Idle;
 			mAnimator->PlayAnimation(L"Idle", false);
 		}
 	}
