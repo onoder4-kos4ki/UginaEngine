@@ -1,4 +1,6 @@
 #include "uginaScene.h"
+#include "uginaCollisionManager.h"
+
 namespace ugina
 {
 
@@ -99,5 +101,6 @@ namespace ugina
 	}
 	void Scene::OnExit()
 	{
+		CollisionManager::Clear();
 	}
 }

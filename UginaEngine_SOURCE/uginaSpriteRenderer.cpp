@@ -1,6 +1,7 @@
 #include "uginaSpriteRenderer.h"
 #include "uginaGameObject.h"
 #include "uginaTransform.h"
+#include "uginaTexture.h"
 #include "uginaRenderer.h"
 namespace ugina
 {
@@ -44,7 +45,8 @@ namespace ugina
 		//오브젝트의 실제 좌표가 변한것이 아닌 카메라에 의해 그려야하는 좌표가 변한것
 		pos = renderer::mainCamera->CalculatePosition(pos);
 		//BMP파일일때
-		if (mTexture->GetTextureType() == graphics::Texture::eTextureType::Bmp)
+		if (mTexture->GetTextureType() 
+			== graphics::Texture::eTextureType::Bmp)
 		{
 			if (mTexture->IsAlpha())
 			{
@@ -67,7 +69,8 @@ namespace ugina
 			}
 			else
 			{
-				TransparentBlt(hdc, pos.x, pos.y,
+				TransparentBlt(hdc
+					, pos.x, pos.y,
 					mTexture->GetWidth() * mSize.x * scale.x,
 					mTexture->GetHeight() * mSize.y * scale.y,
 					mTexture->GetHdc(),

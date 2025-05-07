@@ -28,7 +28,8 @@ namespace ugina
 		QueryPerformanceCounter(&CurrentFrequency);
 
 		//현재 카운트 수 와 이전 카운트 수의 차 = 이전 프레임에서 현재 프레임까지의 진동수(카운트 수)
-		float differenceFrequency = static_cast<float>(CurrentFrequency.QuadPart - PrevFrequency.QuadPart);
+		float differenceFrequency 
+			= static_cast<float>(CurrentFrequency.QuadPart - PrevFrequency.QuadPart);
 		//이전 프레임에서 현재 프레임까지의 진동수 에서 초당 진동수로 나누기=이전 프레임에서 현재 프레임까지 걸린 시간
 		DeltaTimeValue = differenceFrequency / static_cast<float>(CpuFrequency.QuadPart);
 

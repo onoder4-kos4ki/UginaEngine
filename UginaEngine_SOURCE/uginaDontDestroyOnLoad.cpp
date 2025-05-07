@@ -1,39 +1,43 @@
 #include "uginaDontDestroyOnLoad.h"
 
-ugina::DontDestroyOnLoad::DontDestroyOnLoad()
+namespace ugina
 {
-}
 
-ugina::DontDestroyOnLoad::~DontDestroyOnLoad()
-{
-}
+	DontDestroyOnLoad::DontDestroyOnLoad()
+	{
+	}
 
-void ugina::DontDestroyOnLoad::Initialize()
-{
-	Scene::Initialize();
-}
+	DontDestroyOnLoad::~DontDestroyOnLoad()
+	{
+	}
 
-void ugina::DontDestroyOnLoad::Update()
-{
-	Scene::Update();
-}
+	void DontDestroyOnLoad::Initialize()
+	{
+		Scene::Initialize();
+	}
 
-void ugina::DontDestroyOnLoad::LateUpdate()
-{
-Scene:: LateUpdate();
-}
+	void DontDestroyOnLoad::Update()
+	{
+		Scene::Update();
+	}
 
-void ugina::DontDestroyOnLoad::Render(HDC hdc)
-{
-	Scene::Render(hdc);
-}
+	void DontDestroyOnLoad::LateUpdate()
+	{
+		Scene::LateUpdate();
+	}
 
-void ugina::DontDestroyOnLoad::OnEnter()
-{
-	Scene::OnEnter();
-}
+	void DontDestroyOnLoad::Render(HDC hdc)
+	{
+		Scene::Render(hdc);
+	}
 
-void ugina::DontDestroyOnLoad::OnExit()
-{
-	Scene::OnExit();
+	void DontDestroyOnLoad::OnEnter()
+	{
+		Scene::OnEnter();
+	}
+
+	void DontDestroyOnLoad::OnExit()
+	{
+		Scene::OnExit();
+	}
 }

@@ -64,7 +64,7 @@ namespace ugina
 
 		clearRenderTarget();
 		Time::Render(mBackHdc);
-		CollisionManager::Render(mHdc);
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 		
 		copyRenderTarget(mBackHdc, mHdc);

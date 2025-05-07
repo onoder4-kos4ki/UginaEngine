@@ -44,7 +44,8 @@ namespace ugina
 	void Input::updateKeys()
 	{
 		// Keys vector 전체를 돌면서 눌렸는지 아닌지를 판정함
-		std::for_each(keys.begin(), keys.end(), [](Key& key)->void { updateKey(key); });
+		std::for_each(keys.begin(), keys.end(),
+			[](Key& key)->void { updateKey(key); });
 	}
 	void Input::updateKey(Input::Key& key)
 	{

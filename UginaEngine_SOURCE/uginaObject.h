@@ -15,6 +15,7 @@ namespace ugina
 		static T* Instantiate(ugina::enums::eLayerType type)
 		{
 			T* gameObject = new T();
+			gameObject->SetLayerType(type);
 			Scene* activeScene = SceneManager::Getactivescene();
 			Layer* layer = activeScene->GetLayer(type);
 			layer->AddGameObject(gameObject);
@@ -26,6 +27,7 @@ namespace ugina
 		static T* Instantiate(ugina::enums::eLayerType type, math::Vector2 position)
 		{
 			T* gameObject = new T();
+			gameObject->SetLayerType(type);
 			Scene* activeScene = SceneManager::Getactivescene();
 			Layer* layer = activeScene->GetLayer(type);
 			layer->AddGameObject(gameObject);

@@ -1,5 +1,5 @@
 #pragma once
-#include "CommonInclude.h"
+
 #include "uginaGameObject.h"
 //에디터 어플리케이션 헤더
 namespace ugina

@@ -12,8 +12,7 @@ namespace ugina
 			{
 				Bmp,
 				Png,
-				None,
-				Count
+				None
 			};
 			static Texture* Create(const std::wstring& name, UINT width, UINT height);
 			Texture();

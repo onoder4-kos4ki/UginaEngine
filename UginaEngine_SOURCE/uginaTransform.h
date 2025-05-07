@@ -10,10 +10,10 @@ namespace ugina
 		Transform();
 		~Transform();
 
-		virtual void Initialize();
-		virtual void Update();
-		virtual void LateUpdate();
-		virtual void Render(HDC hdc);
+		 void Initialize() override;
+		 void Update() override;
+		 void LateUpdate() override;
+		 void Render(HDC hdc) override;
 
 		void SetPosition(Vector2 pos) { mPosition.x = pos.x; mPosition.y = pos.y; }
 		Vector2 GetPosition() { return mPosition; }

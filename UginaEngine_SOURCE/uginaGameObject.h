@@ -38,14 +38,15 @@ namespace ugina
 		template <typename T>
 		T* AddComponent()
 		{
-			T* component = new T();
-			component->Initialize();
-			component->SetOwner(this);
+			T* comp = new T();
+			comp->Initialize();
+			comp->SetOwner(this);
 
 			//벡터의 값을 푸시 백함수를 쓰는 대신에 enums 타입을 인덱스로 사용
 			//mComponets.push_back(comp);
-			mComponents[(UINT)component->GetType()] = component;
-			return component;
+			mComponents[(UINT)comp->GetType()] = comp;
+
+			return comp;
 		}
 		template <typename T>
 		T* GetComponent()
